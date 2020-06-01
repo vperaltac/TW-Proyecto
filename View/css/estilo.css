@@ -1,0 +1,661 @@
+/***********************************************************************/
+/*                          ATRIBUTOS GENERALES                        */
+
+/*Borramos los margenes predeterminados de los navegadores web*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* define cómo se calcula el ancho y alto de cada elemento */
+}
+  
+h1 {
+    font-size: 40px;
+    padding: 2px;
+}
+  
+/*Estilo del body por defecto*/
+body {
+    transition: 0.5s;
+}  
+
+a{
+    text-decoration: none;  /*Quita el subrayado*/
+}
+
+
+/***********************************************************************/
+
+/***********************************************************************/
+/*                          TEMA DE LA WEB                            */
+
+.cabecera, .cabecera-receta, nav a:hover, .paginas{
+    background-color: #d7e280;
+    color: #222;
+}
+
+
+nav,footer, #descripcion{
+    background-color: rgb(245, 240, 168);
+}
+
+nav a{
+    color:black;
+}
+
+.cabecera-aside{
+    background-color: #f5c05e;
+}
+
+.barra-lateral{
+    background-color: white;
+}
+
+.campo-lateral{
+    background-color: #ffecaf;
+}
+
+.boton {
+    background-color: #c2bebe;
+}
+
+.informacion{
+    background-color: #feffd4;
+    border: 1px solid rgb(120, 194, 0);
+}
+
+.info-contacto{
+    background-color: #feffd4;
+    border: 1px solid rgb(120, 194, 0);
+}
+
+.recetas-favs{
+    background-color: #feffd4;
+    border: 1px solid rgb(120, 194, 0);
+}
+
+.info-ingredientes{
+    background-color: rgb(223, 223, 255);
+}
+
+.comentario{
+    background-color: rgb(255, 219, 219);
+}
+
+.comentario-fecha, .comentario-usuario{
+    color: rgb(139, 63, 120);
+}
+/***********************************************************************/
+
+
+
+/***********************************************************************/
+  
+/***********************************************************************/
+/*                                CABECERA                             */
+/*Estilo de la cabecera de la pagina web*/
+.cabecera  {
+    padding: 25px;
+    text-align: center;
+    overflow: auto;
+}
+  
+.titulo-barra {
+    padding: 40px;
+    text-align: center;
+}
+  
+.logo{
+    float:left;
+    padding:5px;
+    margin-right: 24px;
+    width: 100px;
+    height: 100px;
+}
+/***********************************************************************/
+
+/***********************************************************************/
+/*                                MENÚ                                 */
+/*Estilo de la barra de navegacion / Menu*/
+nav {
+    list-style-type: none;   /*Borra los puntos de la lista*/
+    overflow: hidden;
+    margin:8px;
+}
+  
+nav a{
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;  /*Quita el subrayado*/
+    font-weight: bold;
+}
+  
+
+/***********************************************************************/
+
+/***********************************************************************/
+/*                            BARRA LATERAL                           */
+
+/*Estilo de la columna izquierda (informacion adicional)*/
+.barra-lateral {
+    flex: 19%;
+    margin-left:10px;
+}
+
+.cabecera-aside{
+    padding: 3px;
+}
+
+.cabecera-aside h2{
+    margin-left: 10px;
+}
+
+.barra-lateral li{
+    font-size: 18px;
+    margin: 15px;
+}
+
+.campo-lateral{
+    padding:8px;
+    margin-bottom: 10px;
+    border: 1px solid rgb(120, 194, 0);
+}
+
+.btn-eliminar {
+    background-color: #ff1a1a;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+
+/*La barra lateral se oculta con resoluciones por debajo de 800px */
+@media (max-width: 800px) {
+    .barra-lateral {
+        display: none;
+    }
+}
+
+
+#login .grupo-formulario{
+    padding:2px;
+}
+
+#login label{
+    display: inline-block;
+    margin-left: 5px;
+    width: 60px;
+    text-align: right;
+}
+
+#login input[type="text"],
+#login input[type="password"]{
+    margin:2px;
+    padding:6px;
+    width: 60%;
+}
+
+#login .boton {
+    border: none;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#login .clr{
+    clear: both;
+}
+  
+/***********************************************************************/
+
+/***********************************************************************/
+/*                           BLOQUE PRINCIPAL                          */
+/*Estilo del contenido principal de un evento*/
+#bloque-principal {
+    display: flex;
+    flex-wrap: nowrap;
+    margin:8px;
+}
+
+#bloque-principal p {
+    font-size: 18px;
+    padding: 1px;
+    line-height: 160%;
+}
+
+.wrap{
+    display:flex;
+    flex-direction: column;
+
+}
+
+.cabecera-receta  {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.cabecera-receta h1{
+    font-size: 30px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.puntuacion{
+    max-width:150px;
+    max-height:50px;
+    width: auto;
+    height: auto;
+}
+
+.tags-autor{
+    display: flex;
+    justify-content: space-between;
+    font-size: small;
+    font-style: italic;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+#descripcion {
+    overflow: hidden;
+}
+  
+.descripcion-texto{
+    margin:12px;
+}
+
+.foto-receta{
+    float: right;
+    padding: 12px;
+    max-width:380px;
+    max-height:273px;
+    width: auto;
+    height: auto;
+}
+  
+.informacion h2 {
+    font-size: 35px;
+    padding: 2px;
+}
+
+.info-ingredientes{
+    float:right;
+    padding: 5px;
+    margin: 20px;
+}
+
+.info-ingredientes ul{
+    list-style-type: none;
+}
+
+ol{
+    list-style-position: inside;
+}
+
+p.organizador {
+    font-size: 25px;
+    font-weight: bold;
+    padding: 2px;
+}
+  
+p.fecha{
+    padding: 2px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+  
+.informacion {
+    overflow-wrap: break-word;
+
+    flex: 79%;
+    padding: 10px;
+    border: 1px solid rgb(120, 194, 0);
+}
+
+.galeria {
+    margin:30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.galeria-imagen img{
+    width: 100%;
+}
+
+
+#info-principal {
+    background: 
+    linear-gradient(
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2)
+      ),
+      url("../img/bg4.jpeg");
+    background-size: cover;
+    text-align: center;
+}
+
+.title {
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 3rem;
+    white-space: nowrap;
+}
+
+/***********************************************************************/
+/*                           PRINCIPAL FAVS                       */
+.recetas-favs{
+    padding: 1%;
+}
+
+.polaroid{
+    margin-top: 1%;
+}
+
+
+/***********************************************************************/
+/*                           IMAGENES PRINCIPAL                       */
+/*Estilo de cada foto con el nombre de su evento*/
+.polaroid {
+    float: left;
+    width: 22%;
+    margin-right: 3%;
+    margin-bottom: 3%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .polaroid:hover {
+    background-color: rgb(240, 240, 240);
+  }
+  
+  .texto-polaroid {
+    text-align: center;
+    padding: 10px 20px;
+  }
+  
+  .polaroid img {
+    width: 100%;
+  }
+  
+  .polaroid a {
+    text-decoration: none;
+    color: #222;
+  }
+  
+  .polaroid p {
+    font-size: 1.4vw;
+  }
+  
+
+/*----------------------------------------------------------------------*/
+/*                             comentarios                             */
+.comentario{
+    margin-bottom: 6px;
+}
+
+.comentario-fecha, .comentario-usuario{
+    display: inline-block;
+}
+
+.comentario-fecha, .comentario-usuario, .comentario-texto{
+    margin-left: 6px;
+}
+/*----------------------------------------------------------------------*/
+
+.paginas{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.numero-pagina{
+    margin: 5px;
+    width: 4%;
+}
+
+/***********************************************************************/
+    
+
+
+/***********************************************************************/
+/*                            PIE DE PÁGINA                            */
+/*Estilo del pie de pagina*/
+footer {
+    padding: 10px;
+    text-align: center;
+}
+  
+footer p{
+    font-size: 14px;
+    padding: 1px;
+}
+/***********************************************************************/
+
+
+/***********************************************************************/
+/*                                 CONTACTO                           */
+.info-contacto {
+    flex: 79%;
+    padding: 20px;
+    border-right: 1px solid lightgray;
+    text-align: center;
+}
+  
+.info-contacto p {
+    font-size: 20px;
+    padding: 1px;
+}
+  
+.info-contacto h1 {
+    padding: 2px;
+    margin-bottom: 20px;
+}
+  
+p.titulo-lateral{
+    font-weight: bold;
+    padding: 2px;
+    margin-bottom: 4px;
+}
+  
+.texto-lateral{
+    margin: 0 auto;
+    margin-top: 55px;
+    width: 60%;
+}
+  
+.info-contacto a{
+    text-decoration: none;
+    color: #222;
+}
+          
+.formulario{
+    padding: 20px;
+}
+  
+.formulario .grupo-formulario{
+    padding-bottom: 15px;
+}
+  
+.formulario label{
+    display:block;
+}
+  
+.formulario input[type="text"], .formulario textarea{
+    padding: 8px;
+    width:60%;
+}
+  
+.formulario textarea{
+    resize: none;
+    height: 280px;
+}
+  
+.formulario input[type="submit"]{
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+}
+
+.text-error{
+    color: #ff1a1a;
+}
+/***********************************************************************/
+/***********************************************************************/
+/***********************************************************************/
+/***********************************************************************/
+/***********************************************************************/
+/***********************************************************************/
+/***********************************************************************/
+
+.receta-lista  {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.receta-lista h1{
+    font-size: 30px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.receta-lista{
+    background-color: #d7e280;
+    color: #222;
+}
+
+.wrap-receta{
+    display:flex;
+    flex-direction: column;
+    
+    color: #222;
+    margin: 10px;
+    border-radius: 2px;
+    border: 2px solid #222;
+}
+
+.lista-recetas {
+    overflow-wrap: break-word;
+
+    flex: 79%;
+    padding: 10px;
+    border: 1px solid rgb(120, 194, 0);
+}
+
+.lista-recetas h2 {
+    font-size: 35px;
+    padding: 2px;
+}
+
+.lista-recetas {
+    overflow-wrap: break-word;
+
+    flex: 59%;
+    padding: 10px;
+    border: 1px solid rgb(120, 194, 0);
+}
+
+.fast-info{
+    background-color: rgb(255, 219, 219);
+    color: blue;
+}
+
+.tiempo-receta{
+    font-weight: bold;
+    margin: 10px;
+    float: right;
+}
+
+.dificultad-receta{
+    font-weight: bold;  
+    margin: 10px;
+    float: left;
+}
+
+.foto-receta-lista{
+    float: right;
+    padding: 12px;
+    max-width:200px;
+    max-height:200px;
+    min-width: 200px;
+    min-height: 200px;
+    width: auto;
+    height: auto;
+}
+
+/**************************************************************************/
+/********************* Añadir receta***************************************/
+.tabla {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  margin-bottom: 3%;
+}
+
+.tabla th, .tabla td {
+  text-align: left;
+  padding: 12px;
+}
+
+.tabla tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.tabla tr.header, .tabla tr:hover {
+  background-color: #f1f1f1;
+}
+
+td a {
+  text-decoration: none;
+  color: #222;
+}
+
+.addEvento {
+  text-align: center;
+}
+
+.imgs {
+  display: flex;
+}
+
+.img1, .img2 {
+  flex: 45%;
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+
+.btn-eliminar {
+  background-color: #ff1a1a;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.modEtiquetas{
+  display: flex;
+}
+
+.izq, .der {
+  flex: 50%;
+  text-align: left;
+}
