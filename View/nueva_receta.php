@@ -5,7 +5,7 @@ echo <<< HTML
 <main id="bloque-principal">
     <section class="info-contacto">
     <h2>Añadir nueva receta</h2>
-    <form class="formulario" method="POST">
+    <form class="formulario" method="POST" enctype="multipart/form-data">
         <div class="grupo-formulario">
             <label>Título: </label> 
             <input type="text" name="titulo">
@@ -34,10 +34,8 @@ echo <<< HTML
             <label>Tiempo:</label> 
             <input type="text" name="tiempo">
 
-            <p>Imagen: (la imagen debe estar en el directorio img de View)
-                <form method="POST" enctype="multipart/form-data">
-                    <input name="img" type="file"/>
-                </form>
+            <p>Imagen:
+                <input name="img" type="file"/>
             </p>
 
             <input class="boton" type="submit" value="Añadir evento" name="guardarEvento" id="guardarEvento">
