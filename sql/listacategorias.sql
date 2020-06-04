@@ -1,0 +1,4 @@
+CREATE TABLE listacategorias(
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(45)
+);
