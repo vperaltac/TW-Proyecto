@@ -6,7 +6,7 @@ require_once 'View/contacto.php';
 require_once 'View/listado.php';
 require_once 'View/registro.php';
 require_once 'View/nueva_receta.php';
-require_once 'Controller/usuario.php';
+require_once 'Controller/usuarios.php';
 require_once 'Controller/contacto.php';
 require_once 'Controller/recetas.php';
 

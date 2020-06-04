@@ -1,5 +1,6 @@
 <?php
 require_once 'Model/recetas.php';
+require_once 'Controller/utils.php';
 
 // obtener datos sobre eventos
 function recetas($id_receta){
@@ -43,33 +44,4 @@ function subirNuevaReceta(){
     
     //nuevaReceta($titulo,$autor,$categoria,$descripcion,$ingredientes,$preparacion,$tiempo,$dificultad,$imagen);
     return true;
-}
-
-function subirImagen($nombre){
-
-    echo 'Propietario script actual: ' . get_current_user();
-
-    $imagen = $_FILES[$nombre];
-    $imagen_arr = explode('.',$imagen['name']);
-    $imagen_formato = strtolower(end($imagen_arr));
-    $permitido = array('jpg','jpeg','png');
-
-    if(in_array($imagen_formato,$permitido)){
-        if($imagen['error'] == 0){
-            if($imagen['size'] < 1000000){
-                $nuevo_nombre = uniqid('',true).".".$imagen_formato;
-                $destino = 'View/img/'.$nuevo_nombre;
-                if(!move_uploaded_file($imagen['tmp_name'],$destino))
-                    echo "Error al subir imagen";
-            }
-            else
-                echo "El archivo es demasiado grande";
-        }
-        else
-            echo "Error al subir la imagen";
-    }
-    else
-        echo "Formato no permitido";
-
-    return $destino;
 }

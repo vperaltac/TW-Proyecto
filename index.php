@@ -9,7 +9,7 @@ require_once 'View/principal.php';
 require_once 'View/contacto.php';
 require_once 'View/listado.php';
 
-require_once 'Controller/usuario.php';
+require_once 'Controller/usuarios.php';
 require_once 'Controller/contacto.php';
 require_once 'Controller/recetas.php';
 require_once 'Controller/render.php';
@@ -60,7 +60,7 @@ switch($_SERVER['REQUEST_METHOD']){
 
         switch($_POST['peticion']){
             case 'registro':
-                pedirRegistroUsuario();
+                pedirRegistrarUsuario();
             break;
 
             case 'iniciar-sesion':
