@@ -38,6 +38,7 @@ echo <<< HTML
                 <input name="img" type="file"/>
             </p>
 
+            <input type="hidden" value="nueva-receta" name="peticion" />
             <input class="boton" type="submit" value="Añadir evento" name="guardarEvento" id="guardarEvento">
     </form>
     </section>

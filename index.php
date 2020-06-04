@@ -47,56 +47,45 @@ switch($_SERVER['REQUEST_METHOD']){
                 else
                     renderizarPrincipal();
             break;
+
+            case 'registro':
+                renderizarRegistro();
+            break;
         }
     break;
 
     //------------------------------------  POST  ------------------------------------------
     case 'POST':
-        if(isset($_POST['logout'])){
-            cerrarSesion();
-            renderizarPrincipal();
-        }
-        else if(isset($_POST['mensaje'])){
-            $errores = validarContacto($_POST);
-            
-            if(empty($errores)){
-                $admin = sesionIniciada();
-                $cantidad = countRecetas();
+        print_r($_POST);
 
-                HTMLinicio();
-                HTMLcabecera();
-                HTMLnav($admin);
-                HTMLcontactoExito();
-                HTMLsidebar($admin,$cantidad['COUNT(*)']);
-                HTMLfooter();
-                HTMLfin();
-            }
-            else{
-                $admin = sesionIniciada();
-                $cantidad = countRecetas();
+        switch($_POST['peticion']){
+            case 'registro':
+                pedirRegistroUsuario();
+            break;
 
-                HTMLinicio();
-                HTMLcabecera();
-                HTMLnav($admin);
-                HTMLcontactoError($errores,$_POST);
-                HTMLsidebar($admin,$cantidad['COUNT(*)']);
-                HTMLfooter();
-                HTMLfin();
-            }
-        }
-        else if(isset($_POST['descripcion'])){
-            $res = subirNuevaReceta();
+            case 'iniciar-sesion':
+                $admin = iniciarSesion($_POST['uname'],$_POST['psw']);
+                renderizarPrincipal();
+            break;
 
-            if(!$res){
-                renderizarNuevaRecetaError();
-                echo "error";
-            }
-            else
-                renderizarListado();
-        }
-        else{
-            $admin = iniciarSesion($_POST['uname'],$_POST['psw']);
-            renderizarPrincipal();
+            case 'desconectar':
+                cerrarSesion();
+                renderizarPrincipal();
+            break;
+
+            case 'contacto':
+                $errores = validarContacto($_POST);
+                renderizarContactoEnviado($errores);
+            break;
+
+            case 'nueva-receta':
+                $res = subirNuevaReceta();
+
+                if(!$res)
+                    renderizarNuevaRecetaError();
+                else
+                    renderizarListado();    
+            break;
         }
     break;
 }

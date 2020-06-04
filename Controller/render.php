@@ -4,6 +4,7 @@ require_once 'View/receta.php';
 require_once 'View/principal.php';
 require_once 'View/contacto.php';
 require_once 'View/listado.php';
+require_once 'View/registro.php';
 require_once 'View/nueva_receta.php';
 require_once 'Controller/usuario.php';
 require_once 'Controller/contacto.php';
@@ -34,6 +35,33 @@ function renderizarContacto(){
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
     HTMLfin();
+}
+
+function renderizarContactoEnviado($errores){            
+    if(empty($errores)){
+        $admin = sesionIniciada();
+        $cantidad = countRecetas();
+
+        HTMLinicio();
+        HTMLcabecera();
+        HTMLnav($admin);
+        HTMLcontactoExito();
+        HTMLsidebar($admin,$cantidad['COUNT(*)']);
+        HTMLfooter();
+        HTMLfin();
+    }
+    else{
+        $admin = sesionIniciada();
+        $cantidad = countRecetas();
+
+        HTMLinicio();
+        HTMLcabecera();
+        HTMLnav($admin);
+        HTMLcontactoError($errores,$_POST);
+        HTMLsidebar($admin,$cantidad['COUNT(*)']);
+        HTMLfooter();
+        HTMLfin();
+    }
 }
 
 function renderizarListado(){
@@ -85,6 +113,19 @@ function renderizarNuevaRecetaError(){
     HTMLcabecera();
     HTMLnav($admin);
     HTMLnueva_recetaError();
+    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    HTMLfooter();
+    HTMLfin();
+}
+
+function renderizarRegistro(){
+    $admin = sesionIniciada();
+    $cantidad = countRecetas();
+
+    HTMLinicio();
+    HTMLcabecera();
+    HTMLnav($admin);
+    HTMLregistro();
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
     HTMLfin();

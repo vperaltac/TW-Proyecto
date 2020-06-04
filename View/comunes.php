@@ -60,7 +60,7 @@ function HTMLsidebar($conectado,$cantidad){
                 <input type="password" name="psw" id="pwd-inicio" required>
             </div>
 
-        
+            <input type="hidden" value="iniciar-sesion" name="peticion" />
             <input class="boton" type="submit" value="Login" name="" id="boton-inicio">
         </form>
     </section>
@@ -74,6 +74,7 @@ HTML;
                     </div> 
 
                     <form action="index.php" method="post">
+                        <input type="hidden" value="desconectar" name="peticion" />
                         <input class="btn-eliminar" type="submit" name="logout" value="Desconectar" />
                     </form>
             </section>

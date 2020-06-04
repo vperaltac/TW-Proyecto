@@ -25,6 +25,7 @@ function HTMLcontacto(){
                 <textarea name="mensaje"></textarea>
             </div>
 
+            <input type="hidden" value="contacto" name="peticion" />
             <input class="boton" type="submit" value="Enviar" name="">
         </form>
         </section>
