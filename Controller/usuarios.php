@@ -2,21 +2,6 @@
 require_once 'Controller/utils.php';
 require_once 'Model/usuarios.php';
 
-function iniciarSesion($usuario, $passwd){
-    // activar sesión
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
-
-    if($usuario == "admin" and $passwd == "admin"){
-        $_SESSION["usuario"] = $usuario;
-
-        return true;
-    }
-    else
-        return false;    
-}
-
 function sesionIniciada(){    
     // activar sesión
     if (session_status() == PHP_SESSION_NONE) {
@@ -44,4 +29,22 @@ function pedirRegistrarUsuario(){
     $hash = password_hash($_POST['psw'],PASSWORD_DEFAULT);
 
     registrarUsuario($_POST['nombre'],$_POST['apellidos'],$_POST['email'],$imagen,$hash);
+}
+
+function pedirIniciarSesion(){
+    $inicio = iniciarSesion($_POST['uname'],$_POST['psw']);
+
+    if(isset($inicio)){
+        // activar sesión
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $_SESSION["usuario"] = 'admin';
+        $_SESSION["id_usuario"] = $inicio["id"];
+        $_SESSION["email"] = $inicio["email"];         
+        $_SESSION["nombre"]  = $inicio["nombre"];
+        $_SESSION["apellidos"]  = $inicio["apellidos"];
+        $_SESSION["tipo"]    = $inicio["tipo"];
+    }
 }

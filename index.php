@@ -64,7 +64,7 @@ switch($_SERVER['REQUEST_METHOD']){
             break;
 
             case 'iniciar-sesion':
-                $admin = iniciarSesion($_POST['uname'],$_POST['psw']);
+                pedirIniciarSesion();
                 renderizarPrincipal();
             break;
 

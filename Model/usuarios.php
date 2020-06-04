@@ -20,3 +20,28 @@ function registrarUsuario($nombre,$apellidos,$email,$foto,$passwd){
     }
 
 }
+
+function iniciarSesion($correo,$passwd){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT * FROM usuarios WHERE email='$correo';");
+
+    if($peticion->num_rows === 0){
+        echo "Usuario no existe";
+    }
+    else if($peticion->num_rows === 1){
+        $row = $peticion->fetch_assoc();
+
+        if(password_verify($passwd,$row['password'])){
+            echo "Login correcto";
+            return $row;
+        }
+        else
+            echo "Contraseña incorrecta";
+    }
+    else
+        echo "Existen múltiples usuarios con el mismo correo";
+
+    return false;
+}
