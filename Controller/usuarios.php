@@ -1,12 +1,12 @@
 <?php
 require_once 'Controller/utils.php';
 require_once 'Model/usuarios.php';
+require_once 'Model/log.php';
 
 function sesionIniciada(){    
     // activar sesión
-    if (session_status() == PHP_SESSION_NONE) {
+    if (session_status() == PHP_SESSION_NONE)
         session_start();
-    }
 
     if(isset($_SESSION["usuario"]))
         return true;
@@ -16,10 +16,10 @@ function sesionIniciada(){
 
 function cerrarSesion(){
     // activar sesión
-    if (session_status() == PHP_SESSION_NONE) {
+    if (session_status() == PHP_SESSION_NONE)
         session_start();
-    }
-    
+
+    registrarAccesoUsuario($_SESSION["nombre"],$_SESSION['apellidos'],$_SESSION["email"],'logout');
     // Eliminar la sesión
     session_destroy();
 }
@@ -29,6 +29,7 @@ function pedirRegistrarUsuario(){
     $hash = password_hash($_POST['psw'],PASSWORD_DEFAULT);
 
     registrarUsuario($_POST['nombre'],$_POST['apellidos'],$_POST['email'],$imagen,$hash);
+    registrarAccesoUsuario($_POST['nombre'],$_POST['apellidos'],$_POST['email'],'nuevo-usuario');
 }
 
 function pedirIniciarSesion(){
@@ -36,9 +37,8 @@ function pedirIniciarSesion(){
 
     if(isset($inicio)){
         // activar sesión
-        if (session_status() == PHP_SESSION_NONE) {
+        if (session_status() == PHP_SESSION_NONE)
             session_start();
-        }
 
         $_SESSION["usuario"] = 'admin';
         $_SESSION["id_usuario"] = $inicio["id"];
@@ -46,5 +46,7 @@ function pedirIniciarSesion(){
         $_SESSION["nombre"]  = $inicio["nombre"];
         $_SESSION["apellidos"]  = $inicio["apellidos"];
         $_SESSION["tipo"]    = $inicio["tipo"];
+
+        registrarAccesoUsuario($inicio["nombre"],$_SESSION['apellidos'],$inicio["email"],'login');
     }
 }
