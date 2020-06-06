@@ -35,7 +35,7 @@ function pedirRegistrarUsuario(){
 function pedirIniciarSesion(){
     $inicio = iniciarSesion($_POST['uname'],$_POST['psw']);
 
-    if(isset($inicio)){
+    if($inicio){
         // activar sesión
         if (session_status() == PHP_SESSION_NONE)
             session_start();
@@ -48,5 +48,8 @@ function pedirIniciarSesion(){
         $_SESSION["tipo"]    = $inicio["tipo"];
 
         registrarAccesoUsuario($inicio["nombre"],$_SESSION['apellidos'],$inicio["email"],'login');
+    }
+    else{
+        registrarIntentoAcceso($_SERVER['REMOTE_ADDR'],$_POST['uname']);
     }
 }

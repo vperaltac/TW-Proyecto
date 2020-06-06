@@ -24,3 +24,14 @@ function registrarAccesoUsuario($nombre,$apellidos,$email,$accion){
     $sentencia->bind_param("s",$descripcion);
     $sentencia->execute();
 }
+
+function registrarIntentoAcceso($ip,$email){
+    $descripcion = "Intento de acceso a la cuenta " . $email . " desde la IP " . $ip;
+
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $sentencia = $mysqli->prepare("INSERT INTO log (fecha,descripcion) VALUES (NOW(),?);");
+    $sentencia->bind_param("s",$descripcion);
+    $sentencia->execute();
+}
