@@ -5,6 +5,8 @@ echo <<< HTML
     <html lang="es-ES">
     <head>
         <meta charset="UTF-8"/>
+        <meta name="author" content="Víctor Peralta Cámara">
+        <meta name="author" content="Jesús Ruiz Castellano">
         <link rel="stylesheet" type="text/css" href="View/css/estilo.css">
         <link rel="icon" href="View/img/burger-top.png" type="imgs">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -121,7 +123,7 @@ HTML;
 function HTMLfooter(){
 echo <<< HTML
     <footer>
-        <p>&copy; <a>Tecnologías Web</a> | <a>Mapa del sitio</a> | <a>contacto</a></p>
+        <p> <a href="https://www.ugr.es/estudiantes/grados/grado-ingenieria-informatica/tecnologias-web-tecnologias-informacion">&copy; 2020 Tecnologías Web,</a> <a href="mailto:victorperalta@correo.ugr.es"> Víctor Peralta Cámara,</a> <a href="mailto:jesusruiz@correo.ugr.es"> Jesús Ruiz Castellano</a> | <a>Mapa del sitio</a> | <a>contacto</a></p>
     </footer>
 HTML;
 }

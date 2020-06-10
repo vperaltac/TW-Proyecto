@@ -1,5 +1,12 @@
 <?php
 /*
+
+/*
+    Autores : 
+        - Víctor Peralta Cámara
+        - Jesús Ruiz Castellano
+
+
     Esta clase representa la conexión a la base de datos.
     Se utiliza el patrón singleton en su implementación.
     Utilizar el método de clase getInstancia() para obtener 

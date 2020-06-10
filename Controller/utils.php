@@ -1,5 +1,11 @@
 <?php
 
+/*
+    Autores : 
+        - Víctor Peralta Cámara
+        - Jesús Ruiz Castellano
+*/
+
 function subirImagen($nombre){
     echo 'Propietario script actual: ' . get_current_user();
 

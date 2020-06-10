@@ -1,4 +1,11 @@
 <?php
+
+/*
+    Autores : 
+        - Víctor Peralta Cámara
+        - Jesús Ruiz Castellano
+*/
+
 require_once "database.php";
 
 // devuelve las recetas de la base de datos en formato JSON

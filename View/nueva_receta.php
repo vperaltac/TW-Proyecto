@@ -1,5 +1,11 @@
 <?php
 
+/*
+    Autores : 
+        - Víctor Peralta Cámara
+        - Jesús Ruiz Castellano
+*/
+
 function HTMLnueva_receta(){
 echo <<< HTML
 <main id="bloque-principal">
