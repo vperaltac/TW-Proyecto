@@ -508,7 +508,7 @@ p.titulo-lateral{
   
 .formulario textarea{
     resize: none;
-    height: 280px;
+    height: 150px;
 }
   
 .formulario input[type="submit"]{

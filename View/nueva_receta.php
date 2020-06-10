@@ -15,33 +15,27 @@ echo <<< HTML
         <div class="grupo-formulario">
             <label>Título: </label> 
             <input type="text" name="titulo">
-
-            <label>Autor:</label> 
-            <input type="text" name="autor">
-            
-            <label>Categoría:</label> 
-            <input type="text" name="categoria">
             
             <label>Descripción:</label>
             <textarea type="text" name="descripcion"></textarea>
 
-            <label>Ingredientes: (separar ingredientes con #)</label>
-            <textarea type="text" name="ingredientes"></textarea>
+            <label>Ingredientes: (separar ingredientes con #)</label> <textarea type="text" name="ingredientes"></textarea>
 
             <label>Preparación: (separar pasos con #)</label>
             <textarea type="text" name="preparacion"></textarea>
 
-            <label for="dificultad">Dificultad:</label>
-            <select name="dificultad">
-                <option value="facil">Fácil</option>
-                <option value="dificil">Difícil</option>
-            </select>
+            <label for="carnes">Carnes</label> 
+            <input type="checkbox" id="c1" name="c1" value="Carnes">
+            
+            <label for="pescados">Pescados</label>
+            <input type="checkbox" id="c2" name="c2" value="Pescados">
 
-            <label>Tiempo:</label> 
-            <input type="text" name="tiempo">
+            <label for="facil">Fácil</label>
+            <input type="checkbox" id="c3" name="c3" value="Fácil">
 
             <p>Imagen:
-                <input name="img" type="file"/>
+                <input name="img" type="file" id="imgPrincipal"/>
+                <img src="" id="imgPrincipal-preview" width="150">
             </p>
 
             <input type="hidden" value="nueva-receta" name="peticion" />
@@ -49,10 +43,12 @@ echo <<< HTML
     </form>
     </section>
 </div>
+
+<script type="text/javascript" src="View/js/preview_imgs.js"></script>
 HTML;
 }
 
-function HTMLnueva_recetaError(){
+function HTMLnueva_recetaError($data){
 echo <<< HTML
 <main id="bloque-principal">
     <section class="info-contacto">
@@ -103,15 +99,17 @@ HTML;
 echo '<input type ="text" name="tiempo" value='.$_POST['tiempo'].'>'; 
 
 echo <<< HTML
-            <p>Imagen: (la imagen debe estar en el directorio img de View)
-                <form method="POST" enctype="multipart/form-data">
-                    <input name="img" type="file"/>
-                </form>
+            <p>Imagen:
+                <input name="img" type="file" id="imgPrincipal"/>
+                <img src="" id="imgPrincipal-preview" width="150">
             </p>
 
+            <input type="hidden" value="nueva-receta" name="peticion" />
             <input class="boton" type="submit" value="Añadir evento" name="guardarEvento" id="guardarEvento">
     </form>
     </section>
 </div>
+
+<script type="text/javascript" src="View/js/preview_imgs.js"></script>
 HTML;
 }
