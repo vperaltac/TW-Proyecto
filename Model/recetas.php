@@ -29,12 +29,12 @@ function pedirTodasRecetas(){
 }
 
 
-function nuevaReceta($titulo,$autor,$categoria,$descripcion,$ingredientes,$preparacion,$tiempo,$dificultad,$imagen){
+function nuevaReceta($idautor,$nombre,$descripcion,$ingredientes,$preparacion,$imagen){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
 
-    $sentencia = $mysqli->prepare("INSERT INTO recetas (titulo,autor,categoria,descripcion,ingredientes,preparacion,tiempo,dificultad,imagen) VALUES(?,?,?,?,?,?,?,?,?)");
-    $sentencia->bind_param("sssssssss",$titulo,$autor,$categoria,$descripcion,$ingredientes,$preparacion,$tiempo,$dificultad,$imagen);
+    $sentencia = $mysqli->prepare("INSERT INTO recetas (idautor,nombre,descripcion,ingredientes,preparacion,imagen) VALUES(?,?,?,?,?,?)");
+    $sentencia->bind_param("isssss",$idautor,$nombre,$descripcion,$ingredientes,$preparacion,$imagen);
     $sentencia->execute();
 }
 
