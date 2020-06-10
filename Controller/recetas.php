@@ -1,4 +1,11 @@
 <?php
+
+/*
+    Autores : 
+        - Víctor Peralta Cámara
+        - Jesús Ruiz Castellano
+*/
+
 require_once 'Model/recetas.php';
 require_once 'Controller/utils.php';
 

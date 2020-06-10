@@ -1,5 +1,11 @@
 <?php
 
+/*
+    Autores : 
+        - Víctor Peralta Cámara
+        - Jesús Ruiz Castellano
+*/
+
 function registrarAccesoUsuario($nombre,$apellidos,$email,$accion){
     $descripcion = "El usuario " . $nombre . " ". $apellidos . " (" . $email . ")";
 

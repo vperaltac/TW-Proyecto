@@ -1,4 +1,11 @@
 <?php
+
+/*
+    Autores : 
+        - Víctor Peralta Cámara
+        - Jesús Ruiz Castellano
+*/
+
 require_once 'Controller/utils.php';
 require_once 'Model/usuarios.php';
 require_once 'Model/log.php';

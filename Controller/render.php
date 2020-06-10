@@ -1,4 +1,11 @@
 <?php
+
+/*
+    Autores : 
+        - Víctor Peralta Cámara
+        - Jesús Ruiz Castellano
+*/
+
 require_once 'View/comunes.php';
 require_once 'View/receta.php';
 require_once 'View/principal.php';

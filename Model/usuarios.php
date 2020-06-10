@@ -1,4 +1,11 @@
 <?php
+
+/*
+    Autores : 
+        - Víctor Peralta Cámara
+        - Jesús Ruiz Castellano
+*/
+
 function registrarUsuario($nombre,$apellidos,$email,$foto,$passwd){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();

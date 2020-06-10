@@ -1,4 +1,11 @@
 <?php
+
+/*
+    Autores : 
+        - Víctor Peralta Cámara
+        - Jesús Ruiz Castellano
+*/
+
 function HTMLprincipal(){
     echo <<< HTML
         <main id="bloque-principal">

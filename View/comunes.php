@@ -121,7 +121,7 @@ HTML;
 function HTMLfooter(){
 echo <<< HTML
     <footer>
-        <p>&copy; <a>Tecnologías Web</a> | <a>Mapa del sitio</a> | <a>contacto</a></p>
+        <p> <a href="https://www.ugr.es/estudiantes/grados/grado-ingenieria-informatica/tecnologias-web-tecnologias-informacion">&copy; 2020 Tecnologías Web,</a> <a href="mailto:victorperalta@correo.ugr.es"> Víctor Peralta Cámara,</a> <a href="mailto:jesusruiz@correo.ugr.es"> Jesús Ruiz Castellano</a> | <a>Mapa del sitio</a> | <a>contacto</a></p>
     </footer>
 HTML;
 }
