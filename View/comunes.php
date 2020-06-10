@@ -71,13 +71,27 @@ HTML;
     if($conectado){
         $widget_login = <<< HTML
             <section class="campo-lateral">
-                    <div class=cabecera-aside>
-                        <h2>Usuario conectado</h2>
-                    </div> 
+                  
+                    <div class="nombreUsuario">
+                        <p>Usuario</p>
+                    </div>
+
+                    <div class="rolUsuario">
+                        <p> rol del usuario</p>
+                    </div>
+
+                    <div class="imgUsuario">
+                        <img src="View/img/foto-carnet.jpg">    
+                    </div>
 
                     <form action="index.php" method="post">
                         <input type="hidden" value="desconectar" name="peticion" />
                         <input class="btn-eliminar" type="submit" name="logout" value="Desconectar" />
+                    </form>
+
+                    <form action="index.php" method="post">
+                        <input type="hidden" value="editar" name="peticion" />
+                        <input class="btn-editar" type="submit" name="edit" value="Editar" />
                     </form>
             </section>
 HTML;
