@@ -176,9 +176,10 @@ nav a{
     font-weight: bolder;
 }
 
-.rolUsuario p {
+#bloque-principal .rolUsuario p {
     color: blue;
     font-size: 20px;
+    padding: 0px;
 }
 
 .imgUsuario img{
