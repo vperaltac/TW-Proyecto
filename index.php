@@ -12,7 +12,6 @@ error_reporting(E_ALL);
 
 require_once 'View/comunes.php';
 require_once 'View/receta.php';
-require_once 'View/principal.php';
 require_once 'View/contacto.php';
 require_once 'View/listado.php';
 
@@ -52,7 +51,7 @@ switch($_SERVER['REQUEST_METHOD']){
                 if(sesionIniciada())
                     renderizarNuevaReceta();
                 else
-                    renderizarPrincipal();
+                    renderizarUltimaReceta();
             break;
 
             case 'registro':

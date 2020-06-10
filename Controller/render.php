@@ -8,7 +8,6 @@
 
 require_once 'View/comunes.php';
 require_once 'View/receta.php';
-require_once 'View/principal.php';
 require_once 'View/contacto.php';
 require_once 'View/listado.php';
 require_once 'View/registro.php';
@@ -116,19 +115,6 @@ function renderizarListado(){
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
     HTMLfin();        
-}
-
-function renderizarPrincipal(){
-    $admin = sesionIniciada();
-    $cantidad = countRecetas();
-
-    HTMLinicio();
-    HTMLcabecera();
-    HTMLnav($admin);
-    HTMLprincipal();
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
-    HTMLfooter();
-    HTMLfin();
 }
 
 function renderizarNuevaReceta(){
