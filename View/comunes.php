@@ -5,6 +5,8 @@ echo <<< HTML
     <html lang="es-ES">
     <head>
         <meta charset="UTF-8"/>
+        <meta name="author" content="Víctor Peralta Cámara">
+        <meta name="author" content="Jesús Ruiz Castellano">
         <link rel="stylesheet" type="text/css" href="View/css/estilo.css">
         <link rel="icon" href="View/img/burger-top.png" type="imgs">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
