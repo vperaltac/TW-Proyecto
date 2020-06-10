@@ -1,5 +1,13 @@
+
+/* 
+Autores : 
+        - Víctor Peralta Cámara
+        - Jesús Ruiz Castellano
+*/
+
 /***********************************************************************/
-/*                          ATRIBUTOS GENERALES                        */
+/*                         ATRIBUTOS GENERALES                         */
+
 
 /*Borramos los margenes predeterminados de los navegadores web*/
 * {
@@ -26,7 +34,7 @@ a{
 /***********************************************************************/
 
 /***********************************************************************/
-/*                          TEMA DE LA WEB                            */
+/*                          TEMA DE LA WEB                             */
 
 .cabecera, .cabecera-receta, nav a:hover, .paginas{
     background-color: #d7e280;
