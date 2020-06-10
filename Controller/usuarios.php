@@ -15,8 +15,9 @@ function sesionIniciada(){
     if (session_status() == PHP_SESSION_NONE)
         session_start();
 
-    if(isset($_SESSION["usuario"]))
+    if(isset($_SESSION["id_usuario"])){
         return true;
+    }
     else
         return false;
 }
@@ -47,7 +48,6 @@ function pedirIniciarSesion(){
         if (session_status() == PHP_SESSION_NONE)
             session_start();
 
-        $_SESSION["usuario"] = 'admin';
         $_SESSION["id_usuario"] = $inicio["id"];
         $_SESSION["email"] = $inicio["email"];         
         $_SESSION["nombre"]  = $inicio["nombre"];

@@ -72,11 +72,11 @@ HTML;
             <section class="campo-lateral">
                   
                     <div class="nombreUsuario">
-                        <p>Usuario</p>
+                        <p>$_SESSION[nombre] $_SESSION[apellidos]</p>
                     </div>
 
                     <div class="rolUsuario">
-                        <p> rol del usuario</p>
+                        <p>$_SESSION[tipo]</p>
                     </div>
 
                     <div class="imgUsuario">
