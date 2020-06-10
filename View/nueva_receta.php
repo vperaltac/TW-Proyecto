@@ -24,14 +24,22 @@ echo <<< HTML
             <label>Preparación: (separar pasos con #)</label>
             <textarea type="text" name="preparacion" id="new-preparacion"></textarea>
 
-            <label for="carnes">Carnes</label> 
-            <input type="checkbox" class="categoria" id="c1" name="carnes" value="Carnes">
-            
-            <label for="pescados">Pescados</label>
-            <input type="checkbox" class="categoria" id="c2" name="pescados" value="Pescados">
+            <div id="contenedor-categorias">
+                <label class="checkcontainer">Carnes
+                    <input type="checkbox" class="categoria" id="c1" name="carnes" value="Carnes">
+                    <span class="checkmark"></span>
+                </label> 
 
-            <label for="facil">Fácil</label>
-            <input type="checkbox" class="categoria" id="c3" name="facil" value="Fácil">
+                <label class="checkcontainer">Pescados
+                    <input type="checkbox" class="categoria" id="c2" name="pescados" value="Pescados">
+                    <span class="checkmark"></span>
+                </label>
+                
+                <label class="checkcontainer">Fácil
+                    <input type="checkbox" class="categoria" id="c3" name="facil" value="Fácil">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
 
             <p>Imagen:
                 <input name="img" type="file" id="imgPrincipal"/>
