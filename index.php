@@ -12,7 +12,6 @@ error_reporting(E_ALL);
 
 require_once 'View/comunes.php';
 require_once 'View/receta.php';
-require_once 'View/principal.php';
 require_once 'View/contacto.php';
 require_once 'View/listado.php';
 
@@ -45,14 +44,14 @@ switch($_SERVER['REQUEST_METHOD']){
             break;
 
             case 'principal':
-                renderizarPrincipal();
+                renderizarUltimaReceta();
             break;
 
             case 'nueva_receta':
                 if(sesionIniciada())
                     renderizarNuevaReceta();
                 else
-                    renderizarPrincipal();
+                    renderizarUltimaReceta();
             break;
 
             case 'registro':
@@ -72,12 +71,12 @@ switch($_SERVER['REQUEST_METHOD']){
 
             case 'iniciar-sesion':
                 pedirIniciarSesion();
-                renderizarPrincipal();
+                renderizarUltimaReceta();
             break;
 
             case 'desconectar':
                 cerrarSesion();
-                renderizarPrincipal();
+                renderizarListado();
             break;
 
             case 'contacto':
