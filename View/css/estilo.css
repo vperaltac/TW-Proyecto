@@ -146,7 +146,7 @@ nav a{
 
 /*Estilo de la columna izquierda (informacion adicional)*/
 .barra-lateral {
-    flex: 19%;
+    flex: 14%;
     margin-left:10px;
 }
 
@@ -182,38 +182,38 @@ nav a{
 }
 
 .imgUsuario img{
-    /*float: center;*/
-    width: 60px;
-    height: 90px;
+    display:block;
+    margin:auto;
+
+    width: 50%;
+}
+
+.botones-usuario{
+    text-align: center;
 }
 
 .btn-eliminar {
-    /*float: right;*/
     background-color: #ff1a1a;
     border: none;
     color: white;
     padding: 10px 20px;
-    /*text-align: center;*/
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
-  }
+}
 
 .btn-editar {
-    /*float: left;*/
     background-color: #ffd428;
     border: none;
     color: white;
     padding: 10px 20px;
-    /*text-align: center;*/
     text-decoration: none;
     margin: 4px 2px;
     width: 115px;
     cursor: pointer;
     border-radius: 4px;
-  }
-  
+}
 
 /*La barra lateral se oculta con resoluciones por debajo de 800px */
 @media (max-width: 800px) {
@@ -221,7 +221,6 @@ nav a{
         display: none;
     }
 }
-
 
 #login .grupo-formulario{
     padding:2px;
@@ -358,7 +357,7 @@ p.fecha{
 .informacion {
     overflow-wrap: break-word;
 
-    flex: 79%;
+    flex: 85%;
     padding: 10px;
     border: 1px solid rgb(120, 194, 0);
 }
@@ -488,7 +487,7 @@ footer p{
 /***********************************************************************/
 /*                                 CONTACTO                           */
 .info-contacto {
-    flex: 79%;
+    flex: 85%;
     padding: 20px;
     border-right: 1px solid lightgray;
     text-align: center;
@@ -590,8 +589,7 @@ p.titulo-lateral{
 
 .lista-recetas {
     overflow-wrap: break-word;
-
-    flex: 79%;
+    flex: 85%;
     padding: 10px;
     border: 1px solid rgb(120, 194, 0);
 }
@@ -599,14 +597,6 @@ p.titulo-lateral{
 .lista-recetas h2 {
     font-size: 35px;
     padding: 2px;
-}
-
-.lista-recetas {
-    overflow-wrap: break-word;
-
-    flex: 59%;
-    padding: 10px;
-    border: 1px solid rgb(120, 194, 0);
 }
 
 .fast-info{

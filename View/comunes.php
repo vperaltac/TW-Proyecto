@@ -83,15 +83,17 @@ HTML;
                         <img src="View/img/foto-carnet.jpg">    
                     </div>
 
-                    <form action="index.php" method="post">
-                        <input type="hidden" value="desconectar" name="peticion" />
-                        <input class="btn-eliminar" type="submit" name="logout" value="Desconectar" />
-                    </form>
+                    <div class="botones-usuario">
+                        <form action="index.php" method="post">
+                            <input type="hidden" value="desconectar" name="peticion" />
+                            <input class="btn-eliminar" type="submit" name="logout" value="Desconectar" />
+                        </form>
 
-                    <form action="index.php" method="post">
-                        <input type="hidden" value="editar" name="peticion" />
-                        <input class="btn-editar" type="submit" name="edit" value="Editar" />
-                    </form>
+                        <form action="index.php" method="post">
+                            <input type="hidden" value="editar" name="peticion" />
+                            <input class="btn-editar" type="submit" name="edit" value="Editar" />
+                        </form>
+                    </div>
             </section>
 HTML;
     }
