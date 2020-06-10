@@ -45,7 +45,7 @@ switch($_SERVER['REQUEST_METHOD']){
             break;
 
             case 'principal':
-                renderizarPrincipal();
+                renderizarUltimaReceta();
             break;
 
             case 'nueva_receta':
@@ -72,12 +72,12 @@ switch($_SERVER['REQUEST_METHOD']){
 
             case 'iniciar-sesion':
                 pedirIniciarSesion();
-                renderizarPrincipal();
+                renderizarUltimaReceta();
             break;
 
             case 'desconectar':
                 cerrarSesion();
-                renderizarPrincipal();
+                renderizarListado();
             break;
 
             case 'contacto':

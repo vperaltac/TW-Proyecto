@@ -33,9 +33,8 @@ function HTMLnav($conectado){
 
 echo <<< HTML
     <nav>
-        <a href="index.php?acc=principal">Inicio</a>
-        $add_receta
         <a href="index.php?acc=listado">Listado de recetas</a>
+        $add_receta
         <a href="index.php?acc=contacto">Contacto</a>
     </nav>
 HTML;

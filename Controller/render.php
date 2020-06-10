@@ -20,6 +20,9 @@ require_once 'Controller/recetas.php';
 function renderizarReceta(){
     $admin = sesionIniciada();
     $cantidad = countRecetas();
+    
+    if(isset($_SESSION['id_usuario']))
+        setcookie($_SESSION['id_usuario'],$_GET['r'], time() + (86400 * 30), "/");
 
     HTMLinicio();
     HTMLcabecera();
@@ -30,6 +33,28 @@ function renderizarReceta(){
     HTMLfooter();
     HTMLfin();
 }
+
+function renderizarUltimaReceta(){
+    $admin = sesionIniciada();
+    $cantidad = countRecetas();
+
+    HTMLinicio();
+    HTMLcabecera();
+    HTMLnav($admin);
+
+    if(!isset($_COOKIE[$_SESSION['id_usuario']])) {
+        $recetas = todasRecetas();
+        HTMLlistado($recetas);
+    }
+    else{
+        $datos = recetas($_COOKIE[$_SESSION['id_usuario']]);
+        HTMLreceta($datos);    
+    }
+    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    HTMLfooter();
+    HTMLfin();
+}
+
 
 function renderizarContacto(){
     $admin = sesionIniciada();
