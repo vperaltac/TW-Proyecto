@@ -158,25 +158,58 @@ nav a{
     margin-left: 10px;
 }
 
+
 .barra-lateral li{
     font-size: 18px;
     margin: 15px;
 }
 
 .campo-lateral{
+
     padding:8px;
     margin-bottom: 10px;
     border: 1px solid rgb(120, 194, 0);
 }
 
+
+.nombreUsuario p {
+    font-weight: bolder;
+}
+
+.rolUsuario p {
+    color: blue;
+    font-size: 20px;
+}
+
+.imgUsuario img{
+    /*float: center;*/
+    width: 60px;
+    height: 90px;
+}
+
 .btn-eliminar {
+    /*float: right;*/
     background-color: #ff1a1a;
     border: none;
     color: white;
     padding: 10px 20px;
-    text-align: center;
+    /*text-align: center;*/
     text-decoration: none;
     margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+.btn-editar {
+    /*float: left;*/
+    background-color: #ffd428;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    /*text-align: center;*/
+    text-decoration: none;
+    margin: 4px 2px;
+    width: 115px;
     cursor: pointer;
     border-radius: 4px;
   }
@@ -205,7 +238,6 @@ nav a{
 #login input[type="password"]{
     margin:2px;
     padding:6px;
-    width: 60%;
 }
 
 #login .boton {
