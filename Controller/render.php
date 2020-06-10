@@ -42,14 +42,21 @@ function renderizarUltimaReceta(){
     HTMLcabecera();
     HTMLnav($admin);
 
-    if(!isset($_COOKIE[$_SESSION['id_usuario']])) {
-        $recetas = todasRecetas();
-        HTMLlistado($recetas);
+    if(isset($_SESSION['id_usuario'])){
+        if(!isset($_COOKIE[$_SESSION['id_usuario']])) {
+            $datos = recetas(-1);
+            HTMLreceta($datos);    
+        }
+        else{
+            $datos = recetas($_COOKIE[$_SESSION['id_usuario']]);
+            HTMLreceta($datos);    
+        }
     }
     else{
-        $datos = recetas($_COOKIE[$_SESSION['id_usuario']]);
+        $datos = recetas(-1);
         HTMLreceta($datos);    
     }
+
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
     HTMLfin();

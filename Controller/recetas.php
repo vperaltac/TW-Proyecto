@@ -12,7 +12,11 @@ require_once 'Controller/utils.php';
 
 // obtener datos sobre eventos
 function recetas($id_receta){
-    $datos = pedirReceta($id_receta);
+    if($id_receta == -1)
+        $datos = getRecetaRandom();
+    else
+        $datos = pedirReceta($id_receta);
+
     $datos['ingredientes'] = explode("#",$datos['ingredientes']);
     $datos['preparacion'] = explode("#",$datos['preparacion']);
 

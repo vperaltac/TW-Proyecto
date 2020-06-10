@@ -20,6 +20,14 @@ function pedirReceta($id_receta){
     return $peticion->fetch_assoc();
 }
 
+function getRecetaRandom(){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT * FROM recetas order by rand() limit 1;");
+    return $peticion->fetch_assoc();
+}
+
 function getCategoriasReceta($id_receta){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
