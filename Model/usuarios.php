@@ -6,6 +6,16 @@
         - Jesús Ruiz Castellano
 */
 
+function getNombreUsuario($id_usuario){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT nombre,apellidos FROM usuarios WHERE id='$id_usuario';");
+    $row = $peticion->fetch_assoc();
+
+    return $row;
+}
+
 function registrarUsuario($nombre,$apellidos,$email,$foto,$passwd){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();

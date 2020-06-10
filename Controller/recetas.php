@@ -6,6 +6,7 @@
         - Jesús Ruiz Castellano
 */
 
+require_once 'Model/usuarios.php';
 require_once 'Model/recetas.php';
 require_once 'Controller/utils.php';
 
@@ -14,6 +15,22 @@ function recetas($id_receta){
     $datos = pedirReceta($id_receta);
     $datos['ingredientes'] = explode("#",$datos['ingredientes']);
     $datos['preparacion'] = explode("#",$datos['preparacion']);
+
+    $autor = getNombreUsuario($datos['idautor']);
+    $categorias = getCategoriasReceta($id_receta);
+
+    $datos['categorias'] = $categorias;
+    $datos['autor'] = $autor['nombre'];
+    $datos['autor'] .= " ".$autor['apellidos'];
+
+    $cat_nombres = array();
+    $i=0;
+    foreach($datos['categorias'] as $categoria){
+        $cat_nombres[$i] = $categoria['nombre'];
+        $i++;
+    }
+
+    $datos['categorias'] = implode(", ", $cat_nombres);
 
     return $datos;
 }
@@ -30,25 +47,32 @@ function todasRecetas(){
 }
 
 function subirNuevaReceta(){
-    if(     $_POST['titulo']      == ""
-        or $_POST['autor']       == "" or $_POST['categoria']    == ""
-        or $_POST['descripcion'] == "" or $_POST['ingredientes'] == ""
-        or $_POST['preparacion'] == "" or $_POST['dificultad']   == ""
-        or $_POST['tiempo']      == ""){
-            return false;
+    if($_POST['titulo'] == "")
+        return false;
+
+    $categorias = getCategorias();
+    print_r($categorias);
+
+    $categorias_receta = array();
+    $i = 0;
+    foreach($categorias as $categoria){
+        if(isset($_POST[$categoria['nombre']])){
+            $categorias_receta[$i] = $categoria['id'];
+            $i++;
+        }
     }
 
-    $titulo = $_POST['titulo'];
-    $autor  = $_POST['autor'];
-    $categoria = $_POST['categoria'];
+    print_r($categorias_receta);
+
+
+    $nombre = $_POST['titulo'];
+    $idautor  = $_POST['idautor'];
     $descripcion = $_POST['descripcion'];
     $ingredientes = $_POST['ingredientes'];
     $preparacion = $_POST['preparacion'];
-    $tiempo = $_POST['tiempo'];
-    $dificultad = $_POST['dificultad'];
 
     $imagen = subirImagen("img");
     
-    //nuevaReceta($titulo,$autor,$categoria,$descripcion,$ingredientes,$preparacion,$tiempo,$dificultad,$imagen);
+    nuevaReceta($nombre,$idautor,$descripcion,$ingredientes,$preparacion,$categorias_receta,$imagen);
     return true;
 }
