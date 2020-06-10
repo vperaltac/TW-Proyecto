@@ -123,7 +123,7 @@ HTML;
 function HTMLfooter(){
 echo <<< HTML
     <footer>
-        <p> <a href="https://www.ugr.es/estudiantes/grados/grado-ingenieria-informatica/tecnologias-web-tecnologias-informacion">&copy; 2020 Tecnologías Web,</a> <a href="mailto:victorperalta@correo.ugr.es"> Víctor Peralta Cámara,</a> <a href="mailto:jesusruiz@correo.ugr.es"> Jesús Ruiz Castellano</a> | <a>Mapa del sitio</a> | <a>contacto</a></p>
+        <p> <a href="https://www.ugr.es/estudiantes/grados/grado-ingenieria-informatica/tecnologias-web-tecnologias-informacion" target="_blank">&copy; 2020 Tecnologías Web,</a> <a href="mailto:victorperalta@correo.ugr.es"> Víctor Peralta Cámara,</a> <a href="mailto:jesusruiz@correo.ugr.es"> Jesús Ruiz Castellano</a> | <a>Mapa del sitio</a> | <a href="TW-ProyectoFinal.pdf" target="_blank"> Documentación</a></p>
     </footer>
 HTML;
 }
