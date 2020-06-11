@@ -43,6 +43,10 @@ switch($_SERVER['REQUEST_METHOD']){
                 renderizarListado();
             break;
 
+            case 'listado-usuario':
+                renderizarListadoUsuario();
+            break;
+
             case 'principal':
                 renderizarUltimaReceta();
             break;

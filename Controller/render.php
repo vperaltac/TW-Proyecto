@@ -123,6 +123,22 @@ function renderizarListado(){
     HTMLfin();        
 }
 
+function renderizarListadoUsuario(){
+    $admin = sesionIniciada();
+    $cantidad = countRecetas();
+
+    HTMLinicio();
+    HTMLcabecera();
+    HTMLnav($admin);
+
+    $recetas = todasRecetasUsuario();
+    HTMLlistado($recetas);
+    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    HTMLfooter();
+    HTMLfin();        
+}
+
+
 function renderizarNuevaReceta(){
     $admin = sesionIniciada();
     $cantidad = countRecetas();

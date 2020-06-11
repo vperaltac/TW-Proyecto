@@ -54,6 +54,18 @@ function todasRecetas(){
     return $recetas;
 }
 
+function todasRecetasUsuario(){
+    $recetas = getRecetasUsuario($_SESSION['id_usuario']);
+
+    foreach($recetas as &$receta){
+        $receta['ingredientes'] = explode("#",$receta['ingredientes']);
+        $receta['preparacion'] = explode("#",$receta['preparacion']);
+    }
+
+    return $recetas;
+}
+
+
 function subirNuevaReceta(){
     if($_POST['titulo'] == "" or $_POST['idautor'] == "" or $_POST['descripcion'] == "" or $_POST['ingredientes'] == "" or $_POST['preparacion'] == "")
         return false;

@@ -30,7 +30,7 @@ function HTMLnav($conectado){
     $add_receta = "";
     if($conectado == 1){
         $add_receta = "<a href='index.php?acc=nueva_receta'>Añadir nueva receta</a>";
-        $add_receta .= "<a href='#'>Ver mis recetas</a>";
+        $add_receta .= "<a href='index.php?acc=listado-usuario'>Ver mis recetas</a>";
     }
 
     $botones_admin = "";

@@ -71,6 +71,22 @@ function pedirTodasRecetas(){
     return $recetas;
 }
 
+function getRecetasUsuario($id_usuario){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT * FROM recetas WHERE idautor='$id_usuario';");
+    $recetas = array();
+    $i=0;
+    while($fila = $peticion->fetch_assoc()){
+        $recetas[$i] = $fila;
+        $i++;
+    }
+
+    return $recetas;
+}
+
+
 
 function nuevaReceta($nombre,$idautor,$descripcion,$ingredientes,$preparacion,$categorias_receta,$imagen){
     $db = Database::getInstancia();
