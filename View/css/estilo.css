@@ -41,6 +41,19 @@ a{
     color: #222;
 }
 
+.cabecera h1 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight : normal;
+    font-size: 320%;
+    text-shadow: 4px 4px 4px black/*#fff5ce*/;
+    color: white;
+} 
+
+
+header {
+    background-image: url("../img/fresas.jpg");
+}
+
 
 nav,footer, #descripcion{
     background-color: rgb(245, 240, 168);
