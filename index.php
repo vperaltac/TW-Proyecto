@@ -92,6 +92,11 @@ switch($_SERVER['REQUEST_METHOD']){
                 else
                     renderizarListado();    
             break;
+
+            case 'subir-paso-receta':
+                print_r($_FILES);
+                renderizarListado();
+            break;
         }
     break;
 }

@@ -10,7 +10,11 @@ function HTMLnueva_receta(){
 echo <<< HTML
 <main id="bloque-principal">
     <section class="info-contacto">
-    <h2>Añadir nueva receta</h2>
+    
+    <div class="cabecera-receta">
+        <h2>Añadir nueva receta</h2>
+    </div>
+    
     <form class="formulario" method="POST" enctype="multipart/form-data">
         <div class="grupo-formulario">
             <label>Título: </label> 
@@ -52,10 +56,38 @@ echo <<< HTML
             <input type="hidden" value="nueva-receta" name="peticion" />
             <input class="boton" type="submit" value="Añadir receta" name="nuevaReceta" id="nuevaReceta">
     </form>
+
+    <div class="cabecera-receta">
+        <h2>Fotografías adjuntas</h2>
+    </div>
+
+    <div id="imgs-pasos-receta">
+HTML;
+
+echo <<< HTML
+        <div class="img-paso-receta">
+            <img src="" class="img-pasos-preview" width="150">
+            <input type="hidden" class="btn-eliminar btn-pasos" name="logout" value="Borrar" />
+            <input name="img" type="file" class="imgs-pasos"/>
+        </div>
+HTML;
+
+
+for ($x = 0; $x <= 10; $x++) {
+echo <<< HTML
+        <div hidden class="img-paso-receta">
+            <img src="" class="img-pasos-preview" width="150">
+            <input type="hidden" class="btn-eliminar btn-pasos" name="logout" value="Borrar" />
+            <input name="img" type="file" class="imgs-pasos"/>
+        </div>
+HTML;
+}
+
+echo <<< HTML
     </section>
 </div>
 
-<script type="text/javascript" src="View/js/preview_imgs.js"></script>
+<script type="text/javascript" src="View/js/nueva_receta.js"></script>
 HTML;
 }
 
