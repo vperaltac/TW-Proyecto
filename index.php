@@ -67,6 +67,7 @@ switch($_SERVER['REQUEST_METHOD']){
         switch($_POST['peticion']){
             case 'registro':
                 pedirRegistrarUsuario();
+                renderizarListado();
             break;
 
             case 'iniciar-sesion':

@@ -28,14 +28,22 @@ HTML;
 
 function HTMLnav($conectado){
     $add_receta = "";
-    if($conectado == 1)
+    if($conectado == 1){
         $add_receta = "<a href='index.php?acc=nueva_receta'>Añadir nueva receta</a>";
+        $add_receta .= "<a href='#'>Ver mis recetas</a>";
+    }
 
+    $botones_admin = "";
+    if($conectado == 1 and $_SESSION['tipo'] == 'administrador'){
+        $botones_admin = "<a href='#'>Gestión de usuarios</a>";
+        $botones_admin .= "<a href='#'>Ver log</a>";
+        $botones_admin .= "<a href='#'>Gestión de la BBDD</a>";
+    } 
 echo <<< HTML
     <nav>
-        <a href="index.php?acc=listado">Listado de recetas</a>
+        <a href="index.php?acc=listado">Ver listado</a>
         $add_receta
-        <a href="index.php?acc=contacto">Contacto</a>
+        $botones_admin
     </nav>
 HTML;
 }
@@ -72,7 +80,7 @@ function HTMLsidebar($conectado,$cantidad){
     </section>
 HTML;
 
-    if($conectado){
+if($conectado){
         $widget_login = <<< HTML
             <section class="campo-lateral">
                   
@@ -85,7 +93,10 @@ HTML;
                     </div>
 
                     <div class="imgUsuario">
-                        <img src="View/img/foto-carnet.jpg">    
+HTML;
+
+$widget_login .= '<img src='.$_SESSION['imgUsuario'].'>';
+$widget_login .= <<< HTML
                     </div>
 
                     <div class="botones-usuario">
@@ -101,7 +112,7 @@ HTML;
                     </div>
             </section>
 HTML;
-    }
+}
 
 
 echo <<< HTML

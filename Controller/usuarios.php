@@ -53,6 +53,7 @@ function pedirIniciarSesion(){
         $_SESSION["nombre"]  = $inicio["nombre"];
         $_SESSION["apellidos"]  = $inicio["apellidos"];
         $_SESSION["tipo"]    = $inicio["tipo"];
+        $_SESSION["imgUsuario"]    = $inicio["foto"];
 
         registrarAccesoUsuario($inicio["nombre"],$_SESSION['apellidos'],$inicio["email"],'login');
     }
