@@ -30,17 +30,17 @@ echo <<< HTML
 
             <div id="contenedor-categorias">
                 <label class="checkcontainer">Carnes
-                    <input type="checkbox" class="categoria" id="c1" name="carnes" value="Carnes">
+                    <input type="checkbox" class="categoria" id="c1" name="categoria" value="carnes">
                     <span class="checkmark"></span>
                 </label> 
 
                 <label class="checkcontainer">Pescados
-                    <input type="checkbox" class="categoria" id="c2" name="pescados" value="Pescados">
+                    <input type="checkbox" class="categoria" id="c2" name="categoria" value="pescados">
                     <span class="checkmark"></span>
                 </label>
                 
                 <label class="checkcontainer">Fácil
-                    <input type="checkbox" class="categoria" id="c3" name="facil" value="Fácil">
+                    <input type="checkbox" class="categoria" id="c3" name="categoria" value="facil">
                     <span class="checkmark"></span>
                 </label>
             </div>
@@ -51,7 +51,7 @@ echo <<< HTML
             </p>
 HTML;
 
-echo '<input type="hidden" name="idautor" value='.$_SESSION['id_usuario'].'>'; 
+echo '<input type="hidden" id="idautor" name="idautor" value='.$_SESSION['id_usuario'].'>'; 
 echo <<< HTML
             <input type="hidden" value="nueva-receta" name="peticion" />
             <input class="boton" type="submit" value="Añadir receta" name="nuevaReceta" id="nuevaReceta">
@@ -68,7 +68,7 @@ echo <<< HTML
         <div class="img-paso-receta">
             <img src="" class="img-pasos-preview" width="150">
             <input type="hidden" class="btn-eliminar btn-pasos" name="logout" value="Borrar" />
-            <input name="img" type="file" class="imgs-pasos"/>
+            <input name="img-pasos" type="file" class="imgs-pasos"/>
         </div>
 HTML;
 
@@ -78,7 +78,7 @@ echo <<< HTML
         <div hidden class="img-paso-receta">
             <img src="" class="img-pasos-preview" width="150">
             <input type="hidden" class="btn-eliminar btn-pasos" name="logout" value="Borrar" />
-            <input name="img" type="file" class="imgs-pasos"/>
+            <input name="img-pasos" type="file" class="imgs-pasos"/>
         </div>
 HTML;
 }

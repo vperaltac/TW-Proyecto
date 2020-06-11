@@ -95,7 +95,7 @@ switch($_SERVER['REQUEST_METHOD']){
 
             case 'subir-paso-receta':
                 print_r($_FILES);
-                renderizarListado();
+                subirPasosReceta();
             break;
         }
     break;

@@ -113,3 +113,31 @@ function getCategorias(){
 
     return $categorias;
 }
+
+function nuevoPasoReceta($imagen,$nombre_receta){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT id FROM recetas WHERE nombre='$nombre_receta';");
+    $fila = $peticion->fetch_assoc();
+    $id_receta = $fila['id'];
+
+    $peticion = $mysqli->prepare("INSERT INTO fotos (idreceta,fichero) VALUES(?,?)");
+    $peticion->bind_param("is",$id_receta,$imagen);
+    $peticion->execute();
+}
+
+function getPasosReceta($id_receta){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT fichero FROM fotos WHERE idreceta='$id_receta';");
+    $fotos = array();
+    $i=0;
+    while($fila = $peticion->fetch_assoc()){
+        $fotos[$i] = $fila;
+        $i++;
+    }
+
+    return $fotos;
+}

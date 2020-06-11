@@ -26,6 +26,7 @@ function recetas($id_receta){
     $datos['categorias'] = $categorias;
     $datos['autor'] = $autor['nombre'];
     $datos['autor'] .= " ".$autor['apellidos'];
+    $datos['pasos'] = getPasosReceta($id_receta);
 
     $cat_nombres = array();
     $i=0;
@@ -79,4 +80,11 @@ function subirNuevaReceta(){
     
     nuevaReceta($nombre,$idautor,$descripcion,$ingredientes,$preparacion,$categorias_receta,$imagen);
     return true;
+}
+
+function subirPasosReceta(){
+    foreach(array_keys($_FILES) as $key){
+        $imagen = subirImagen($key);
+        nuevoPasoReceta($imagen,$_POST['titulo']);
+    }
 }

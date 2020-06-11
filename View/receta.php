@@ -52,10 +52,16 @@ foreach($datos['preparacion'] as &$prep)
 echo <<< HTML
             </ol>
 
-<!--             <div class="galeria">
-                <div class="galeria-imagen"><img src="img/min1.png"></div>
+            <div class="galeria">
+HTML;
+
+
+foreach($datos['pasos'] as $paso)
+    echo "<div class='galeria-imagen'><img src='$paso[fichero]'></div>";
+
+echo <<< HTML
             </div>
- -->
+
             <section class="comentarios">
                 <div class="comentario">
                     <div class="comentario-fecha">10/07/2020.</div>

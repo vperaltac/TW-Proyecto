@@ -5,21 +5,52 @@ const preview1 = document.getElementsByClassName("img-pasos-preview");
 const img_paso = document.getElementsByClassName("img-paso-receta");
 const boton_img_paso = document.getElementsByClassName("btn-pasos");
 const enviar_receta  = document.getElementById("nuevaReceta");
+const checkedBoxes = document.getElementsByName("categoria");
 
 enviar_receta.addEventListener("click", function(e){
     e.preventDefault();
-    let data = new FormData();
-    data.append("peticion","subir-paso-receta");
 
-    for(let i=0;i<input_imgs.length;i++){
-        if(input_imgs[i].files[0])
-            data.append('img' + i,input_imgs[i].files[0]);
+
+    const titulo = document.getElementById("new-titulo").value;
+    const descripcion = document.getElementById("new-descripcion").value;
+    const ingredientes = document.getElementById("new-ingredientes").value;
+    const preparacion = document.getElementById("new-preparacion").value;
+    const idautor = document.getElementById("idautor").value;
+    const img = input.files[0];
+
+    let datos_receta = new FormData();
+    datos_receta.append('peticion','nueva-receta');
+    datos_receta.append('titulo',titulo);
+    datos_receta.append('descripcion',descripcion);
+    datos_receta.append('ingredientes',ingredientes);
+    datos_receta.append('preparacion',preparacion);
+    datos_receta.append('idautor',idautor);
+    datos_receta.append('img',img);
+
+    for(let i=0;i<checkedBoxes.length;i++){
+        if(checkedBoxes[i].checked)
+            datos_receta.append(checkedBoxes[i].value,checkedBoxes[i].value);
     }
 
-    let request = new XMLHttpRequest();
-    request.open('POST',"index.php");
-    request.send(data);
-})
+    let peticion = new XMLHttpRequest();
+    peticion.open('POST',"index.php");
+    peticion.send(datos_receta);
+    peticion.onload = function(){
+        let data = new FormData();
+        data.append("peticion","subir-paso-receta");
+        let titulo  = document.getElementById("new-titulo").value;
+        data.append("titulo",titulo);
+    
+        for(let i=0;i<input_imgs.length;i++){
+            if(input_imgs[i].files[0])
+                data.append('img' + i,input_imgs[i].files[0]);
+        }
+    
+        let request = new XMLHttpRequest();
+        request.open('POST',"index.php");
+        request.send(data);    
+    }
+});
 
 for(let i=0;i<input_imgs.length;i++){
     input_imgs[i].addEventListener("change", function(){
