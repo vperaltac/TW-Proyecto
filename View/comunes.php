@@ -63,8 +63,6 @@ function HTMLsidebar($conectado,$cantidad){
 
             <input type="hidden" value="iniciar-sesion" name="peticion" />
             <input class="boton" type="submit" value="Login" name="" id="boton-inicio">
-
-            <input type="hidden" value="eliminar" name="peticion" />      
         </form>
 
         <form action="index.php" id="registro" method="get"> 
