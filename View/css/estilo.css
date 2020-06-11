@@ -44,14 +44,16 @@ a{
 .cabecera h1 {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight : normal;
-    font-size: 320%;
-    text-shadow: 4px 4px 4px black/*#fff5ce*/;
+    font-size: 390%;
+    text-shadow: 3px 3px 3px black;
     color: white;
 } 
 
 
 header {
-    background-image: url("../img/fresas.jpg");
+    background-image: url("../img/fondo.jpg");
+    background-size: 100%;
+    background-position: bottom;
 }
 
 
@@ -207,6 +209,7 @@ nav a{
     text-align: center;
 }
 
+
 .btn-desconectar {
     background-color: #fddbb8;
     border: #bc7b69 5px outset;
@@ -228,7 +231,7 @@ nav a{
     width: 125px;
     cursor: pointer;
     border-radius: 4px;
-}
+} 
 
 /*La barra lateral se oculta con resoluciones por debajo de 800px */
 @media (max-width: 800px) {
@@ -602,72 +605,65 @@ p.titulo-lateral{
 
 /***********************************************************************/
 /*                               REGISTRO USER                         */
-.info-contacto {
-    flex: 85%;
-    padding: 20px;
-    border-right: 1px solid lightgray;
-    text-align: center;
-}
   
-.info-contacto p {
+.zona-registro-formulario-inicio p {
     font-size: 20px;
     padding: 1px;
 }
   
-.info-contacto h1 {
+.zona-registro-formulario-inicio h2 {
     padding: 2px;
     margin-bottom: 20px;
 }
+
   
-p.titulo-lateral{
-    font-weight: bold;
-    padding: 2px;
-    margin-bottom: 4px;
-}
-  
-.texto-lateral{
-    margin: 0 auto;
-    margin-top: 55px;
-    width: 60%;
-}
-  
-.info-contacto a{
-    text-decoration: none;
-    color: #222;
-}
           
-.formulario{
+.zona-registro-formulario-inicio {
     padding: 20px;
 }
   
-.formulario .grupo-formulario{
-    padding-bottom: 15px;
-}
-  
-.formulario label{
+ 
+.zona-registro-formulario-inicio label{
     display:block;
 }
   
-.formulario input[type="text"], .formulario textarea{
+.zona-registro-formulario-inicio input[type="text"], .formulario textarea{
     padding: 8px;
     width:60%;
 }
   
-.formulario textarea{
+.zona-registro-formulario-inicio textarea{
     resize: none;
     height: 150px;
 }
   
-.formulario input[type="submit"]{
-    background-color: #333;
-    color: #fff;
+.zona-registro-formulario-inicio input[type="submit"]{
+    background-color: ;
+    border: grey 5px outset;
+    color: black;
     padding: 10px 15px;
-    border: none;
 }
 
-.text-error{
-    color: #ff1a1a;
+.zona-registro-formulario-inicio .boton {
+    text-align: center;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 111px;
 }
+
+
+
+.contenido-inicio-sesion {  
+    flex: 85%;
+    padding: 20px;
+    border-right: 1px solid lightgray;
+    text-align: center;
+    background-color: #feffd4;
+    border: 1px solid rgb(120, 194, 0);
+}
+
 /***********************************************************************/
 /***********************************************************************/
 /***********************************************************************/

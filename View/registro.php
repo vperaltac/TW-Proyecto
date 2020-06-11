@@ -10,8 +10,8 @@ function HTMLregistro(){
 echo <<< HTML
 <main id="bloque-principal">
 <div class="contenido-inicio-sesion">
-    <form class="zona-registro formulario-inicio" method="POST" enctype="multipart/form-data">
-        <h2>Regístrate</h2>
+    <form class="zona-registro-formulario-inicio" method="POST" enctype="multipart/form-data">
+        <h2>Regístrate con nosotros</h2>
 
         <label for="email">Email</label>
         <input type="text" name="email" id="email-registro" required>
