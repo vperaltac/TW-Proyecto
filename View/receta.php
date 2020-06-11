@@ -7,7 +7,7 @@
 */
 
 function HTMLreceta($datos){
-print_r($datos);
+//print_r($datos);
 echo <<< HTML
     <main id="bloque-principal">
         <section class="informacion">

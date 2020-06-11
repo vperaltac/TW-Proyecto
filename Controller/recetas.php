@@ -93,5 +93,21 @@ function subirPasosReceta(){
 }
 
 function pedirEliminarReceta(){
+    $imgs = getPasosReceta($_POST['idreceta']);
+    $imgPrincipal = pedirReceta($_POST['idreceta']);
+    foreach($imgs as $img){
+        unlink($img['fichero']);
+    }
+    unlink($imgPrincipal['imagen']);
+
     eliminarReceta($_POST['idreceta']);
+
+    if (session_status() == PHP_SESSION_NONE)
+        session_start();
+
+    $receta = pedirReceta($_COOKIE[$_SESSION['id_usuario']]);
+    if(!isset($receta) or $receta['id'] == $_POST['idreceta']){
+        $nueva_receta = getRecetaRandom();
+        setcookie($_SESSION['id_usuario'],$nueva_receta['id'], time() + (86400 * 30), "/");
+    }
 }

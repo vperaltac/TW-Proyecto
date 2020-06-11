@@ -19,6 +19,9 @@ require_once 'Controller/recetas.php';
 function renderizarReceta(){
     $admin = sesionIniciada();
     $cantidad = countRecetas();
+
+    if (session_status() == PHP_SESSION_NONE)
+    session_start();
     
     if(isset($_SESSION['id_usuario']))
         setcookie($_SESSION['id_usuario'],$_GET['r'], time() + (86400 * 30), "/");
@@ -41,6 +44,9 @@ function renderizarUltimaReceta(){
     HTMLcabecera();
     HTMLnav($admin);
 
+    if (session_status() == PHP_SESSION_NONE)
+        session_start();
+
     if(isset($_SESSION['id_usuario'])){
         if(!isset($_COOKIE[$_SESSION['id_usuario']])) {
             $datos = recetas(-1);
@@ -48,13 +54,7 @@ function renderizarUltimaReceta(){
         }
         else{
             $datos = recetas($_COOKIE[$_SESSION['id_usuario']]);
-
-            if(!$datos)
-                setcookie($_SESSION['id_usuario'], time() - 3600);
-            else{
-                $datos = recetas(-1);
-                HTMLreceta($datos);
-            }
+            HTMLreceta($datos);
         }
     }
     else{
