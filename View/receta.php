@@ -77,9 +77,15 @@ echo <<< HTML
             </section>
             
             <section class="paginas">
-                <img class="numero-pagina" src="View/img/close.png">
-                <img class="numero-pagina" src="View/img/edit.png">
-                <img class="numero-pagina" src="View/img/mail.png">
+                <form action="index.php" method="post">
+                    <!-- <input type="hidden" value="eliminar" name="peticion" /> -->
+                    <input class="btn-eliminar-receta" type="image" src="View/img/close.png" />
+                </form>
+
+                <form action="index.php" method="post">
+                    <!-- <input type="hidden" value="editar" name="peticion" /> -->
+                    <input class="btn-editar-receta" type="image" src="View/img/edit.png" />
+                </form>
             </section>
         </section>
 HTML;
