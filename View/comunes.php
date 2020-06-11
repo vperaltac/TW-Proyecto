@@ -67,7 +67,8 @@ function HTMLsidebar($conectado,$cantidad){
             <input type="hidden" value="eliminar" name="peticion" />      
         </form>
 
-        <form action="index.php?acc=registro" id="registro" method="get"> 
+        <form action="index.php" id="registro" method="get"> 
+            <input type="hidden" value="registro" name="acc"/>      
             <input class="boton" type="submit" value="Regístrate" name="" id="boton-registro">
         </form>
     </section>
