@@ -172,13 +172,14 @@ nav a{
 }
 
 
-.nombreUsuario p {
+#bloque-principal .nombreUsuario p {
     font-weight: bolder;
+    padding: 0px;
+    font-size: 20px;
 }
 
 #bloque-principal .rolUsuario p {
     color: blue;
-    font-size: 20px;
     padding: 0px;
 }
 
@@ -193,10 +194,10 @@ nav a{
     text-align: center;
 }
 
-.btn-eliminar {
-    background-color: #ff1a1a;
-    border: none;
-    color: white;
+.btn-desconectar {
+    background-color: #fddbb8;
+    border: #bc7b69 5px outset;
+    color: red;
     padding: 10px 20px;
     text-decoration: none;
     margin: 4px 2px;
@@ -205,13 +206,13 @@ nav a{
 }
 
 .btn-editar {
-    background-color: #ffd428;
-    border: none;
-    color: white;
+    background-color: #fddbb8;
+    border: #bc7b69 5px outset;
+    color: #bc7b69;
     padding: 10px 20px;
     text-decoration: none;
     margin: 4px 2px;
-    width: 115px;
+    width: 125px;
     cursor: pointer;
     border-radius: 4px;
 }
@@ -455,15 +456,27 @@ p.fecha{
     margin-left: 6px;
 }
 /*----------------------------------------------------------------------*/
+/*                        opciones edición recetas                      */
 
 .paginas{
     display: flex;
     justify-content: flex-end;
 }
 
-.numero-pagina{
-    margin: 5px;
-    width: 4%;
+.paginas .btn-editar-receta{
+    width: 100%;
+}
+
+.paginas .btn-eliminar-receta{
+    width: 100%;
+}
+
+.paginas form {
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 7px;
 }
 
 /***********************************************************************/
@@ -668,18 +681,6 @@ td a {
   flex: 45%;
   margin-bottom: 3%;
   margin-top: 3%;
-}
-
-.btn-eliminar {
-  background-color: #ff1a1a;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
 }
 
 .modEtiquetas{

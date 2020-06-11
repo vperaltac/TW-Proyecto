@@ -86,7 +86,7 @@ HTML;
                     <div class="botones-usuario">
                         <form action="index.php" method="post">
                             <input type="hidden" value="desconectar" name="peticion" />
-                            <input class="btn-eliminar" type="submit" name="logout" value="Desconectar" />
+                            <input class="btn-desconectar" type="submit" name="logout" value="Desconectar" />
                         </form>
 
                         <form action="index.php" method="post">
@@ -138,7 +138,7 @@ HTML;
 function HTMLfooter(){
 echo <<< HTML
     <footer>
-        <p> <a href="https://www.ugr.es/estudiantes/grados/grado-ingenieria-informatica/tecnologias-web-tecnologias-informacion" target="_blank">&copy; 2020 Tecnologías Web,</a> <a href="mailto:victorperalta@correo.ugr.es"> Víctor Peralta Cámara,</a> <a href="mailto:jesusruiz@correo.ugr.es"> Jesús Ruiz Castellano</a> | <a>Mapa del sitio</a> | <a href="TW-ProyectoFinal.pdf" target="_blank"> Documentación</a></p>
+        <p> <a href="https://www.ugr.es/estudiantes/grados/grado-ingenieria-informatica/tecnologias-web-tecnologias-informacion" target="_blank">&copy; 2020 Tecnologías Web,</a> <a href="mailto:victorperalta@correo.ugr.es"> Víctor Peralta Cámara,</a> <a href="mailto:jesusruiz@correo.ugr.es"> Jesús Ruiz Castellano</a> | <a href="#">Mapa del sitio</a> | <a href="TW-ProyectoFinal.pdf" target="_blank"> Documentación</a></p>
     </footer>
 HTML;
 }
