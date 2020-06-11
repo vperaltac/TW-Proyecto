@@ -48,7 +48,10 @@ enviar_receta.addEventListener("click", function(e){
     
         let request = new XMLHttpRequest();
         request.open('POST',"index.php");
-        request.send(data);    
+        request.send(data);
+        request.onload = function(){
+            window.location.href = "index.php?acc=listado";
+        }
     }
 });
 

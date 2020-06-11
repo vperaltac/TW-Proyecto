@@ -52,7 +52,7 @@ function todasRecetas(){
 }
 
 function subirNuevaReceta(){
-    if($_POST['titulo'] == "")
+    if($_POST['titulo'] == "" or $_POST['idautor'] == "" or $_POST['descripcion'] == "" or $_POST['ingredientes'] == "" or $_POST['preparacion'] == "")
         return false;
 
     $categorias = getCategorias();
