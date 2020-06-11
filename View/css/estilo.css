@@ -232,7 +232,7 @@ nav a{
     display: inline-block;
     margin-left: 5px;
     width: 60px;
-    text-align: right;
+    /*text-align: right;*/
 }
 
 #login input[type="text"],
@@ -241,19 +241,35 @@ nav a{
     padding:6px;
 }
 
+
 #login .boton {
-    border: none;
+    border: grey 5px outset;
     padding: 8px 20px;
     text-align: center;
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
+    width: 111px;
 }
+
 
 #login .clr{
     clear: both;
 }
+
+
+#registro .boton {
+    border: grey 5px outset;
+    padding: 8px 20px;
+    text-align: center;
+    color: yellow;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;  
+}
+
   
 /***********************************************************************/
 
@@ -471,6 +487,10 @@ p.fecha{
     width: 100%;
 }
 
+.paginas .btn-comentar-receta{
+    width: 100%;
+}
+
 .paginas form {
     width: 40px;
     height: 40px;
@@ -500,6 +520,75 @@ footer p{
 
 /***********************************************************************/
 /*                                 CONTACTO                           */
+.info-contacto {
+    flex: 85%;
+    padding: 20px;
+    border-right: 1px solid lightgray;
+    text-align: center;
+}
+  
+.info-contacto p {
+    font-size: 20px;
+    padding: 1px;
+}
+  
+.info-contacto h1 {
+    padding: 2px;
+    margin-bottom: 20px;
+}
+  
+p.titulo-lateral{
+    font-weight: bold;
+    padding: 2px;
+    margin-bottom: 4px;
+}
+  
+.texto-lateral{
+    margin: 0 auto;
+    margin-top: 55px;
+    width: 60%;
+}
+  
+.info-contacto a{
+    text-decoration: none;
+    color: #222;
+}
+          
+.formulario{
+    padding: 20px;
+}
+  
+.formulario .grupo-formulario{
+    padding-bottom: 15px;
+}
+  
+.formulario label{
+    display:block;
+}
+  
+.formulario input[type="text"], .formulario textarea{
+    padding: 8px;
+    width:60%;
+}
+  
+.formulario textarea{
+    resize: none;
+    height: 150px;
+}
+  
+.formulario input[type="submit"]{
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+}
+
+.text-error{
+    color: #ff1a1a;
+}
+
+/***********************************************************************/
+/*                               REGISTRO USER                         */
 .info-contacto {
     flex: 85%;
     padding: 20px;
