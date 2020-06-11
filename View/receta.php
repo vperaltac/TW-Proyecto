@@ -96,6 +96,10 @@ echo '<input type="hidden" value='.$datos['id'].' name="idreceta" />';
 echo <<< HTML
                     <input class="btn-editar-receta" type="image" src="View/img/edit.png" />
                 </form>
+
+                <form action="index.php" method="post">
+                    <input class="btn-comentar-receta" type="image" src="View/img/mail.png" />
+                </form>
             </section>
         </section>
 HTML;
