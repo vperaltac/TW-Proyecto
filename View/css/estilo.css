@@ -593,10 +593,18 @@ p.titulo-lateral{
 }
   
 .formulario input[type="submit"]{
-    background-color: #333;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
+    border: grey 5px outset;
+    color: black;
+    padding: 10px;
+}
+
+
+.formulario .boton {
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 111px;
 }
 
 .text-error{
@@ -638,7 +646,6 @@ p.titulo-lateral{
 }
   
 .zona-registro-formulario-inicio input[type="submit"]{
-    background-color: ;
     border: grey 5px outset;
     color: black;
     padding: 10px 15px;
