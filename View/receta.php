@@ -7,6 +7,7 @@
 */
 
 function HTMLreceta($datos){
+print_r($datos);
 echo <<< HTML
     <main id="bloque-principal">
         <section class="informacion">
@@ -78,12 +79,21 @@ echo <<< HTML
             
             <section class="paginas">
                 <form action="index.php" method="post">
-                    <!-- <input type="hidden" value="eliminar" name="peticion" /> -->
+                    <input type="hidden" value="receta-eliminar" name="peticion" />
+HTML;
+
+echo '<input type="hidden" value='.$datos['idautor'].' name="idautor" />';
+echo '<input type="hidden" value='.$datos['id'].' name="idreceta" />';
+echo <<< HTML
                     <input class="btn-eliminar-receta" type="image" src="View/img/close.png" />
                 </form>
 
                 <form action="index.php" method="post">
-                    <!-- <input type="hidden" value="editar" name="peticion" /> -->
+                    <input type="hidden" value="receta-editar" name="peticion" />
+HTML;
+echo '<input type="hidden" value='.$datos['idautor'].' name="idautor" />';
+echo '<input type="hidden" value='.$datos['id'].' name="idreceta" />';
+echo <<< HTML
                     <input class="btn-editar-receta" type="image" src="View/img/edit.png" />
                 </form>
             </section>

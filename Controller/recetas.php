@@ -17,6 +17,9 @@ function recetas($id_receta){
     else
         $datos = pedirReceta($id_receta);
 
+    if(!isset($datos['id']))
+        return false;
+
     $datos['ingredientes'] = explode("#",$datos['ingredientes']);
     $datos['preparacion'] = explode("#",$datos['preparacion']);
 
@@ -87,4 +90,8 @@ function subirPasosReceta(){
         $imagen = subirImagen($key);
         nuevoPasoReceta($imagen,$_POST['titulo']);
     }
+}
+
+function pedirEliminarReceta(){
+    eliminarReceta($_POST['idreceta']);
 }

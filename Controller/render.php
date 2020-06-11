@@ -48,7 +48,11 @@ function renderizarUltimaReceta(){
         }
         else{
             $datos = recetas($_COOKIE[$_SESSION['id_usuario']]);
-            HTMLreceta($datos);    
+
+            if(!$datos)
+                setcookie($_SESSION['id_usuario'], time() - 3600);
+            else
+                HTMLreceta($datos);
         }
     }
     else{

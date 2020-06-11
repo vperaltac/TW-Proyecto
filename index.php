@@ -94,8 +94,16 @@ switch($_SERVER['REQUEST_METHOD']){
             break;
 
             case 'subir-paso-receta':
-                print_r($_FILES);
                 subirPasosReceta();
+            break;
+
+            case 'receta-editar':
+                echo "EDITAR RECETA";
+            break;
+
+            case 'receta-eliminar':
+                pedirEliminarReceta();
+                renderizarListado();
             break;
         }
     break;

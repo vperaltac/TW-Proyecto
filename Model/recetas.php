@@ -141,3 +141,14 @@ function getPasosReceta($id_receta){
 
     return $fotos;
 }
+
+function eliminarReceta($id_receta){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $id_receta = $mysqli->real_escape_string($id_receta);
+
+    $sentencia = $mysqli->prepare("DELETE FROM recetas WHERE id=?");
+    $sentencia->bind_param("i",$id_receta);
+    $sentencia->execute();
+}
