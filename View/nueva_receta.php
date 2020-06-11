@@ -38,9 +38,34 @@ echo <<< HTML
                     <input type="checkbox" class="categoria" id="c2" name="categoria" value="pescados">
                     <span class="checkmark"></span>
                 </label>
+
+                <label class="checkcontainer">Arroz
+                    <input type="checkbox" class="categoria" id="c3" name="categoria" value="arroz">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="checkcontainer">Sopa
+                    <input type="checkbox" class="categoria" id="c4" name="categoria" value="sopa">
+                    <span class="checkmark"></span>
+                </label>
                 
                 <label class="checkcontainer">Fácil
-                    <input type="checkbox" class="categoria" id="c3" name="categoria" value="facil">
+                    <input type="checkbox" class="categoria" id="c5" name="categoria" value="facil">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="checkcontainer">Difícil
+                    <input type="checkbox" class="categoria" id="c6" name="categoria" value="dificil">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="checkcontainer">Ligero
+                    <input type="checkbox" class="categoria" id="c7" name="categoria" value="ligero">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="checkcontainer">Pesado
+                    <input type="checkbox" class="categoria" id="c8" name="categoria" value="pesado">
                     <span class="checkmark"></span>
                 </label>
             </div>
