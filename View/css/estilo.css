@@ -15,7 +15,13 @@ Autores :
     padding: 0;
     box-sizing: border-box; /* define cómo se calcula el ancho y alto de cada elemento */
 }
-  
+
+/* Declaración de variables para los colores de la valoración */
+:root {
+    --color-inactivo: #5f5050;
+    --color-hover: #ffa400;
+}
+ 
 h1 {
     font-size: 40px;
     padding: 2px;
@@ -322,13 +328,55 @@ nav a{
     margin-top: 5px;
 }
 
-.puntuacion{
+.puntuacion {
     max-width:150px;
     max-height:50px;
     width: auto;
     height: auto;
 }
 
+/***********************************************************************/
+/*                          PUNTUACIÓN RECETAS                         */
+
+.form-Valoracion {
+    width: 110px;
+    height: 35px;
+    margin-top: 10px;
+    margin-left: 0px;
+    
+}
+
+.form-Valoracion p {
+  text-align: center;
+}
+
+.form-Valoracion label {
+  font-size: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.form-Valoracion label {
+  color: grey;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+.form-Valoracion label:hover,
+.form-Valoracion label:hover ~ .form-Valoracion label {
+  color: orange;
+}
+
+input[type="radio"]:checked ~ .form-Valoracion label {
+  color: orange;
+}
+
+/***********************************************************************/
 .tags-autor{
     display: flex;
     justify-content: space-between;
