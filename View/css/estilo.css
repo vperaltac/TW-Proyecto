@@ -342,8 +342,7 @@ nav a{
     width: 110px;
     height: 35px;
     margin-top: 10px;
-    margin-left: 0px;
-    
+    margin-left: 0px;   
 }
 
 .form-Valoracion p {
@@ -354,6 +353,7 @@ nav a{
   font-size: 20px;
 }
 
+/* Escondemos los botones de radio */
 input[type="radio"] {
   display: none;
 }
@@ -362,17 +362,21 @@ input[type="radio"] {
   color: grey;
 }
 
+/* rtl cambia la dirección de escritura  de derecha a izquierda ( right to left ) */
 .clasificacion {
   direction: rtl;
   unicode-bidi: bidi-override;
 }
 
-.form-Valoracion label:hover,
-.form-Valoracion label:hover ~ .form-Valoracion label {
+/* Al pasar por encima las etiquetas <label> ( o sea: las estrellas ) cambian de color
+También cambian de color todas las etiquetas <label> precedidas ( ~ ) por aquella <label> que tiene el ratón encima ( hover ) */
+ label:hover,
+ label:hover ~ label {
   color: orange;
 }
 
-input[type="radio"]:checked ~ .form-Valoracion label {
+/* Al marcar el botón de radio ( radio:checked ) todas las etiquetas <label> que le preceden ( ~ ) se vuelven color naranja */
+input[type="radio"]:checked ~ label {
   color: orange;
 }
 
