@@ -166,14 +166,19 @@ function renderizarNuevaRecetaError(){
     HTMLfin();
 }
 
-function renderizarRegistro(){
+function renderizarEditarUsuario($registro){
     $admin = sesionIniciada();
     $cantidad = countRecetas();
+
+    if(!$registro)
+        $datos = pedirDatosUsuario();
+    else
+        $datos = NULL;
 
     HTMLinicio();
     HTMLcabecera();
     HTMLnav($admin);
-    HTMLregistro();
+    HTMLeditarUsuario($registro,$datos);
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
     HTMLfin();

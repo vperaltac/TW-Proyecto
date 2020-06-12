@@ -105,9 +105,9 @@ $widget_login .= <<< HTML
                             <input class="btn-desconectar" type="submit" name="logout" value="Desconectar" />
                         </form>
 
-                        <form action="index.php" method="post">
-                            <input type="hidden" value="editar" name="peticion" />
-                            <input class="btn-editar" type="submit" name="edit" value="Editar" />
+                        <form action="index.php" method="get">
+                            <input type="hidden" value="usuario-editar" name="acc"/>
+                            <input class="btn-editar" type="submit" value="Editar"/>
                         </form>
                     </div>
             </section>

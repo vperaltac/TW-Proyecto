@@ -40,6 +40,34 @@ function pedirRegistrarUsuario(){
     registrarAccesoUsuario($_POST['nombre'],$_POST['apellidos'],$_POST['email'],'nuevo-usuario');
 }
 
+function pedirEditarUsuario(){
+    if (session_status() == PHP_SESSION_NONE)
+        session_start();
+
+    if(!$_FILES['img']['name'] == ""){
+        $imagen = subirImagen("img");
+        $datos_usuario = getDatosUsuario($_SESSION['id_usuario']);
+        unlink($datos_usuario['foto']);
+    }
+    else
+        $imagen = NULL;
+
+    $hash = password_hash($_POST['psw'],PASSWORD_DEFAULT);
+    $datos = editarUsuario($_POST['nombre'],$_POST['apellidos'],$_POST['email'],$imagen,$hash);
+
+    $_SESSION["id_usuario"]    = $datos["id"];
+    $_SESSION["email"]         = $datos["email"];         
+    $_SESSION["nombre"]        = $datos["nombre"];
+    $_SESSION["apellidos"]     = $datos["apellidos"];
+    $_SESSION["tipo"]          = $datos["tipo"];
+    $_SESSION["imgUsuario"]    = $datos["foto"];
+}
+
+function pedirDatosUsuario(){
+    return getDatosUsuario($_SESSION['id_usuario']);
+}
+
+
 function pedirIniciarSesion(){
     $inicio = iniciarSesion($_POST['uname'],$_POST['psw']);
 

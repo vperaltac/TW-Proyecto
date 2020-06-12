@@ -16,6 +16,17 @@ function getNombreUsuario($id_usuario){
     return $row;
 }
 
+function getDatosUsuario($id_usuario){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT * FROM usuarios WHERE id='$id_usuario';");
+    $row = $peticion->fetch_assoc();
+
+    return $row;
+}
+
+
 function registrarUsuario($nombre,$apellidos,$email,$foto,$passwd){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
@@ -35,7 +46,31 @@ function registrarUsuario($nombre,$apellidos,$email,$foto,$passwd){
     else{
         echo "Error: el usuario indicado ya existe";
     }
+}
 
+function editarUsuario($nombre,$apellidos,$email,$foto,$passwd){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $p1 = $mysqli->query("SELECT id,password FROM usuarios WHERE email='$email';");
+    $row = $p1->fetch_assoc();
+    $id = $row['id'];
+
+
+    if(password_verify($passwd,$row['password']))
+        $password = $row['password'];
+    else
+        $password = $passwd;
+
+    $peticion = $mysqli->query("UPDATE usuarios SET nombre='$nombre',apellidos='$apellidos',email='$email',password='$password' WHERE id='$id';");
+
+    if($foto != NULL)
+        $peticion = $mysqli->query("UPDATE usuarios SET foto='$foto' WHERE id='$id';");
+
+    $p2 = $mysqli->query("SELECT * FROM usuarios WHERE email='$email';");
+    $datos = $p2->fetch_assoc();
+
+    return $datos;
 }
 
 function iniciarSesion($correo,$passwd){

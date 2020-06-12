@@ -61,7 +61,12 @@ switch($_SERVER['REQUEST_METHOD']){
             break;
 
             case 'registro':
-                renderizarRegistro();
+                renderizarEditarUsuario(1);
+            break;
+
+            case 'usuario-editar':
+                echo "AAAAAAAAAAAAAAAAAA";
+                renderizarEditarUsuario(0);
             break;
 
             case 'logs':
@@ -76,9 +81,13 @@ switch($_SERVER['REQUEST_METHOD']){
         print_r($_POST);
 
         switch($_POST['peticion']){
-            case 'registro':
+            case 'usuario-registrar':
                 pedirRegistrarUsuario();
                 renderizarListado();
+            break;
+
+            case 'usuario-editar':
+                pedirEditarUsuario();
             break;
 
             case 'iniciar-sesion':
