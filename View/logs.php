@@ -1,6 +1,7 @@
 <?php
 
 function HTMLlogs($datos){
+    $dato = $datos[0];
 echo <<< HTML
     <section class="informacion">
     	<div class="cabecera-log">
@@ -8,7 +9,7 @@ echo <<< HTML
         </div>
 
         <ul class="items-log">
-        	<li> <p> $datos['descripcion'] </p></li>
+        	<li> <p> $dato[descripcion] </p></li>
         </ul>
     </section>
 HTML;

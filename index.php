@@ -65,7 +65,8 @@ switch($_SERVER['REQUEST_METHOD']){
             break;
 
             case 'logs':
-                renderizarLogs();
+                $datos = pedirLog();
+                renderizarLogs($datos);
             break;
         }
     break;

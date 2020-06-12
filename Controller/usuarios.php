@@ -61,3 +61,7 @@ function pedirIniciarSesion(){
         registrarIntentoAcceso($_SERVER['REMOTE_ADDR'],$_POST['uname']);
     }
 }
+
+function pedirLog(){
+    return getLog();
+}

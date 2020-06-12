@@ -41,3 +41,18 @@ function registrarIntentoAcceso($ip,$email){
     $sentencia->bind_param("s",$descripcion);
     $sentencia->execute();
 }
+
+function getLog(){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT * FROM log;");
+    $log = array();
+    $i=0;
+    while($fila = $peticion->fetch_assoc()){
+        $log[$i] = $fila;
+        $i++;
+    }
+
+    return $log;
+}

@@ -179,14 +179,14 @@ function renderizarRegistro(){
     HTMLfin();
 }
 
-function renderizarLogs(){
+function renderizarLogs($datos){
     $admin = sesionIniciada();
     $cantidad = countRecetas();
 
     HTMLinicio();
     HTMLcabecera();
     HTMLnav($admin);
-    HTMLlogs();
+    HTMLlogs($datos);
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
     HTMLfin();
