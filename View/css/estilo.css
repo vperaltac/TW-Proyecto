@@ -336,6 +336,21 @@ nav a{
 }
 
 /***********************************************************************/
+/*                          VISTA LOGS SISTEMA                         */
+
+.cabecera-log {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px; 
+}
+
+.cabecera-log h1{
+    font-size: 30px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+/***********************************************************************/
 /*                          PUNTUACIÓN RECETAS                         */
 
 .form-Valoracion {
