@@ -63,6 +63,10 @@ switch($_SERVER['REQUEST_METHOD']){
             case 'registro':
                 renderizarRegistro();
             break;
+
+            case 'logs':
+                renderizarLogs();
+            break;
         }
     break;
 

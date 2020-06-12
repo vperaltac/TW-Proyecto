@@ -177,3 +177,16 @@ function renderizarRegistro(){
     HTMLfooter();
     HTMLfin();
 }
+
+function renderizarLogs(){
+    $admin = sesionIniciada();
+    $cantidad = countRecetas();
+
+    HTMLinicio();
+    HTMLcabecera();
+    HTMLnav($admin);
+    HTMLlogs();
+    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    HTMLfooter();
+    HTMLfin();
+}
