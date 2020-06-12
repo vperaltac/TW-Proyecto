@@ -6,7 +6,7 @@
         - Jesús Ruiz Castellano
 */
 
-function HTMLnueva_receta(){
+function HTMLnueva_receta($categorias){
 echo <<< HTML
 <main id="bloque-principal">
     <section class="info-contacto">
@@ -27,48 +27,23 @@ echo <<< HTML
 
             <label>Preparación: (separar pasos con #)</label>
             <textarea type="text" name="preparacion" id="new-preparacion"></textarea>
+HTML;
 
-            <div id="contenedor-categorias">
-                <label class="checkcontainer">Carnes
-                    <input type="checkbox" class="categoria" id="c1" name="categoria" value="carnes">
-                    <span class="checkmark"></span>
-                </label> 
+foreach($categorias as $categoria){
+echo <<< HTML
+    <div id="contenedor-categorias">
+        <label class="checkcontainer">$categoria[nombre]
+HTML;
 
-                <label class="checkcontainer">Pescados
-                    <input type="checkbox" class="categoria" id="c2" name="categoria" value="pescados">
-                    <span class="checkmark"></span>
-                </label>
+echo '<input type="checkbox" class="categoria" id="c1" name="categoria" value='.$categoria['nombre'].'>';
+echo <<< HTML
+            <span class="checkmark"></span>
+        </label> 
+    </div>
+HTML;
+}
 
-                <label class="checkcontainer">Arroz
-                    <input type="checkbox" class="categoria" id="c3" name="categoria" value="arroz">
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="checkcontainer">Sopa
-                    <input type="checkbox" class="categoria" id="c4" name="categoria" value="sopa">
-                    <span class="checkmark"></span>
-                </label>
-                
-                <label class="checkcontainer">Fácil
-                    <input type="checkbox" class="categoria" id="c5" name="categoria" value="facil">
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="checkcontainer">Difícil
-                    <input type="checkbox" class="categoria" id="c6" name="categoria" value="dificil">
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="checkcontainer">Ligero
-                    <input type="checkbox" class="categoria" id="c7" name="categoria" value="ligero">
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="checkcontainer">Pesado
-                    <input type="checkbox" class="categoria" id="c8" name="categoria" value="pesado">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
+echo <<< HTML
 
             <p>Imagen:
                 <input name="img" type="file" id="imgPrincipal"/>

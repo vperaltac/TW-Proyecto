@@ -139,14 +139,14 @@ function renderizarListadoUsuario(){
 }
 
 
-function renderizarNuevaReceta(){
+function renderizarNuevaReceta($categorias){
     $admin = sesionIniciada();
     $cantidad = countRecetas();
 
     HTMLinicio();
     HTMLcabecera();
     HTMLnav($admin);
-    HTMLnueva_receta();
+    HTMLnueva_receta($categorias);
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
     HTMLfin();

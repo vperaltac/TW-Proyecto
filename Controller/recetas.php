@@ -65,6 +65,12 @@ function todasRecetasUsuario(){
     return $recetas;
 }
 
+function pedirCategorias(){
+    $categorias = getCategorias();
+
+    return $categorias;
+}
+
 
 function subirNuevaReceta(){
     if($_POST['titulo'] == "" or $_POST['idautor'] == "" or $_POST['descripcion'] == "" or $_POST['ingredientes'] == "" or $_POST['preparacion'] == "")

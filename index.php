@@ -52,8 +52,10 @@ switch($_SERVER['REQUEST_METHOD']){
             break;
 
             case 'nueva_receta':
-                if(sesionIniciada())
-                    renderizarNuevaReceta();
+                if(sesionIniciada()){
+                    $categorias = pedirCategorias();
+                    renderizarNuevaReceta($categorias);
+                }
                 else
                     renderizarUltimaReceta();
             break;
