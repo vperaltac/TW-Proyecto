@@ -9,11 +9,8 @@ echo <<< HTML
         </div>
         <ul class="items-log">
 
-    <table style="width:100%">
-        <tr>
-            <th>Fecha</th>
-            <th>Descripción</th>
-        </tr>
+    <table id="tabla-log" style="width:100%">
+
 HTML;
 
     foreach($datos as $dato){
