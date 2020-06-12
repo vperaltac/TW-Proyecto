@@ -354,7 +354,7 @@ nav a{
 }
 
 /* Escondemos los botones de radio */
-input[type="radio"] {
+.form-Valoracion input[type="radio"] {
   display: none;
 }
 
@@ -370,13 +370,13 @@ input[type="radio"] {
 
 /* Al pasar por encima las etiquetas <label> ( o sea: las estrellas ) cambian de color
 También cambian de color todas las etiquetas <label> precedidas ( ~ ) por aquella <label> que tiene el ratón encima ( hover ) */
- label:hover,
- label:hover ~ label {
+ .form-Valoracion label:hover,
+ .form-Valoracion label:hover ~ label {
   color: orange;
 }
 
 /* Al marcar el botón de radio ( radio:checked ) todas las etiquetas <label> que le preceden ( ~ ) se vuelven color naranja */
-input[type="radio"]:checked ~ label {
+.form-Valoracion input[type="radio"]:checked ~ label {
   color: orange;
 }
 
