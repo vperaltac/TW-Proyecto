@@ -19,6 +19,7 @@ require_once 'Controller/usuarios.php';
 require_once 'Controller/contacto.php';
 require_once 'Controller/recetas.php';
 require_once 'Controller/render.php';
+require_once 'Controller/comentarios.php';
 
 $uri = $_SERVER['REQUEST_URI'];
 
@@ -92,7 +93,8 @@ switch($_SERVER['REQUEST_METHOD']){
             break;
 
             case 'filtrar-listado':
-                renderizarFiltrar();
+                $categorias = pedirCategorias();
+                renderizarFiltrar($categorias);
             break;
 
             case 'nuevo-comentario':
@@ -145,6 +147,11 @@ switch($_SERVER['REQUEST_METHOD']){
             case 'receta-eliminar':
                 pedirEliminarReceta();
                 renderizarListado();
+            break;
+
+            case 'nuevo-comentario':
+                subirComentario();
+                renderizarUltimaReceta();
             break;
         }
     break;
