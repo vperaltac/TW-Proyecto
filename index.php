@@ -103,8 +103,6 @@ switch($_SERVER['REQUEST_METHOD']){
 
     //------------------------------------  POST  ------------------------------------------
     case 'POST':
-        print_r($_POST);
-
         switch($_POST['peticion']){
             case 'usuario-registrar':
                 pedirRegistrarUsuario();
@@ -113,6 +111,7 @@ switch($_SERVER['REQUEST_METHOD']){
 
             case 'usuario-editar':
                 pedirEditarUsuario();
+                renderizarListado();
             break;
 
             case 'iniciar-sesion':
@@ -136,7 +135,7 @@ switch($_SERVER['REQUEST_METHOD']){
             break;
 
             case 'editar-receta':
-                
+                pedirEditarReceta();
             break;
 
             case 'subir-paso-receta':

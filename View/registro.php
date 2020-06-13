@@ -38,10 +38,12 @@ echo '<label for="psw">Repita la contraseña</label>';
 echo '<input type="password" name="psw-re" id="pwdr-registro" required>';
 echo <<< HTML
         <label for="img">Imagen:</label>
-        <input name="img" type="file"/>
+        <input name="img" id='imgPrincipal' type="file"/>
     
         $input
     </form>
 </div>
+<script type="text/javascript" src="View/js/utils.js"></script>
+<script type="text/javascript" src="View/js/registro.js"></script>
 HTML;
 }

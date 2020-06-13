@@ -7,7 +7,7 @@
 */
 
 function HTMLreceta($datos){
-    if($_SESSION["id_usuario"] == $datos['idautor'])
+    if(isset($_SESSION['id_usuario']) and $_SESSION["id_usuario"] == $datos['idautor'])
         $receta_propia = 1;
     else
         $receta_propia = 0;
@@ -108,7 +108,7 @@ HTML;
 echo '<input type="hidden" value='.$datos['idautor'].' name="idautor" />';
 echo '<input type="hidden" value='.$datos['id'].' name="idreceta" />';
 echo <<< HTML
-                    <input class="btn-eliminar-receta" type="image" src="View/img/close.png" />
+                    <input class="btn-eliminar-receta" id="btn-eliminar-receta" type="image" src="View/img/close.png" />
                 </form>
 
                 <form action="index.php" method="get">
@@ -133,5 +133,6 @@ echo <<< HTML
                 </form>
             </section>
         </section>
+        <script type="text/javascript" src="View/js/eliminar_receta.js"></script>
 HTML;
 }

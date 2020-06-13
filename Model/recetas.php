@@ -130,6 +130,13 @@ function getCategorias(){
     return $categorias;
 }
 
+function eliminarCategorias($idreceta){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("DELETE FROM categorias WHERE receta_id='$idreceta';");
+}
+
 function nuevoPasoReceta($imagen,$nombre_receta){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
@@ -167,4 +174,21 @@ function eliminarReceta($id_receta){
     $sentencia = $mysqli->prepare("DELETE FROM recetas WHERE id=?");
     $sentencia->bind_param("i",$id_receta);
     $sentencia->execute();
+}
+
+function editarReceta($idreceta,$nombre,$idautor,$descripcion,$ingredientes,$preparacion,$categorias_receta,$imagen){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("UPDATE recetas SET nombre='$nombre',idautor='$idautor',descripcion='$descripcion',ingredientes='$ingredientes',preparacion='$preparacion' WHERE id='$idreceta';");
+
+    if($imagen != NULL)
+        $peticion = $mysqli->query("UPDATE recetas SET imagen='$imagen' WHERE id='$idreceta';");
+
+    eliminarCategorias($idreceta);
+    foreach($categorias_receta as $categoria){
+        $add_categorias = $mysqli->prepare("INSERT INTO categorias (receta_id,categorias_id) VALUES(?,?)");
+        $add_categorias->bind_param("ii",$idreceta,$categoria);
+        $add_categorias->execute();    
+    }
 }

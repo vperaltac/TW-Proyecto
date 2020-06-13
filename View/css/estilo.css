@@ -233,12 +233,40 @@ nav a{
     border-radius: 4px;
 } 
 
+#contenedor-categorias{
+    margin: auto;
+    width: 20%;
+}
+
 /*La barra lateral se oculta con resoluciones por debajo de 800px */
 @media (max-width: 800px) {
     .barra-lateral {
         display: none;
     }
 }
+
+/*La barra lateral se oculta con resoluciones por debajo de 800px */
+@media (max-width: 600px) {
+    .info-lista-receta-texto {
+        display: none;
+    }
+
+    .cabecera h1{
+        font-size: 26px;
+    }
+    
+    #contenedor-categorias{
+        width:40%;
+    }
+}
+
+/*La barra lateral se oculta con resoluciones por debajo de 800px */
+@media (min-width: 601px) {  
+    #contenedor-categorias{
+        width:20%;
+    }
+}
+
 
 #login .grupo-formulario{
     padding:2px;
@@ -484,6 +512,17 @@ p.fecha{
 }
 
 .galeria-imagen img{
+    width: 100%;
+}
+
+.galeria-editar {
+    margin:5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(160px, 1fr));
+    gap: 5px;
+}
+
+.galeria-imagen-editar img{
     width: 100%;
 }
 
@@ -951,9 +990,4 @@ input[type="checkbox"]{
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-}
-
-#contenedor-categorias{
-    margin: auto;
-    width: 20%;
 }
