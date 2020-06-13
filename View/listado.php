@@ -12,6 +12,13 @@ function HTMLlistado($recetas){
         <section class="lista-recetas">
 HTML;
 
+    echo <<< HTML
+        <form action="index.php" method="get">
+            <input type="hidden" value="filtrar-listado" name="acc"/>
+            <input class="btn-editar" type="submit" value="Filtrar"/>
+        </form>
+HTML;
+
     foreach($recetas as &$receta){
         echo <<< HTML
             <div class="wrap-receta">

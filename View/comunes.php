@@ -37,7 +37,8 @@ function HTMLnav($conectado){
     if($conectado == 1 and $_SESSION['tipo'] == 'administrador'){
         $botones_admin = "<a href='index.php?acc=gestion-usuarios'>Gestión de usuarios</a>";
         $botones_admin .= "<a href='index.php?acc=logs'>Ver log</a>";
-        $botones_admin .= "<a href='#'>Gestión de la BBDD</a>";
+        $botones_admin .= "<a href='index.php?acc=gestion-db'>Gestión de la BBDD</a>";
+        $botones_admin .= "<a href='index.php?acc=gestion-categorias'>Gestión de categorias</a>";
     } 
 echo <<< HTML
     <nav>

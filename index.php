@@ -82,6 +82,19 @@ switch($_SERVER['REQUEST_METHOD']){
                 renderizarGestionUsuarios();
             break;
 
+            case 'gestion-db':
+                renderizarGestionDB();
+            break;
+
+            case 'gestion-categorias':
+                $categorias = pedirCategorias();
+                renderizarGestionCategorias($categorias);
+            break;
+
+            case 'filtrar-listado':
+                renderizarFiltrar();
+            break;
+
             case 'nuevo-comentario':
                 renderizarNuevoComentario();
             break;
