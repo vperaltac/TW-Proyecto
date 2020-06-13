@@ -81,26 +81,26 @@ nav a{
     background-color: #c2bebe;
 }
 
-.informacion{
+.informacion {
     background-color: #feffd4;
     border: 1px solid rgb(120, 194, 0);
 }
 
-.info-contacto{
+.info-contacto {
     background-color: #feffd4;
     border: 1px solid rgb(120, 194, 0);
 }
 
-.recetas-favs{
+.recetas-favs {
     background-color: #feffd4;
     border: 1px solid rgb(120, 194, 0);
 }
 
-.info-ingredientes{
+.info-ingredientes {
     background-color: rgb(223, 223, 255);
 }
 
-.comentario{
+.comentario {
     background-color: rgb(255, 219, 219);
 }
 
@@ -361,6 +361,7 @@ nav a{
 /*                          VISTA LOGS SISTEMA                         */
 
 .cabecera-log {
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
     padding: 5px; 
@@ -372,6 +373,10 @@ nav a{
     margin-top: 5px;
 }
 
+.informacion .cabecera-log h2 {
+    font-size: 20px;
+    margin-left: 10px;
+}
 
 table#tabla-log tr:nth-child(odd) {
     background-color: #ffd8ce;
@@ -654,6 +659,47 @@ footer p{
 
 
 /***********************************************************************/
+/*                               FILTRO RECETA                        */
+
+
+.formulario-filtrado{
+    padding: 20px;
+}
+  
+.formulario-filtrado .grupo-formulario{
+    padding-bottom: 15px;
+}
+  
+.formulario-filtrado label{
+    display:block;
+}
+  
+.formulario-filtrado input[type="text"], .formulario-filtrado textarea{
+    padding: 8px;
+    width:60%;
+}
+  
+.formulario-filtrado textarea{
+    resize: none;
+    height: 150px;
+}
+  
+.formulario-filtrado input[type="submit"]{
+    border: grey 5px outset;
+    color: black;
+    padding: 10px;
+}
+
+
+.formulario-filtrado .boton {
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+/***********************************************************************/
 /*                                 CONTACTO                           */
 .info-contacto {
     flex: 85%;
@@ -688,7 +734,7 @@ p.titulo-lateral{
     text-decoration: none;
     color: #222;
 }
-          
+        
 .formulario{
     padding: 20px;
 }
@@ -828,6 +874,7 @@ p.titulo-lateral{
 .lista-recetas {
     overflow-wrap: break-word;
     flex: 85%;
+    background-color: #feffd4;
     padding: 10px;
     border: 1px solid rgb(120, 194, 0);
 }
@@ -990,4 +1037,30 @@ input[type="checkbox"]{
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+<<<<<<< HEAD
+=======
+}
+
+#contenedor-categorias{
+    margin: auto;
+    width: 20%;
+}
+
+#contenedor-categorias-filtro {
+    margin-top: 20px;
+}
+
+#contenedor-categorias-filtro label {
+    margin: 10px;
+}
+
+#contenedor-tipo-ordenacion {
+    margin-top: 20px;
+}
+
+.checkmark2 {
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+>>>>>>> e559da76f65805edbfd1a105f52b125f9454e831
 }
