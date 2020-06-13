@@ -43,6 +43,31 @@ function recetas($id_receta){
     return $datos;
 }
 
+function pedirDatosRecetaEditar($id_receta){
+    $datos = recetas($id_receta);
+
+    $ingredientes = array();
+    $i=0;
+    foreach($datos['ingredientes'] as $ingrediente){
+        $ingredientes[$i] = $ingrediente;
+        $i++;
+    }
+
+    $datos['ingredientes'] = implode("#", $ingredientes);
+
+    $preparacion = array();
+    $i=0;
+    foreach($datos['preparacion'] as $prep){
+        $preparacion[$i] = $prep;
+        $i++;
+    }
+
+    $datos['preparacion'] = implode("#", $preparacion);
+    $datos['categorias'] = explode(", ", $datos['categorias']);
+
+    return $datos;
+}
+
 function todasRecetas(){
     $recetas = pedirTodasRecetas();
 

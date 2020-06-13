@@ -13,6 +13,9 @@ require_once 'View/listado.php';
 require_once 'View/registro.php';
 require_once 'View/nueva_receta.php';
 require_once 'View/logs.php';
+require_once 'View/gestion_usuarios.php';
+require_once 'View/nuevo_comentario.php';
+
 require_once 'Controller/usuarios.php';
 require_once 'Controller/contacto.php';
 require_once 'Controller/recetas.php';
@@ -140,27 +143,19 @@ function renderizarListadoUsuario(){
 }
 
 
-function renderizarNuevaReceta($categorias){
+function renderizarNuevaReceta($categorias,$nueva){
     $admin = sesionIniciada();
     $cantidad = countRecetas();
+
+    if(!$nueva)
+        $datos = pedirDatosRecetaEditar($_GET['idreceta']);
+    else
+        $datos = NULL;
 
     HTMLinicio();
     HTMLcabecera();
     HTMLnav($admin);
-    HTMLnueva_receta($categorias);
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
-    HTMLfooter();
-    HTMLfin();
-}
-
-function renderizarNuevaRecetaError(){
-    $admin = sesionIniciada();
-    $cantidad = countRecetas();
-
-    HTMLinicio();
-    HTMLcabecera();
-    HTMLnav($admin);
-    HTMLnueva_recetaError();
+    HTMLnueva_receta($categorias,$nueva,$datos);
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
     HTMLfin();
@@ -192,6 +187,32 @@ function renderizarLogs($datos){
     HTMLcabecera();
     HTMLnav($admin);
     HTMLlogs($datos);
+    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    HTMLfooter();
+    HTMLfin();
+}
+
+function renderizarGestionUsuarios(){
+    $admin = sesionIniciada();
+    $cantidad = countRecetas();
+
+    HTMLinicio();
+    HTMLcabecera();
+    HTMLnav($admin);
+    HTMLgestionUsuarios();
+    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    HTMLfooter();
+    HTMLfin();
+}
+
+function renderizarNuevoComentario(){
+    $admin = sesionIniciada();
+    $cantidad = countRecetas();
+
+    HTMLinicio();
+    HTMLcabecera();
+    HTMLnav($admin);
+    HTMLnuevoComentario();
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
     HTMLfin();

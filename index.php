@@ -54,10 +54,15 @@ switch($_SERVER['REQUEST_METHOD']){
             case 'nueva_receta':
                 if(sesionIniciada()){
                     $categorias = pedirCategorias();
-                    renderizarNuevaReceta($categorias);
+                    renderizarNuevaReceta($categorias,1);
                 }
                 else
                     renderizarUltimaReceta();
+            break;
+
+            case 'receta-editar':
+                $categorias = pedirCategorias();
+                renderizarNuevaReceta($categorias,0);
             break;
 
             case 'registro':
@@ -65,13 +70,20 @@ switch($_SERVER['REQUEST_METHOD']){
             break;
 
             case 'usuario-editar':
-                echo "AAAAAAAAAAAAAAAAAA";
                 renderizarEditarUsuario(0);
             break;
 
             case 'logs':
                 $datos = pedirLog();
                 renderizarLogs($datos);
+            break;
+
+            case 'gestion-usuarios':
+                renderizarGestionUsuarios();
+            break;
+
+            case 'nuevo-comentario':
+                renderizarNuevoComentario();
             break;
         }
     break;
@@ -107,19 +119,15 @@ switch($_SERVER['REQUEST_METHOD']){
 
             case 'nueva-receta':
                 $res = subirNuevaReceta();
+                renderizarListado();
+            break;
 
-                if(!$res)
-                    renderizarNuevaRecetaError();
-                else
-                    renderizarListado();    
+            case 'editar-receta':
+                
             break;
 
             case 'subir-paso-receta':
                 subirPasosReceta();
-            break;
-
-            case 'receta-editar':
-                echo "EDITAR RECETA";
             break;
 
             case 'receta-eliminar':

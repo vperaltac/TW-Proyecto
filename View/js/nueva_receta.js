@@ -4,12 +4,26 @@ const input_imgs = document.getElementsByClassName("imgs-pasos");
 const preview1 = document.getElementsByClassName("img-pasos-preview");
 const img_paso = document.getElementsByClassName("img-paso-receta");
 const boton_img_paso = document.getElementsByClassName("btn-pasos");
-const enviar_receta  = document.getElementById("nuevaReceta");
+
+if(document.getElementById('peticion').value == "nueva-receta"){
+    var enviar_receta  = document.getElementById("nuevaReceta");
+}
+else{
+    var enviar_receta  = document.getElementById("editarReceta");
+}
+
 const checkedBoxes = document.getElementsByName("categoria");
 
 enviar_receta.addEventListener("click", function(e){
     e.preventDefault();
 
+    var pet = "";
+    if(document.getElementById('peticion').value == "nueva-receta"){
+        pet = "nueva-receta";
+    }
+    else{
+        pet = "editar-receta";
+    }
 
     const titulo = document.getElementById("new-titulo").value;
     const descripcion = document.getElementById("new-descripcion").value;
@@ -19,7 +33,7 @@ enviar_receta.addEventListener("click", function(e){
     const img = input.files[0];
 
     let datos_receta = new FormData();
-    datos_receta.append('peticion','nueva-receta');
+    datos_receta.append('peticion',pet);
     datos_receta.append('titulo',titulo);
     datos_receta.append('descripcion',descripcion);
     datos_receta.append('ingredientes',ingredientes);
@@ -50,7 +64,8 @@ enviar_receta.addEventListener("click", function(e){
         request.open('POST',"index.php");
         request.send(data);
         request.onload = function(){
-            window.location.href = "index.php?acc=listado";
+            //window.location.href = "index.php?acc=listado";
+            console.log(request.response);
         }
     }
 });

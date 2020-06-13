@@ -7,7 +7,11 @@
 */
 
 function HTMLreceta($datos){
-//print_r($datos);
+    if($_SESSION["id_usuario"] == $datos['idautor'])
+        $receta_propia = 1;
+    else
+        $receta_propia = 0;
+
 echo <<< HTML
     <main id="bloque-principal">
         <section class="informacion">
@@ -93,6 +97,10 @@ echo <<< HTML
             </section>
             
             <section class="paginas">
+HTML;
+
+if($receta_propia or $_SESSION['tipo'] == "administrador"){
+echo <<< HTML
                 <form action="index.php" method="post">
                     <input type="hidden" value="receta-eliminar" name="peticion" />
 HTML;
@@ -103,16 +111,24 @@ echo <<< HTML
                     <input class="btn-eliminar-receta" type="image" src="View/img/close.png" />
                 </form>
 
-                <form action="index.php" method="post">
-                    <input type="hidden" value="receta-editar" name="peticion" />
+                <form action="index.php" method="get">
+                    <input type="hidden" value="receta-editar" name="acc" />
 HTML;
 echo '<input type="hidden" value='.$datos['idautor'].' name="idautor" />';
 echo '<input type="hidden" value='.$datos['id'].' name="idreceta" />';
 echo <<< HTML
                     <input class="btn-editar-receta" type="image" src="View/img/edit.png" />
                 </form>
+HTML;
+}
 
-                <form action="index.php" method="post">
+echo <<< HTML
+                <form action="index.php" method="get">
+HTML;
+
+echo '<input type="hidden" value='.$datos['id'].' name="receta" />';
+echo <<< HTML
+                    <input type="hidden" value="nuevo-comentario" name="acc" />
                     <input class="btn-comentar-receta" type="image" src="View/img/mail.png" />
                 </form>
             </section>

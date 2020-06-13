@@ -6,28 +6,47 @@
         - Jesús Ruiz Castellano
 */
 
-function HTMLnueva_receta($categorias){
+function HTMLnueva_receta($categorias,$nueva,$datos){
+    if($nueva){
+        $input = '<input type="hidden" id="peticion" value="nueva-receta" name="peticion" />';
+        $input .= '<input class="boton" type="submit" value="Añadir receta" name="nuevaReceta" id="nuevaReceta">';
+        $titulo = '<h1>Añadir nueva receta</h1>';
+    }
+    else{
+        $input = '<input type="hidden" id="peticion" value="editar-receta" name="peticion" />';
+        $input .= '<input class="boton" type="submit" value="Editar receta" name="editarReceta" id="editarReceta">';
+        $titulo = '<h1>Editar receta</h1>';
+    }
+
+    
 echo <<< HTML
 <main id="bloque-principal">
     <section class="info-contacto">
     
     <div class="cabecera-receta">
-        <h2>Añadir nueva receta</h2>
+        $titulo
     </div>
     
     <form class="formulario" method="POST" enctype="multipart/form-data">
         <div class="grupo-formulario">
             <label>Título: </label> 
-            <input type="text" name="titulo" id="new-titulo">
-            
-            <label>Descripción:</label>
-            <textarea type="text" name="descripcion" id="new-descripcion"></textarea>
-
-            <label>Ingredientes: (separar ingredientes con #)</label> <textarea type="text" name="ingredientes" id="new-ingredientes"></textarea>
-
-            <label>Preparación: (separar pasos con #)</label>
-            <textarea type="text" name="preparacion" id="new-preparacion"></textarea>
 HTML;
+
+echo "<input type ='text' name='titulo' id='new-titulo' value='$datos[nombre]'>";
+echo '<label>Descripción:</label>';
+echo '<textarea type="text" id="new-descripcion" name="descripcion">';
+echo $datos['descripcion'];
+echo "</textarea>";
+
+echo '<label>Ingredientes: (separar ingredientes con #)</label>';
+echo '<textarea type="text" id="new-ingredientes" name="ingredientes">';
+echo $datos['ingredientes'];
+echo "</textarea>";
+
+echo '<label>Preparación: (separar pasos con #)</label>';
+echo '<textarea type="text" id="new-preparacion" name="preparacion">';
+echo $datos['preparacion'];
+echo "</textarea>";
 
 foreach($categorias as $categoria){
 echo <<< HTML
@@ -35,9 +54,15 @@ echo <<< HTML
         <label class="checkcontainer">$categoria[nombre]
 HTML;
 
-echo '<input type="checkbox" class="categoria" id="c1" name="categoria" value='.$categoria['nombre'].'>';
+if(in_array($categoria['nombre'],$datos['categorias']))
+    echo '<input type="checkbox" checked class="categoria" id="c1" name="categoria" value='.$categoria['nombre'].'>';
+else
+    echo '<input type="checkbox" class="categoria" id="c1" name="categoria" value='.$categoria['nombre'].'>';
+
+echo '<span class="checkmark">';
+
+echo '</span>';
 echo <<< HTML
-            <span class="checkmark"></span>
         </label> 
     </div>
 HTML;
@@ -53,8 +78,7 @@ HTML;
 
 echo '<input type="hidden" id="idautor" name="idautor" value='.$_SESSION['id_usuario'].'>'; 
 echo <<< HTML
-            <input type="hidden" value="nueva-receta" name="peticion" />
-            <input class="boton" type="submit" value="Añadir receta" name="nuevaReceta" id="nuevaReceta">
+            $input
     </form>
 
     <div class="cabecera-receta">
@@ -88,71 +112,5 @@ echo <<< HTML
 </div>
 
 <script type="text/javascript" src="View/js/nueva_receta.js"></script>
-HTML;
-}
-
-function HTMLnueva_recetaError($data){
-echo <<< HTML
-<main id="bloque-principal">
-    <section class="info-contacto">
-    <p class="text-error">Es obligatorio rellenar todos los campos</p>
-    <h2>Añadir nueva receta</h2>
-    <form class="formulario" method="POST">
-        <div class="grupo-formulario">
-            <label>Título: </label> 
-HTML;
-
-echo '<input type ="text" name="titulo" value='.$_POST['titulo'].'>'; 
-
-echo <<< HTML
-
-            <label>Autor:</label> 
-HTML;
-echo '<input type ="text" name="autor" value='.$_POST['autor'].'>'; 
-echo <<< HTML
-<label>Categoría:</label>
-HTML;
-echo '<input type ="text" name="categoria" value='.$_POST['categoria'].'>'; 
-
-echo '<label>Descripción:</label>';
-echo '<textarea type="text" name="descripcion">';
-echo $_POST['descripcion'];
-echo "</textarea>";
-
-echo '<label>Ingredientes: (separar ingredientes con #)</label>';
-echo '<textarea type="text" name="ingredientes">';
-echo $_POST['ingredientes'];
-echo "</textarea>";
-
-echo '<label>Preparación: (separar pasos con #)</label>';
-echo '<textarea type="text" name="preparacion">';
-echo $_POST['preparacion'];
-echo "</textarea>";
-
-echo <<< HTML
-            <label for="dificultad">Dificultad:</label>
-            <select name="dificultad">
-                <option value="facil">Fácil</option>
-                <option value="dificil">Difícil</option>
-            </select>
-
-            <label>Tiempo:</label> 
-HTML;
-
-echo '<input type ="text" name="tiempo" value='.$_POST['tiempo'].'>'; 
-
-echo <<< HTML
-            <p>Imagen:
-                <input name="img" type="file" id="imgPrincipal"/>
-                <img src="" id="imgPrincipal-preview" width="150">
-            </p>
-
-            <input type="hidden" value="nueva-receta" name="peticion" />
-            <input class="boton" type="submit" value="Añadir evento" name="guardarEvento" id="guardarEvento">
-    </form>
-    </section>
-</div>
-
-<script type="text/javascript" src="View/js/preview_imgs.js"></script>
 HTML;
 }
