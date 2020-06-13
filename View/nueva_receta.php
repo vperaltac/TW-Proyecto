@@ -54,7 +54,7 @@ echo <<< HTML
         <label class="checkcontainer">$categoria[nombre]
 HTML;
 
-if(in_array($categoria['nombre'],$datos['categorias']))
+if($datos['categorias'] != "" and in_array($categoria['nombre'],$datos['categorias']))
     echo '<input type="checkbox" checked class="categoria" id="c1" name="categoria" value='.$categoria['nombre'].'>';
 else
     echo '<input type="checkbox" class="categoria" id="c1" name="categoria" value='.$categoria['nombre'].'>';
