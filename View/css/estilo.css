@@ -1037,8 +1037,6 @@ input[type="checkbox"]{
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-<<<<<<< HEAD
-=======
 }
 
 #contenedor-categorias{
@@ -1062,5 +1060,4 @@ input[type="checkbox"]{
     height: 25px;
     width: 25px;
     background-color: #eee;
->>>>>>> e559da76f65805edbfd1a105f52b125f9454e831
 }
