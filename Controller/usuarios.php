@@ -27,7 +27,7 @@ function cerrarSesion(){
     if (session_status() == PHP_SESSION_NONE)
         session_start();
 
-    registrarAccesoUsuario($_SESSION["nombre"],$_SESSION['apellidos'],$_SESSION["email"],'logout');
+    registrarAccionUsuario('logout');
     // Eliminar la sesión
     session_destroy();
 }
@@ -37,7 +37,7 @@ function pedirRegistrarUsuario(){
     $hash = password_hash($_POST['psw'],PASSWORD_DEFAULT);
 
     registrarUsuario($_POST['nombre'],$_POST['apellidos'],$_POST['email'],$imagen,$hash);
-    registrarAccesoUsuario($_POST['nombre'],$_POST['apellidos'],$_POST['email'],'nuevo-usuario');
+    registrarAccionUsuario('nuevo-usuario');
 }
 
 function pedirEditarUsuario(){
@@ -61,6 +61,8 @@ function pedirEditarUsuario(){
     $_SESSION["apellidos"]     = $datos["apellidos"];
     $_SESSION["tipo"]          = $datos["tipo"];
     $_SESSION["imgUsuario"]    = $datos["foto"];
+
+    registrarAccionUsuario('editar-usuario');
 }
 
 function pedirDatosUsuario(){
@@ -83,7 +85,7 @@ function pedirIniciarSesion(){
         $_SESSION["tipo"]    = $inicio["tipo"];
         $_SESSION["imgUsuario"]    = $inicio["foto"];
 
-        registrarAccesoUsuario($inicio["nombre"],$_SESSION['apellidos'],$inicio["email"],'login');
+        registrarAccionUsuario('login');
     }
     else{
         registrarIntentoAcceso($_SERVER['REMOTE_ADDR'],$_POST['uname']);

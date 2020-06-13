@@ -6,6 +6,7 @@
         - Jesús Ruiz Castellano
 */
 require_once 'Model/comentarios.php';
+require_once 'Model/log.php';
 require_once 'Controller/utils.php';
 
 function pedirComentarios($id_receta){
@@ -17,4 +18,5 @@ function subirComentario(){
         session_start();
 
     nuevoComentario($_POST['idreceta'],$_SESSION['id_usuario'],$_POST['descripcion']);
+    registrarAccionUsuario('nuevo-comentario');
 }

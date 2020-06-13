@@ -6,13 +6,23 @@
         - Jesús Ruiz Castellano
 */
 
-function registrarAccesoUsuario($nombre,$apellidos,$email,$accion){
-    $descripcion = "El usuario " . $nombre . " ". $apellidos . " (" . $email . ")";
+function registrarAccionUsuario($accion){
+    if (session_status() == PHP_SESSION_NONE)
+        session_start();
+
+    $descripcion = "El usuario " . $_SESSION['nombre'] . " ". $_SESSION['apellidos'] . " (" . $_SESSION['email'] . ")";
 
     switch($accion){
         case 'nuevo-usuario':
             $descripcion .= " ha sido registrado en el sistema";
         break;
+
+        case 'editar-usuario':
+            $descripcion .= " ha editado su información personal";
+        break;
+
+        case 'eliminar-usuario':
+            $descripcion .= " ha borrado un usuario";
 
         case 'login':
             $descripcion .= " accede al sistema";
@@ -20,6 +30,30 @@ function registrarAccesoUsuario($nombre,$apellidos,$email,$accion){
 
         case 'logout':
             $descripcion .= " sale del sistema";
+        break;
+
+        case 'nueva-receta':
+            $descripcion .= " ha añadido una receta";
+        break;
+
+        case 'editar-receta':
+            $descripcion .= " ha editado una receta";
+        break;
+
+        case 'eliminar-receta':
+            $descripcion .= " ha borrado una receta";
+        break;
+
+        case 'nuevo-comentario':
+            $descripcion .= " ha añadido un comentario";
+        break;
+
+        case 'editar-comentario':
+            $descripcion .= " ha editado un comentario";
+        break;
+
+        case 'eliminar-comentario':
+            $descripcion .= " ha borrado un comentario";
         break;
     }
 

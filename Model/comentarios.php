@@ -14,7 +14,7 @@ function getComentarios($id_receta){
     // real_escape_string añade \ junto a caracteres potencialmente peligrosos (\x00,\n,\r,\,'," y \x1a.)
     $id_receta = $mysqli->real_escape_string($id_receta);
 
-    $peticion = $mysqli->query("SELECT comentarios.id, comentarios.idreceta, comentarios.idusuario, comentarios.comentario, comentarios.fecha, usuarios.nombre, usuarios.apellidos FROM comentarios INNER JOIN usuarios ON comentarios.idusuario = usuarios.id WHERE idreceta='$id_receta';");
+    $peticion = $mysqli->query("SELECT comentarios.id, comentarios.idreceta, comentarios.idusuario, comentarios.comentario, comentarios.fecha, usuarios.nombre, usuarios.apellidos FROM comentarios INNER JOIN usuarios ON comentarios.idusuario = usuarios.id WHERE idreceta='$id_receta' ORDER BY comentarios.fecha;");
     $comentarios = array();
     $i=0;
     while($fila = $peticion->fetch_assoc()){

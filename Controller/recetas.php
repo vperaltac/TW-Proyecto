@@ -10,7 +10,6 @@ require_once 'Model/usuarios.php';
 require_once 'Model/recetas.php';
 require_once 'Controller/utils.php';
 
-// obtener datos sobre eventos
 function recetas($id_receta){
     if($id_receta == -1)
         $datos = getRecetaRandom();
@@ -121,6 +120,7 @@ function subirNuevaReceta(){
     $imagen = subirImagen("img");
     
     nuevaReceta($nombre,$idautor,$descripcion,$ingredientes,$preparacion,$categorias_receta,$imagen);
+    registrarAccionUsuario('nueva-receta');
     return true;
 }
 
@@ -149,6 +149,8 @@ function pedirEliminarReceta(){
         $nueva_receta = getRecetaRandom();
         setcookie($_SESSION['id_usuario'],$nueva_receta['id'], time() + (86400 * 30), "/");
     }
+
+    registrarAccionUsuario('eliminar-receta');
 }
 
 function pedirEditarReceta(){
@@ -182,5 +184,6 @@ function pedirEditarReceta(){
         $imagen = NULL;
 
     editarReceta($idreceta,$nombre,$descripcion,$ingredientes,$preparacion,$categorias_receta,$imagen);
+    registrarAccionUsuario('editar-receta');
     return true;
 }
