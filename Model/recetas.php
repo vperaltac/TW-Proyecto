@@ -176,11 +176,11 @@ function eliminarReceta($id_receta){
     $sentencia->execute();
 }
 
-function editarReceta($idreceta,$nombre,$idautor,$descripcion,$ingredientes,$preparacion,$categorias_receta,$imagen){
+function editarReceta($idreceta,$nombre,$descripcion,$ingredientes,$preparacion,$categorias_receta,$imagen){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
 
-    $peticion = $mysqli->query("UPDATE recetas SET nombre='$nombre',idautor='$idautor',descripcion='$descripcion',ingredientes='$ingredientes',preparacion='$preparacion' WHERE id='$idreceta';");
+    $peticion = $mysqli->query("UPDATE recetas SET nombre='$nombre',descripcion='$descripcion',ingredientes='$ingredientes',preparacion='$preparacion' WHERE id='$idreceta';");
 
     if($imagen != NULL)
         $peticion = $mysqli->query("UPDATE recetas SET imagen='$imagen' WHERE id='$idreceta';");

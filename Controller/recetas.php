@@ -168,7 +168,6 @@ function pedirEditarReceta(){
     }
 
     $nombre = $_POST['titulo'];
-    $idautor  = $_POST['idautor'];
     $idreceta = $_POST['idreceta'];
     $descripcion = $_POST['descripcion'];
     $ingredientes = $_POST['ingredientes'];
@@ -182,6 +181,6 @@ function pedirEditarReceta(){
     else
         $imagen = NULL;
 
-    editarReceta($idreceta,$nombre,$idautor,$descripcion,$ingredientes,$preparacion,$categorias_receta,$imagen);
+    editarReceta($idreceta,$nombre,$descripcion,$ingredientes,$preparacion,$categorias_receta,$imagen);
     return true;
 }
