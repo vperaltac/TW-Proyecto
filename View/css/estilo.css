@@ -1048,6 +1048,10 @@ input[type="checkbox"]{
     margin-top: 20px;
 }
 
+#contenedor-categorias-filtro .checkcontainer{
+    padding-left: 30px;
+}
+
 #contenedor-categorias-filtro label {
     margin: 10px;
 }
