@@ -102,6 +102,8 @@ nav a{
 
 .comentario {
     background-color: rgb(255, 219, 219);
+    margin-bottom: 6px;
+    display: flex;
 }
 
 .comentario-fecha, .comentario-usuario{
@@ -113,13 +115,14 @@ nav a{
 }
 
 .botones-gestion-comentarios {
-    margin-left: 50px;
+    float: right;
+    margin-left: auto;
     margin-right: 5px;
 }
 
 .botones-gestion-comentarios form {
-    width: 40px;
-    height: 40px;
+    width: 15px;
+    height: 15px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -484,7 +487,8 @@ table#tabla-log {
 }
 
 .botones-user-gestion {
-    margin-left: 50px;
+    float: right;
+    margin-left: auto;
     margin-right: 5px;
 }
 
