@@ -107,6 +107,22 @@ nav a{
 .comentario-fecha, .comentario-usuario{
     color: rgb(139, 63, 120);
 }
+
+.botones-gestion-comentarios .btn-edit-com, .btn-del-com {
+    width: 100%;
+}
+
+.botones-gestion-comentarios {
+    margin-left: 50px;
+    margin-right: 5px;
+}
+
+.botones-gestion-comentarios form {
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 /***********************************************************************/
 
 

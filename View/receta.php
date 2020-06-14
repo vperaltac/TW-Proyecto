@@ -90,6 +90,20 @@ echo <<< HTML
                     <div class="comentario-fecha">$comentario[fecha].</div>
                     <div class="comentario-usuario">$comentario[nombre] $comentario[apellidos]</div>
                     <div class="comentario-texto">$comentario[comentario]</div>    
+                
+                    <div class="botones-gestion-comentarios">
+						<form action="index.php" method="get">
+							<input type="hidden" value="30" name="edi-user">
+							<input type="hidden" value="edit-user" name="acc">
+			        		<input class="btn-edit-com" type="image" src="View/img/pencil.png">
+			    		</form>
+						<form action="index.php" method="get">
+							<input type="hidden" value="30" name="de-user">
+							<input type="hidden" value="del-user" name="acc">
+			        		<input class="btn-del-com" type="image" src="View/img/delete.png">
+			    		</form>
+					</div>
+
                 </div>
 HTML;
 }
