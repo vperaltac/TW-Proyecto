@@ -79,10 +79,12 @@ function getRecetasFiltradas($titulo,$texto,$ordenacion,$categorias){
         $order = "ORDER BY nombre";
     elseif($ordenacion == 'masComentadas')
         $order = "ORDER BY n_comentarios DESC";
+    elseif($ordenacion == 'masPuntuacion')
+        $order = "ORDER BY valoraciones";
     else
         $order = "";
 
-    $peticion = $mysqli->query("SELECT * FROM (SELECT recetas.*, (SELECT COUNT(*) FROM comentarios WHERE comentarios.idreceta = recetas.id) AS n_comentarios FROM recetas) as rec WHERE rec.nombre LIKE '%$titulo%' AND (rec.descripcion LIKE '%$texto%' OR rec.ingredientes LIKE '%$texto%' OR rec.preparacion LIKE '%$texto%') $order;");
+    $peticion = $mysqli->query("SELECT *,(SELECT COUNT(*) FROM valoraciones WHERE valoraciones.idreceta = TTT.id) AS valoraciones FROM (SELECT * FROM (SELECT recetas.*, (SELECT COUNT(*) FROM comentarios WHERE comentarios.idreceta = recetas.id) AS n_comentarios FROM recetas) as rec WHERE rec.nombre LIKE '%$titulo%' AND (rec.descripcion LIKE '%$texto%' OR rec.ingredientes LIKE '%$texto%' OR rec.preparacion LIKE '%$texto%')) AS TTT $order;");
     $recetas = array();
     $i=0;
     while($fila = $peticion->fetch_assoc()){
