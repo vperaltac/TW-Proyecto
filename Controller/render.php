@@ -41,7 +41,10 @@ function renderizarReceta(){
     $datos['comentarios'] = pedirComentarios($datos['id']);
     $datos['valoracion'] = pedirValoracionReceta($datos['id']);
     HTMLreceta($datos);
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+
+    $ranking = pedirRankingRecetas();
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();
 }
@@ -78,7 +81,9 @@ function renderizarUltimaReceta(){
         HTMLreceta($datos);    
     }
 
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    $ranking = pedirRankingRecetas(); 
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();
 }
@@ -92,7 +97,9 @@ function renderizarContacto(){
     HTMLcabecera();
     HTMLnav($admin);
     HTMLcontacto();
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    $ranking = pedirRankingRecetas(); 
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();
 }
@@ -106,7 +113,9 @@ function renderizarContactoEnviado($errores){
         HTMLcabecera();
         HTMLnav($admin);
         HTMLcontactoExito();
-        HTMLsidebar($admin,$cantidad['COUNT(*)']);
+        $ranking = pedirRankingRecetas(); 
+        $masComentadas = pedirRecetasMasComentadas();
+        HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
         HTMLfooter();
         HTMLfin();
     }
@@ -118,7 +127,9 @@ function renderizarContactoEnviado($errores){
         HTMLcabecera();
         HTMLnav($admin);
         HTMLcontactoError($errores,$_POST);
-        HTMLsidebar($admin,$cantidad['COUNT(*)']);
+        $ranking = pedirRankingRecetas(); 
+        $masComentadas = pedirRecetasMasComentadas();
+        HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
         HTMLfooter();
         HTMLfin();
     }
@@ -134,7 +145,9 @@ function renderizarListado(){
 
     $recetas = todasRecetas();
     HTMLlistado($recetas);
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    $ranking = pedirRankingRecetas(); 
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();        
 }
@@ -149,7 +162,9 @@ function renderizarListadoUsuario(){
 
     $recetas = todasRecetasUsuario();
     HTMLlistado($recetas);
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    $ranking = pedirRankingRecetas(); 
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();        
 }
@@ -164,7 +179,9 @@ function renderizarListadoFiltrado(){
 
     $recetas = pedirListadoFiltrado();
     HTMLlistado($recetas);
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    $ranking = pedirRankingRecetas(); 
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();
 }
@@ -178,7 +195,9 @@ function renderizarFiltrar($categorias){
     HTMLcabecera();
     HTMLnav($admin);
     HTMLfiltrar($categorias);
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    $ranking = pedirRankingRecetas(); 
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();
 }
@@ -196,7 +215,9 @@ function renderizarNuevaReceta($categorias,$nueva){
     HTMLcabecera();
     HTMLnav($admin);
     HTMLnueva_receta($categorias,$nueva,$datos);
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    $ranking = pedirRankingRecetas(); 
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();
 }
@@ -214,7 +235,9 @@ function renderizarEditarUsuario($registro){
     HTMLcabecera();
     HTMLnav($admin);
     HTMLeditarUsuario($registro,$datos);
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    $ranking = pedirRankingRecetas(); 
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();
 }
@@ -227,7 +250,9 @@ function renderizarLogs($datos){
     HTMLcabecera();
     HTMLnav($admin);
     HTMLlogs($datos);
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    $ranking = pedirRankingRecetas(); 
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();
 }
@@ -242,7 +267,9 @@ function renderizarGestionUsuarios(){
 
     $datos = pedirTodosUsuarios();
     HTMLgestionUsuarios($datos);
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    $ranking = pedirRankingRecetas(); 
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();
 }
@@ -255,7 +282,9 @@ function renderizarGestionDB(){
     HTMLcabecera();
     HTMLnav($admin);
     HTMLgestionDB();
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    $ranking = pedirRankingRecetas(); 
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();
 }
@@ -268,7 +297,9 @@ function renderizarGestionCategorias($categorias){
     HTMLcabecera();
     HTMLnav($admin);
     HTMLgestionCategorias($categorias);
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    $ranking = pedirRankingRecetas(); 
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();
 }
@@ -282,7 +313,9 @@ function renderizarNuevoComentario(){
     HTMLcabecera();
     HTMLnav($admin);
     HTMLnuevoComentario($_GET['idreceta']);
-    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    $ranking = pedirRankingRecetas(); 
+    $masComentadas = pedirRecetasMasComentadas();
+    HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
     HTMLfooter();
     HTMLfin();
 }

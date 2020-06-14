@@ -266,3 +266,48 @@ function getValoracionReceta($idreceta){
 
     return $valoracion['AVG(valoracion)'];
 }
+
+function getRankingRecetas(){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT idreceta,avg(valoracion) FROM valoraciones GROUP BY idreceta ORDER BY avg(valoracion) DESC LIMIT 3");
+    $ranking = array();
+    $i=0;
+    while($fila = $peticion->fetch_assoc()){
+        $ranking[$i] = $fila;
+        $i++;
+    }
+
+    $p2 = $mysqli->query("SELECT id,nombre FROM recetas;");
+    $recetas = array();
+    $i=0;
+    while($fila = $p2->fetch_assoc()){
+        $recetas[$i] = $fila;
+        $i++;
+    }
+
+    for ($i = 0; $i < sizeof($ranking); $i++) {
+        foreach($recetas as $receta){
+            if($receta['id'] == $ranking[$i]['idreceta'])
+                $ranking[$i]['nombre'] = $receta['nombre'];
+        }
+    }
+
+    return $ranking;
+}
+
+function getRecetasMasComentadas(){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT recetas.id,recetas.nombre, (SELECT COUNT(*) FROM comentarios WHERE comentarios.idreceta = recetas.id) AS n_comentarios FROM recetas ORDER BY n_comentarios DESC LIMIT 3");
+    $ranking = array();
+    $i=0;
+    while($fila = $peticion->fetch_assoc()){
+        $ranking[$i] = $fila;
+        $i++;
+    }
+
+    return $ranking;
+}
