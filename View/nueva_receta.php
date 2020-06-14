@@ -54,6 +54,7 @@ echo <<< HTML
         <label class="checkcontainer">$categoria[nombre]
 HTML;
 
+
 if($datos['categorias'] != "" and in_array($categoria['nombre'],$datos['categorias']))
     echo '<input type="checkbox" checked class="categoria" id="c1" name="categoria" value='.$categoria['nombre'].'>';
 else
@@ -72,45 +73,77 @@ echo <<< HTML
 
             <p>Imagen:
                 <input name="img" type="file" id="imgPrincipal"/>
-                <img src="" id="imgPrincipal-preview" width="150">
-            </p>
 HTML;
 
+if($nueva)
+    echo '<img src="" id="imgPrincipal-preview" width="150">';
+else
+    echo '<img src='.$datos['imagen'].' id="imgPrincipal-preview" width="150">';
+
+echo "</p>";
 echo '<input type="hidden" id="idautor" name="idautor" value='.$_SESSION['id_usuario'].'>'; 
+echo '<input type="hidden" id="idreceta" name="idreceta" value='.$datos['id'].'>'; 
+
+/* if(!$nueva and sizeof($datos['pasos']) > 0){
+    echo <<< HTML
+    <div class="cabecera-receta">
+        <h2>Fotos de la receta</h2>
+    </div>
+HTML;
+
+    echo '<div class="galeria-editar">';
+
+    foreach($datos['pasos'] as $paso){
+        echo "<div class='galeria-imagen-editar'><img src='$paso[fichero]'></div>";
+    }
+    echo '</div>';
+}
+*/
+
 echo <<< HTML
-            $input
+    $input
     </form>
+HTML;
+
+if($nueva){
+echo <<< HTML
 
     <div class="cabecera-receta">
-        <h2>Fotografías adjuntas</h2>
+    <h2>Fotografías adjuntas</h2>
     </div>
 
     <div id="imgs-pasos-receta">
 HTML;
 
 echo <<< HTML
-        <div class="img-paso-receta">
-            <img src="" class="img-pasos-preview" width="150">
-            <input type="hidden" class="btn-eliminar btn-pasos" name="logout" value="Borrar" />
-            <input name="img-pasos" type="file" class="imgs-pasos"/>
-        </div>
+    <div class="img-paso-receta">
+        <img src="" class="img-pasos-preview" width="150">
+        <input type="hidden" class="btn-eliminar btn-pasos" name="logout" value="Borrar" />
+        <input name="img-pasos" type="file" class="imgs-pasos"/>
+    </div>
 HTML;
 
 
 for ($x = 0; $x <= 10; $x++) {
 echo <<< HTML
-        <div hidden class="img-paso-receta">
-            <img src="" class="img-pasos-preview" width="150">
-            <input type="hidden" class="btn-eliminar btn-pasos" name="logout" value="Borrar" />
-            <input name="img-pasos" type="file" class="imgs-pasos"/>
-        </div>
+    <div hidden class="img-paso-receta">
+        <img src="" class="img-pasos-preview" width="150">
+        <input type="hidden" class="btn-eliminar btn-pasos" name="logout" value="Borrar" />
+        <input name="img-pasos" type="file" class="imgs-pasos"/>
+    </div>
 HTML;
+}
+
 }
 
 echo <<< HTML
     </section>
 </div>
-
-<script type="text/javascript" src="View/js/nueva_receta.js"></script>
+<script type="text/javascript" src="View/js/utils.js"></script>
 HTML;
+
+if($nueva)
+    echo '<script type="text/javascript" src="View/js/nueva_receta.js"></script>';
+else
+    echo '<script type="text/javascript" src="View/js/editar_receta.js"></script>';
 }

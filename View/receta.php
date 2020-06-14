@@ -7,7 +7,7 @@
 */
 
 function HTMLreceta($datos){
-    if($_SESSION["id_usuario"] == $datos['idautor'])
+    if(isset($_SESSION['id_usuario']) and $_SESSION["id_usuario"] == $datos['idautor'])
         $receta_propia = 1;
     else
         $receta_propia = 0;
@@ -81,21 +81,20 @@ foreach($datos['pasos'] as $paso)
 
 echo <<< HTML
             </div>
-
             <section class="comentarios">
-                <div class="comentario">
-                    <div class="comentario-fecha">10/07/2020.</div>
-                    <div class="comentario-usuario">Juanita Pérez</div>
-                    <div class="comentario-texto">Hmmmmm ... ¡qué buena pinta tiene!</div>    
-                </div>
+HTML;
 
+foreach($datos['comentarios'] as $comentario){
+echo <<< HTML
                 <div class="comentario">
-                    <div class="comentario-fecha">12/07/2020.</div>
-                    <div class="comentario-usuario">Anónimo</div>
-                    <div class="comentario-texto">Sí, mañana lo voy a probar y ya os contaré</div>    
+                    <div class="comentario-fecha">$comentario[fecha].</div>
+                    <div class="comentario-usuario">$comentario[nombre] $comentario[apellidos]</div>
+                    <div class="comentario-texto">$comentario[comentario]</div>    
                 </div>
+HTML;
+}
+echo <<< HTML
             </section>
-            
             <section class="paginas">
 HTML;
 
@@ -108,7 +107,7 @@ HTML;
 echo '<input type="hidden" value='.$datos['idautor'].' name="idautor" />';
 echo '<input type="hidden" value='.$datos['id'].' name="idreceta" />';
 echo <<< HTML
-                    <input class="btn-eliminar-receta" type="image" src="View/img/close.png" />
+                    <input class="btn-eliminar-receta" id="btn-eliminar-receta" type="image" src="View/img/close.png" />
                 </form>
 
                 <form action="index.php" method="get">
@@ -126,12 +125,13 @@ echo <<< HTML
                 <form action="index.php" method="get">
 HTML;
 
-echo '<input type="hidden" value='.$datos['id'].' name="receta" />';
+echo '<input type="hidden" value='.$datos['id'].' name="idreceta" />';
 echo <<< HTML
                     <input type="hidden" value="nuevo-comentario" name="acc" />
                     <input class="btn-comentar-receta" type="image" src="View/img/mail.png" />
                 </form>
             </section>
         </section>
+        <script type="text/javascript" src="View/js/eliminar_receta.js"></script>
 HTML;
 }

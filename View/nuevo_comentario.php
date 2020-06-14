@@ -6,7 +6,7 @@
         - Jesús Ruiz Castellano
 */
 
-function HTMLnuevoComentario(){
+function HTMLnuevoComentario($idreceta){
 echo <<< HTML
 <main id="bloque-principal">
     <section class="info-contacto">
@@ -25,8 +25,13 @@ echo <<< HTML
     </form>
 
     	<div class="formulario">
-	        <input type="hidden" value="nuevo-filtro" name="peticion" />
-	        <input class="boton" type="submit" value="Comentar" name="aplicarFiltro" id="aplicarFiltro">
+HTML;
+
+
+echo '<input type="hidden" value='.$idreceta.' name="idreceta" />';
+echo '<input type="hidden" value="nuevo-comentario" name="peticion" />';
+echo <<< HTML
+            <input class="boton" type="submit" value="Comentar" name="aplicarFiltro" id="aplicarFiltro">
         </div>
 
     </section>

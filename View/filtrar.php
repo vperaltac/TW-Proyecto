@@ -1,6 +1,6 @@
 <?php
 
-function HTMLfiltrar(){
+function HTMLfiltrar($categorias){
 echo <<< HTML
 <main id="bloque-principal">
     <section class="informacion">
@@ -16,42 +16,24 @@ echo <<< HTML
 
             <label>Buscar en receta: </label> 
             <input type="text" name="buscaRec" id="buscaRec">
-            
+
             <div id="contenedor-categorias-filtro">
-                <label class="checkcontainer">Carnes
-                <span class="checkmark"></span>
-                    <input type="checkbox" class="categoria" id="c1" name="categoria" value="carnes">
-                    
-                </label> 
-                <label class="checkcontainer">Pescados
-                    <input type="checkbox" class="categoria" id="c2" name="categoria" value="pescados">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkcontainer">Arroz
-                    <input type="checkbox" class="categoria" id="c3" name="categoria" value="arroz">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkcontainer">Sopa
-                    <input type="checkbox" class="categoria" id="c4" name="categoria" value="sopa">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkcontainer">Fácil
-                    <input type="checkbox" class="categoria" id="c5" name="categoria" value="facil">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkcontainer">Difícil
-                    <input type="checkbox" class="categoria" id="c6" name="categoria" value="dificil">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkcontainer">Ligero
-                    <input type="checkbox" class="categoria" id="c7" name="categoria" value="ligero">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkcontainer">Pesado
-                    <input type="checkbox" class="categoria" id="c8" name="categoria" value="pesado">
-                    <span class="checkmark"></span>
-                </label>
-            </div> 
+HTML;
+
+
+foreach($categorias as $categoria){
+echo <<< HTML
+        <label class="checkcontainer">$categoria[nombre]
+HTML;
+
+echo '<input type="checkbox" class="categoria" id="c1" name='.$categoria['nombre'].' value='.$categoria['nombre'].'>';
+echo <<< HTML
+            <span class="checkmark"></span>
+        </label> 
+HTML;
+}
+
+echo <<< HTML
         </div>           
     	</form>
 
@@ -88,7 +70,7 @@ echo <<< HTML
         </div>
 
         <div class="formulario-filtrado">
-	        <input type="hidden" value="nuevo-filtro" name="peticion" />
+	        <input type="hidden" value="filtro" name="peticion" />
 	        <input class="boton" type="submit" value="Aplicar criterios de ordenación y búsqueda" name="aplicarFiltro" id="aplicarFiltro">
         </div>
 

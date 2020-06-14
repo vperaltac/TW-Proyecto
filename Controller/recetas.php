@@ -10,7 +10,6 @@ require_once 'Model/usuarios.php';
 require_once 'Model/recetas.php';
 require_once 'Controller/utils.php';
 
-// obtener datos sobre eventos
 function recetas($id_receta){
     if($id_receta == -1)
         $datos = getRecetaRandom();
@@ -102,7 +101,6 @@ function subirNuevaReceta(){
         return false;
 
     $categorias = getCategorias();
-    print_r($categorias);
 
     $categorias_receta = array();
     $i = 0;
@@ -113,9 +111,6 @@ function subirNuevaReceta(){
         }
     }
 
-    print_r($categorias_receta);
-
-
     $nombre = $_POST['titulo'];
     $idautor  = $_POST['idautor'];
     $descripcion = $_POST['descripcion'];
@@ -125,6 +120,7 @@ function subirNuevaReceta(){
     $imagen = subirImagen("img");
     
     nuevaReceta($nombre,$idautor,$descripcion,$ingredientes,$preparacion,$categorias_receta,$imagen);
+    registrarAccionUsuario('nueva-receta');
     return true;
 }
 
@@ -153,4 +149,61 @@ function pedirEliminarReceta(){
         $nueva_receta = getRecetaRandom();
         setcookie($_SESSION['id_usuario'],$nueva_receta['id'], time() + (86400 * 30), "/");
     }
+
+    registrarAccionUsuario('eliminar-receta');
+}
+
+function pedirEditarReceta(){
+    if($_POST['titulo'] == "" or $_POST['idautor'] == "" or $_POST['descripcion'] == "" or $_POST['ingredientes'] == "" or $_POST['preparacion'] == "")
+        return false;
+
+
+    $categorias = getCategorias();
+
+    $categorias_receta = array();
+    $i = 0;
+    foreach($categorias as $categoria){
+        if(isset($_POST[$categoria['nombre']])){
+            $categorias_receta[$i] = $categoria['id'];
+            $i++;
+        }
+    }
+
+    $nombre = $_POST['titulo'];
+    $idreceta = $_POST['idreceta'];
+    $descripcion = $_POST['descripcion'];
+    $ingredientes = $_POST['ingredientes'];
+    $preparacion = $_POST['preparacion'];
+
+    if(!$_FILES['img']['name'] == ""){
+        $imagen = subirImagen("img");
+        $datos_antiguos = recetas($idreceta);
+        unlink($datos_antiguos['imagen']);
+    }
+    else
+        $imagen = NULL;
+
+    editarReceta($idreceta,$nombre,$descripcion,$ingredientes,$preparacion,$categorias_receta,$imagen);
+    registrarAccionUsuario('editar-receta');
+    return true;
+}
+
+function pedirListadoFiltrado(){
+    $recetas = todasRecetas();
+
+    $categorias = getCategorias();
+    $categorias_receta = array();
+    $i = 0;
+    foreach($categorias as $categoria){
+        if(isset($_POST[$categoria['nombre']])){
+            $categorias_receta[$i] = $categoria['nombre'];
+            $i++;
+        }
+    }
+
+    $titulo = ((isset($_POST['buscaTit']) and $_POST['buscaTit']) != "" ? $_POST['buscaTit'] : null);
+    $texto = ((isset($_POST['buscaRec']) and $_POST['buscaRec']) != "" ? $_POST['buscaRec'] : null);
+    $ordenacion = ((isset($_POST['ordenacion']) and $_POST['ordenacion']) != "" ? $_POST['ordenacion'] : null);
+
+    return getRecetasFiltradas($titulo,$texto,$ordenacion,$categorias_receta);
 }

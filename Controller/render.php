@@ -22,6 +22,7 @@ require_once 'View/filtrar.php';
 require_once 'Controller/usuarios.php';
 require_once 'Controller/contacto.php';
 require_once 'Controller/recetas.php';
+require_once 'Controller/comentarios.php';
 
 function renderizarReceta(){
     $admin = sesionIniciada();
@@ -37,6 +38,8 @@ function renderizarReceta(){
     HTMLcabecera();
     HTMLnav($admin);
     $datos = recetas($_GET['r']);
+    $datos['comentarios'] = pedirComentarios($datos['id']);
+
     HTMLreceta($datos);
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
@@ -57,15 +60,18 @@ function renderizarUltimaReceta(){
     if(isset($_SESSION['id_usuario'])){
         if(!isset($_COOKIE[$_SESSION['id_usuario']])) {
             $datos = recetas(-1);
+            $datos['comentarios'] = pedirComentarios($datos['id']);
             HTMLreceta($datos);    
         }
         else{
             $datos = recetas($_COOKIE[$_SESSION['id_usuario']]);
+            $datos['comentarios'] = pedirComentarios($datos['id']);
             HTMLreceta($datos);
         }
     }
     else{
         $datos = recetas(-1);
+        $datos['comentarios'] = pedirComentarios($datos['id']);
         HTMLreceta($datos);    
     }
 
@@ -145,14 +151,30 @@ function renderizarListadoUsuario(){
     HTMLfin();        
 }
 
-function renderizarFiltrar(){
+function renderizarListadoFiltrado(){
     $admin = sesionIniciada();
     $cantidad = countRecetas();
 
     HTMLinicio();
     HTMLcabecera();
     HTMLnav($admin);
-    HTMLfiltrar();
+
+    $recetas = pedirListadoFiltrado();
+    HTMLlistado($recetas);
+    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    HTMLfooter();
+    HTMLfin();
+}
+
+
+function renderizarFiltrar($categorias){
+    $admin = sesionIniciada();
+    $cantidad = countRecetas();
+
+    HTMLinicio();
+    HTMLcabecera();
+    HTMLnav($admin);
+    HTMLfiltrar($categorias);
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
     HTMLfin();
@@ -254,7 +276,7 @@ function renderizarNuevoComentario(){
     HTMLinicio();
     HTMLcabecera();
     HTMLnav($admin);
-    HTMLnuevoComentario();
+    HTMLnuevoComentario($_GET['idreceta']);
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
     HTMLfin();
