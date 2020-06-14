@@ -241,3 +241,26 @@ function editarReceta($idreceta,$nombre,$descripcion,$ingredientes,$preparacion,
         $add_categorias->execute();    
     }
 }
+
+function evaluarReceta($idreceta,$idusuario,$valor){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT COUNT(*) FROM valoraciones WHERE idusuario='$idusuario' AND idreceta='$idreceta';");
+    $fila = $peticion->fetch_assoc();
+    
+    if($fila['COUNT(*)'] != 0)
+        $peticion = $mysqli->query("UPDATE valoraciones SET idreceta='$idreceta',idusuario='$idusuario',valoracion='$valor' WHERE idusuario='$idusuario';");
+    else
+        $peticion = $mysqli->query("INSERT INTO valoraciones (idreceta,idusuario,valoracion) VALUES('$idreceta','$idusuario','$valor');");
+}
+
+function getValoracionReceta($idreceta){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT AVG(valoracion) FROM valoraciones WHERE idreceta='$idreceta';");
+    $valoracion = $peticion->fetch_assoc();
+
+    return $valoracion['AVG(valoracion)'];
+}

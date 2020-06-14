@@ -12,6 +12,8 @@ function HTMLreceta($datos){
     else
         $receta_propia = 0;
 
+    
+echo '<input type="hidden" id="valoracion" value='.$datos['valoracion'].' name="valoracion">';
 echo <<< HTML
     <main id="bloque-principal">
         <section class="informacion">
@@ -21,15 +23,15 @@ echo <<< HTML
                     <p class="clasificacion">
                         <!-- Para vincular una etiqueta <label> con un elemento de entrada <input>,  el valor del atributo for de <label> tiene que ser igual al valor del atributo id del <input>
                         Los comentarios son para que las estrellas aparezcan juntas -->
-                        <input id="radio1" type="radio" name="estrellas" value="5"><!--
+                        <input id="radio1" class="estrellas" type="radio" name="estrellas" value="5"><!--
                         --><label for="radio1">★</label><!--
-                        --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+                        --><input id="radio2" class="estrellas" type="radio" name="estrellas" value="4"><!--
                         --><label for="radio2">★</label><!--
-                        --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+                        --><input id="radio3" class="estrellas" type="radio" name="estrellas" value="3"><!--
                         --><label for="radio3">★</label><!--
-                        --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+                        --><input id="radio4" class="estrellas" type="radio" name="estrellas" value="2"><!--
                         --><label for="radio4">★</label><!--
-                        --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+                        --><input id="radio5" class="estrellas" type="radio" name="estrellas" value="1"><!--
                         --><label for="radio5">★</label>
                   </p>
                 </form>
@@ -146,6 +148,7 @@ echo <<< HTML
                 </form>
             </section>
         </section>
+        <script type="text/javascript" src="View/js/evaluar_receta.js"></script>
         <script type="text/javascript" src="View/js/eliminar_receta.js"></script>
 HTML;
 }

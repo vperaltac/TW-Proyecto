@@ -207,3 +207,13 @@ function pedirListadoFiltrado(){
 
     return getRecetasFiltradas($titulo,$texto,$ordenacion,$categorias_receta);
 }
+
+function pedirEvaluarReceta(){
+    evaluarReceta($_POST['idreceta'],$_POST['idautor'],$_POST['valor']);
+}
+
+function pedirValoracionReceta($idreceta){
+    $valor = getValoracionReceta($idreceta);
+
+    return round($valor);
+}

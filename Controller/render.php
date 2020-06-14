@@ -39,7 +39,7 @@ function renderizarReceta(){
     HTMLnav($admin);
     $datos = recetas($_GET['r']);
     $datos['comentarios'] = pedirComentarios($datos['id']);
-
+    $datos['valoracion'] = pedirValoracionReceta($datos['id']);
     HTMLreceta($datos);
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
