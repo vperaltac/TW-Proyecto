@@ -249,8 +249,8 @@ function evaluarReceta($idreceta,$idusuario,$valor){
     $peticion = $mysqli->query("SELECT COUNT(*) FROM valoraciones WHERE idusuario='$idusuario' AND idreceta='$idreceta';");
     $fila = $peticion->fetch_assoc();
     
-    if($fila['COUNT(*)'] != 0)
-        $peticion = $mysqli->query("UPDATE valoraciones SET idreceta='$idreceta',idusuario='$idusuario',valoracion='$valor' WHERE idusuario='$idusuario';");
+    if($fila['COUNT(*)'] > 0)
+        $peticion = $mysqli->query("UPDATE valoraciones SET idreceta='$idreceta',idusuario='$idusuario',valoracion='$valor' WHERE idusuario='$idusuario' AND idreceta='$idreceta';");
     else
         $peticion = $mysqli->query("INSERT INTO valoraciones (idreceta,idusuario,valoracion) VALUES('$idreceta','$idusuario','$valor');");
 }

@@ -61,17 +61,20 @@ function renderizarUltimaReceta(){
         if(!isset($_COOKIE[$_SESSION['id_usuario']])) {
             $datos = recetas(-1);
             $datos['comentarios'] = pedirComentarios($datos['id']);
+            $datos['valoracion'] = pedirValoracionReceta($datos['id']);
             HTMLreceta($datos);    
         }
         else{
             $datos = recetas($_COOKIE[$_SESSION['id_usuario']]);
             $datos['comentarios'] = pedirComentarios($datos['id']);
+            $datos['valoracion'] = pedirValoracionReceta($datos['id']);
             HTMLreceta($datos);
         }
     }
     else{
         $datos = recetas(-1);
         $datos['comentarios'] = pedirComentarios($datos['id']);
+        $datos['valoracion'] = pedirValoracionReceta($datos['id']);
         HTMLreceta($datos);    
     }
 

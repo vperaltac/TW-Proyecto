@@ -12,7 +12,9 @@ function HTMLreceta($datos){
     else
         $receta_propia = 0;
 
-    
+    if(isset($_SESSION['id_usuario']))
+        echo '<input type="hidden" id="valoracion-idusuario" value='.$_SESSION['id_usuario'].' name="valoracion-idusuario">';
+
 echo '<input type="hidden" id="valoracion" value='.$datos['valoracion'].' name="valoracion">';
 echo <<< HTML
     <main id="bloque-principal">

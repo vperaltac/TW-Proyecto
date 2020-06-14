@@ -13,7 +13,7 @@ for(let i=0;i<input_val.length;i++){
             let datos_eval = new FormData();
             datos_eval.append('peticion','evaluar-receta');
             datos_eval.append('valor',input_val[i].value);
-            datos_eval.append('idautor',idautor[0].value);
+            datos_eval.append('idautor',document.getElementById('valoracion-idusuario').value);
             datos_eval.append('idreceta',idreceta[0].value);
 
             let peticion = new XMLHttpRequest();
