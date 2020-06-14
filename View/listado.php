@@ -31,53 +31,49 @@ HTML;
         echo '<img class="foto-receta-lista" src='.$receta['imagen'].'>';
         echo <<< HTML
 
-                        <section id="info-lista-receta">
-                            <h1>$receta[nombre]</h1>
-                            <p class="info-lista-receta-texto">$receta[descripcion]</p>
-                        </section>                
+                    <section id="info-lista-receta">
+                        <h1>$receta[nombre]</h1>
+                        <p class="info-lista-receta-texto">$receta[descripcion]</p>
+                    </section>                
 
-                        <div class="botones-listado">
-                            <form action="index.php" method="post">
-                                <input type="hidden" value="receta-eliminar" name="peticion" />
-                                <input class="btn-eliminar-receta" id="btn-eliminar-receta" type="image" src="View/img/close.png" />
-                            </form>
+                    <div class="botones-listado">
+                        <form action="index.php" method="post">
+                            <input type="hidden" value="receta-eliminar" name="peticion" />
+                            <input class="btn-eliminar-receta" id="btn-eliminar-receta" type="image" src="View/img/close.png" />
+                        </form>
 
-                            <form action="index.php" method="get">
-                                <input type="hidden" value="receta-editar" name="acc" />
-                                <input class="btn-editar-receta" type="image" src="View/img/edit.png" />
-                            </form>
-                        </div>
-
+                        <form action="index.php" method="get">
+                            <input type="hidden" value="receta-editar" name="acc" />
+                            <input class="btn-editar-receta" type="image" src="View/img/edit.png" />
+                        </form>
                     </div>
-                </a>
-            </div>
 
-
-              
+                </div>
+            </a>
+        </div>    
 HTML;
-    
-    echo <<< HTML
-    <div class="paginas-listado">
-        <form action="index.php" method="post">
-            <input type="hidden" value="receta-eliminar" name="peticion" />
-            <input class="btn-eliminar-receta" id="btn-eliminar-receta" type="image" src="View/img/pprev.png" />
-        </form>
-        <form action="index.php" method="post">
-            <input type="hidden" value="receta-eliminar" name="peticion" />
-            <input class="btn-eliminar-receta" id="btn-eliminar-receta" type="image" src="View/img/rprev.png" />
-        </form>
-        <form action="index.php" method="post">
-            <input type="hidden" value="receta-eliminar" name="peticion" />
-            <input class="btn-eliminar-receta" id="btn-eliminar-receta" type="image" src="View/img/rnext.png" />
-        </form>
-        <form action="index.php" method="get">
-            <input type="hidden" value="receta-editar" name="acc" />
-            <input class="btn-editar-receta" type="image" src="View/img/pnext.png" />
-        </form>
-    </div> 
+}
 
-    }
+echo <<< HTML
+<div class="paginas-listado">
+    <form action="index.php" method="post">
+        <input type="hidden" value="receta-eliminar" name="peticion" />
+        <input class="btn-eliminar-receta" id="btn-eliminar-receta" type="image" src="View/img/pprev.png" />
+    </form>
+    <form action="index.php" method="post">
+        <input type="hidden" value="receta-eliminar" name="peticion" />
+        <input class="btn-eliminar-receta" id="btn-eliminar-receta" type="image" src="View/img/rprev.png" />
+    </form>
+    <form action="index.php" method="post">
+        <input type="hidden" value="receta-eliminar" name="peticion" />
+        <input class="btn-eliminar-receta" id="btn-eliminar-receta" type="image" src="View/img/rnext.png" />
+    </form>
+    <form action="index.php" method="get">
+        <input type="hidden" value="receta-editar" name="acc" />
+        <input class="btn-editar-receta" type="image" src="View/img/pnext.png" />
+    </form>
+</div> 
 HTML;
-    
+
     echo "</section>";
 }
