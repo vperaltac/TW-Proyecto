@@ -236,7 +236,9 @@ function renderizarGestionUsuarios(){
     HTMLinicio();
     HTMLcabecera();
     HTMLnav($admin);
-    HTMLgestionUsuarios();
+
+    $datos = pedirTodosUsuarios();
+    HTMLgestionUsuarios($datos);
     HTMLsidebar($admin,$cantidad['COUNT(*)']);
     HTMLfooter();
     HTMLfin();

@@ -66,7 +66,12 @@ function pedirEditarUsuario(){
 }
 
 function pedirDatosUsuario(){
-    return getDatosUsuario($_SESSION['id_usuario']);
+    if(isset($_GET['idusuario']))
+        $id = $_GET['idusuario'];
+    else
+        $id = $_SESSION['id_usuario'];
+
+    return getDatosUsuario($id);
 }
 
 
@@ -94,4 +99,15 @@ function pedirIniciarSesion(){
 
 function pedirLog(){
     return getLog();
+}
+
+function pedirTodosUsuarios(){
+    return getTodosUsuarios();
+}
+
+function pedirEliminarUsuario(){
+    $usuario = getDatosUsuario($_POST['idusuario']);
+    unlink($usuario['foto']);
+
+    eliminarUsuario($_POST['idusuario']);
 }

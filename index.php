@@ -116,6 +116,11 @@ switch($_SERVER['REQUEST_METHOD']){
                 renderizarListado();
             break;
 
+            case 'usuario-eliminar':
+                pedirEliminarUsuario();
+                renderizarGestionUsuarios();
+            break;
+
             case 'iniciar-sesion':
                 pedirIniciarSesion();
                 renderizarUltimaReceta();

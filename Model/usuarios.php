@@ -97,3 +97,25 @@ function iniciarSesion($correo,$passwd){
 
     return false;
 }
+
+function getTodosUsuarios(){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT * FROM usuarios;");
+    $usuarios = array();
+    $i=0;
+    while($fila = $peticion->fetch_assoc()){
+        $usuarios[$i] = $fila;
+        $i++;
+    }
+
+    return $usuarios;
+}
+
+function eliminarUsuario($idusuario){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $p1 = $mysqli->query("DELETE FROM usuarios WHERE id='$idusuario';");
+}

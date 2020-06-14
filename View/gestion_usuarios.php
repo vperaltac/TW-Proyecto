@@ -1,6 +1,6 @@
 <?php
 
-function HTMLgestionUsuarios(){
+function HTMLgestionUsuarios($usuarios){
 echo <<< HTML
 <main id="bloque-principal">
     <section class="informacion-gestion-users">
@@ -11,27 +11,34 @@ echo <<< HTML
         	<p>Indique la acción a realizar</p>
         </div>
         <div class="acciones">	
-        	<a href="index.php?acc=listado-usuarios">Añadir nuevo</a>	
+        	<a href="index.php?acc=registro">Añadir nuevo</a>	
         </div>
 
         <ul class="listado-usuarios">
+HTML;
+
+foreach($usuarios as $usuario){
+echo <<< HTML
         	<li class="fila-usuario">
 		       	<div class="imagenUser-gestion">
-		       		<img src="View/img/user.jpg">
+HTML;
+
+echo '<img src='.$usuario['foto'].'>';
+echo <<< HTML
 	      		</div>
 				<div class="datos-usuario-gestion">
 					<div class="nombre-email">
 						<div class="nombre">
 							<div class="enunciado">Usuario:</div>
-							<div class="dato">Nombre Usuario</div>
+							<div class="dato">$usuario[nombre] $usuario[apellidos]</div>
 						</div>
 						<div class="email">
 							<div class="enunciado">Email:</div>
-							<div class="dato">usuario@email.com</div>
+							<div class="dato">$usuario[email]</div>
 						</div>
 					</div>
 
-					<div class="dir-tlf">
+<!-- 					<div class="dir-tlf">
 						<div class="dir">
 							<div class="enunciado">Dirección:</div>
 							<div class="dato">dirección usuario, 34</div>
@@ -41,15 +48,15 @@ echo <<< HTML
 							<div class="dato">666789123</div>
 						</div>
 					</div>
-
+ -->
 					<div class="rol-estado">
 						<div class="rol">
 							<div class="enunciado">Rol:</div>
-							<div class="dato">Puto amo</div>
+							<div class="dato">$usuario[tipo]</div>
 						</div>
 						<div class="estado">
 							<div class="enunciado">Estado:</div>
-							<div class="dato">onfire</div>
+							<div class="dato">Activo</div>
 						</div>
 						
 					</div>
@@ -57,71 +64,26 @@ echo <<< HTML
 
 				<div class="botones-user-gestion">
 					<form action="index.php" method="get">
-						<input type="hidden" value="30" name="edi-user">
-						<input type="hidden" value="edit-user" name="acc">
+HTML;
+echo '<input type="hidden" value='.$usuario['id'].' name="idusuario">';
+echo <<< HTML
+						<input type="hidden" value="usuario-editar" name="acc">
 		        		<input class="btn-edit-user" type="image" src="View/img/pencil.png">
 		    		</form>
-					<form action="index.php" method="get">
-						<input type="hidden" value="30" name="de-user">
-						<input type="hidden" value="del-user" name="acc">
+					<form action="index.php" method="post">
+HTML;
+
+echo '<input type="hidden" value='.$usuario['id'].' name="idusuario">';
+echo <<< HTML
+                        <input type="hidden" value="usuario-eliminar" name="peticion">
 		        		<input class="btn-del-user" type="image" src="View/img/delete.png">
 		    		</form>
 				</div>					  
-	        </li>
+            </li>
+HTML;
+}
 
-	        <li class="fila-usuario">
-		       	<div class="imagenUser-gestion">
-		       		<img src="View/img/user.jpg">
-	      		</div>
-				<div class="datos-usuario-gestion">
-					<div class="nombre-email">
-						<div class="nombre">
-							<div class="enunciado">Usuario:</div>
-							<div class="dato">Nombre Usuario user</div>
-						</div>
-						<div class="email">
-							<div class="enunciado">Email:</div>
-							<div class="dato">usuario2@email.com</div>
-						</div>
-					</div>
-
-					<div class="dir-tlf">
-						<div class="dir">
-							<div class="enunciado">Dirección:</div>
-							<div class="dato">dirección usuario, 35</div>
-						</div>
-						<div class="tlf">
-							<div class="enunciado">Teléfono:</div>
-							<div class="dato">666777888</div>
-						</div>
-					</div>
-
-					<div class="rol-estado">
-						<div class="rol">
-							<div class="enunciado">Rol:</div>
-							<div class="dato">menos amo</div>
-						</div>
-						<div class="estado">
-							<div class="enunciado">Estado:</div>
-							<div class="dato">apagado</div>
-						</div>
-						
-					</div>
-				</div>
-
-				<div class="botones-user-gestion">
-					<form action="index.php" method="get">
-						<input type="hidden" value="30" name="edi-user">
-						<input type="hidden" value="edit-user" name="acc">
-		        		<input class="btn-edit-user" type="image" src="View/img/pencil.png">
-		    		</form>
-					<form action="index.php" method="get">
-						<input type="hidden" value="30" name="de-user">
-						<input type="hidden" value="del-user" name="acc">
-		        		<input class="btn-del-user" type="image" src="View/img/delete.png">
-		    		</form>
-				</div>					
-	        </li>		
+echo <<< HTML
 		</ul>
     
     </section>

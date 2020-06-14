@@ -105,6 +105,7 @@ function getRecetasFiltradas($titulo,$texto,$ordenacion,$categorias){
                 $k++;
             }
 
+            sort($arr);
             $res = array_diff($categorias,$arr);
 
             if(sizeof($res) == 0){
@@ -113,6 +114,8 @@ function getRecetasFiltradas($titulo,$texto,$ordenacion,$categorias){
             }
         }
     }
+    else
+        $recetas_finales = $recetas;
 
     return $recetas_finales;
 }
