@@ -440,12 +440,68 @@ table#tabla-log {
     margin-left: 10px;
 }
 
-.listado-usuarios table form {
+
+.datos-usuario-gestion .nombre-email, .dir-tlf, .rol-estado {
+    display: -webkit-inline-box;
+}
+
+.datos-usuario-gestion .dir, .tlf, .rol, .estado, .nombre, .email {
+    display: flex;
+    margin-left: 8px;
+}
+
+.datos-usuario-gestion {
+    display: table-column-group;
+    margin: 10px;
+    margin-top: 20px;
+}
+
+
+
+.botones-user-gestion .btn-edit-user, .btn-del-user {
+    width: 100%;
+}
+
+.imagenUser-gestion img {
+    width: 100px;
+    height: 100px;
+}
+
+.botones-user-gestion {
+    margin-left: 50px;
+    margin-right: 5px;
+}
+
+.botones-user-gestion form {
     width: 40px;
     height: 40px;
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-right: 7px;
+}
+
+.listado-usuarios .datos-usuario-gestion .dato {
+    color: blue;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: inherit;
+    margin-left: 3px;
+}
+
+.listado-usuarios li:nth-child(odd) {
+    background-color: #ffefd4;
+}
+
+.listado-usuarios .fila-usuario {
+    display: inline-flex;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px; 
+    height: 100px;
+    width: auto;
+}
+.listado-usuarios {
+    display: grid;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 /***********************************************************************/
