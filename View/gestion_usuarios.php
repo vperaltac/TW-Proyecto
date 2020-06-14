@@ -88,5 +88,6 @@ echo <<< HTML
     
     </section>
     </div>
+    <script type="text/javascript" src="View/js/eliminar_usuario.js"></script>
 HTML;
 }
