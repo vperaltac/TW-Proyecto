@@ -368,6 +368,58 @@ table#tabla-log {
     padding-top: 15px;
 }
 
+
+/***********************************************************************/
+/*                           GESTIÓN USUARIOS                          */
+
+.informacion-gestion-users {
+    overflow-wrap: break-word;
+    flex: 85%;
+    padding: 10px;
+    border: 1px solid #bc7b69;
+    background-color: #ffd8ce;
+}
+
+
+.cabecera-gestion-users {
+    text-align: center;
+}
+
+
+
+.indicar-accion p {
+    color: black;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-top: 10px; 
+    margin-left: 10px; 
+}
+
+.acciones a {
+    color: #65508b;
+    text-align: left;
+    padding-top: 5px;
+    padding-left: 7px;
+    text-decoration: none;  /*Quita el subrayado*/
+}
+
+.acciones {
+    background-color: #ffefd4;
+    display: grid;
+    justify-content: space-between;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.listado-usuarios table form {
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 7px;
+}
+
 /***********************************************************************/
 /*                          PUNTUACIÓN RECETAS                         */
 
@@ -580,15 +632,7 @@ p.fecha{
     justify-content: flex-end;
 }
 
-.paginas .btn-editar-receta{
-    width: 100%;
-}
-
-.paginas .btn-eliminar-receta{
-    width: 100%;
-}
-
-.paginas .btn-comentar-receta{
+.paginas .btn-editar-receta, .btn-eliminar-receta, .btn-comentar-receta, .btn-edit-user, .btn-del-user {
     width: 100%;
 }
 
