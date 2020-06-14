@@ -71,6 +71,52 @@ function pedirTodasRecetas(){
     return $recetas;
 }
 
+function getRecetasFiltradas($titulo,$texto,$ordenacion,$categorias){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    if($ordenacion == 'alfabetico')
+        $order = "ORDER BY nombre";
+    elseif($ordenacion == 'masComentadas')
+        $order = "ORDER BY n_comentarios DESC";
+    else
+        $order = "";
+
+    $peticion = $mysqli->query("SELECT * FROM (SELECT recetas.*, (SELECT COUNT(*) FROM comentarios WHERE comentarios.idreceta = recetas.id) AS n_comentarios FROM recetas) as rec WHERE rec.nombre LIKE '%$titulo%' AND (rec.descripcion LIKE '%$texto%' OR rec.ingredientes LIKE '%$texto%' OR rec.preparacion LIKE '%$texto%') $order;");
+    $recetas = array();
+    $i=0;
+    while($fila = $peticion->fetch_assoc()){
+        $recetas[$i] = $fila;
+        $i++;
+    }
+
+    sort($categorias); 
+    $recetas_finales = array();
+    $j=0;
+    if(sizeof($categorias) > 0){
+        foreach($recetas as $receta){
+            $catgs = getCategoriasReceta($receta['id']);
+
+            $valido = 1;
+            $arr = array();
+            $k = 0;
+            foreach($catgs as $catg){
+                $arr[$k] = $catg['nombre'];
+                $k++;
+            }
+
+            $res = array_diff($categorias,$arr);
+
+            if(sizeof($res) == 0){
+                $recetas_finales[$j] = $receta;
+                $j++;
+            }
+        }
+    }
+
+    return $recetas_finales;
+}
+
 function getRecetasUsuario($id_usuario){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();

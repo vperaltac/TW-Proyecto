@@ -151,6 +151,22 @@ function renderizarListadoUsuario(){
     HTMLfin();        
 }
 
+function renderizarListadoFiltrado(){
+    $admin = sesionIniciada();
+    $cantidad = countRecetas();
+
+    HTMLinicio();
+    HTMLcabecera();
+    HTMLnav($admin);
+
+    $recetas = pedirListadoFiltrado();
+    HTMLlistado($recetas);
+    HTMLsidebar($admin,$cantidad['COUNT(*)']);
+    HTMLfooter();
+    HTMLfin();
+}
+
+
 function renderizarFiltrar($categorias){
     $admin = sesionIniciada();
     $cantidad = countRecetas();

@@ -153,6 +153,10 @@ switch($_SERVER['REQUEST_METHOD']){
                 subirComentario();
                 renderizarUltimaReceta();
             break;
+
+            case 'filtro':
+                renderizarListadoFiltrado();
+            break;
         }
     break;
 }

@@ -187,3 +187,23 @@ function pedirEditarReceta(){
     registrarAccionUsuario('editar-receta');
     return true;
 }
+
+function pedirListadoFiltrado(){
+    $recetas = todasRecetas();
+
+    $categorias = getCategorias();
+    $categorias_receta = array();
+    $i = 0;
+    foreach($categorias as $categoria){
+        if(isset($_POST[$categoria['nombre']])){
+            $categorias_receta[$i] = $categoria['nombre'];
+            $i++;
+        }
+    }
+
+    $titulo = ((isset($_POST['buscaTit']) and $_POST['buscaTit']) != "" ? $_POST['buscaTit'] : null);
+    $texto = ((isset($_POST['buscaRec']) and $_POST['buscaRec']) != "" ? $_POST['buscaRec'] : null);
+    $ordenacion = ((isset($_POST['ordenacion']) and $_POST['ordenacion']) != "" ? $_POST['ordenacion'] : null);
+
+    return getRecetasFiltradas($titulo,$texto,$ordenacion,$categorias_receta);
+}

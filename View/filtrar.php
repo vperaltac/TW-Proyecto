@@ -26,7 +26,7 @@ echo <<< HTML
         <label class="checkcontainer">$categoria[nombre]
 HTML;
 
-echo '<input type="checkbox" class="categoria" id="c1" name="categoria" value='.$categoria['nombre'].'>';
+echo '<input type="checkbox" class="categoria" id="c1" name='.$categoria['nombre'].' value='.$categoria['nombre'].'>';
 echo <<< HTML
             <span class="checkmark"></span>
         </label> 
@@ -70,7 +70,7 @@ echo <<< HTML
         </div>
 
         <div class="formulario-filtrado">
-	        <input type="hidden" value="nuevo-filtro" name="peticion" />
+	        <input type="hidden" value="filtro" name="peticion" />
 	        <input class="boton" type="submit" value="Aplicar criterios de ordenación y búsqueda" name="aplicarFiltro" id="aplicarFiltro">
         </div>
 
