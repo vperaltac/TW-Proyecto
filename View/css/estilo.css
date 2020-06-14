@@ -747,8 +747,23 @@ p.fecha{
     justify-content: flex-end;
 }
 
-.paginas .btn-editar-receta, .btn-eliminar-receta, .btn-comentar-receta, .btn-edit-user, .btn-del-user {
+.paginas, .botones-listado, .btn-editar-receta, .btn-eliminar-receta, .btn-comentar-receta, .btn-edit-user, .btn-del-user {
     width: 100%;
+}
+
+
+.botones-listado {
+    float: right;
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+.botones-listado form {
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: auto; 
 }
 
 .paginas form {
