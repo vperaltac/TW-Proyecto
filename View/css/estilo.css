@@ -376,6 +376,70 @@ nav a{
     height: auto;
 }
 
+
+/***********************************************************************/
+/*                          GESTIÓN CATERGORÍAS                        */
+
+table#tabla-categorias tr:nth-child(odd) {
+    background-color: #ffefd4;
+}
+
+table#tabla-categorias .formulario-categoria {
+    border-collapse: collapse;
+    float: right;
+    margin-left: auto;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.cabecera-nueva-cat {
+    margin-top: 40px;
+    background-color: #e8b0b2;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px; 
+}
+
+
+.cabecera-categorias {
+    text-align: center;
+}
+
+.formulario-categoria {
+    width: 30px;
+    height: 30px;
+}
+
+.btn-nueva-cat {
+    background-color: #c2bebe;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 4px 2px;
+    width: auto;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.formulario-filtrado .btn-nueva-cat input[type="submit"] {
+    border: grey 5px outset;
+    color: black;
+}
+
+
+
+.btn-cat {
+    float: right;
+    background-color: #c2bebe;
+    border: grey 5px outset;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 4px;
+    width: auto;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 /***********************************************************************/
 /*                          VISTA LOGS SISTEMA                         */
 
@@ -401,6 +465,7 @@ table#tabla-log tr:nth-child(odd) {
     background-color: #ffd8ce;
 }
 
+
 table#tabla-log {
     border-collapse: collapse;
 }
@@ -419,7 +484,7 @@ table#tabla-log {
 /***********************************************************************/
 /*                           GESTIÓN USUARIOS                          */
 
-.informacion-gestion-users {
+.informacion-gestion-users, .informacion-categorias {
     overflow-wrap: break-word;
     flex: 85%;
     padding: 10px;
