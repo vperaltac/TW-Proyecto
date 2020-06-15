@@ -225,3 +225,11 @@ function pedirRankingRecetas(){
 function pedirRecetasMasComentadas(){
     return getRecetasMasComentadas();
 }
+
+function pedirEliminarCategoria(){
+    eliminarCategoria($_POST['idcategoria']);
+}
+
+function pedirNuevaCategoria(){
+    nuevaCategoria($_POST['newCat']);
+}

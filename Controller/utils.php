@@ -7,8 +7,6 @@
 */
 
 function subirImagen($nombre){
-    echo 'Propietario script actual: ' . get_current_user();
-
     $imagen = $_FILES[$nombre];
     $imagen_arr = explode('.',$imagen['name']);
     $imagen_formato = strtolower(end($imagen_arr));

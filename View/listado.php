@@ -35,19 +35,33 @@ HTML;
                         <h1>$receta[nombre]</h1>
                         <p class="info-lista-receta-texto">$receta[descripcion]</p>
                     </section>                
+HTML;
 
+if((isset($_SESSION['tipo']) and $_SESSION['tipo'] == 'administrador') or (isset($_SESSION['id_usuario']) and $_SESSION['id_usuario'] == $receta['idautor'])){
+echo <<< HTML
                     <div class="botones-listado">
                         <form action="index.php" method="post">
+HTML;
+echo '<input type="hidden" value='.$receta['idautor'].' name="idautor" />';
+echo '<input type="hidden" value='.$receta['id'].' name="idreceta" />';
+echo <<< HTML
                             <input type="hidden" value="receta-eliminar" name="peticion" />
                             <input class="btn-eliminar-receta" id="btn-eliminar-receta" type="image" src="View/img/close.png" />
                         </form>
 
                         <form action="index.php" method="get">
+HTML;
+echo '<input type="hidden" value='.$receta['idautor'].' name="idautor" />';
+echo '<input type="hidden" value='.$receta['id'].' name="idreceta" />';
+echo <<< HTML
                             <input type="hidden" value="receta-editar" name="acc" />
                             <input class="btn-editar-receta" type="image" src="View/img/edit.png" />
                         </form>
                     </div>
+HTML;
+}
 
+echo <<< HTML
                 </div>
             </a>
         </div>    
@@ -76,4 +90,5 @@ echo <<< HTML
 HTML;
 
     echo "</section>";
+    echo '<script type="text/javascript" src="View/js/eliminar_receta.js"></script>';
 }

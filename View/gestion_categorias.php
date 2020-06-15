@@ -14,7 +14,6 @@ echo <<< HTML
 
         <ul class="items-log">
     <table id="tabla-categorias" style="width:100%">
-    
 HTML;
 
     foreach($datos as $dato){
@@ -23,7 +22,10 @@ HTML;
         echo <<< HTML
             <div class="formulario-categoria">
             <form action="index.php" method="post">
-                <input type="hidden" value="usuario-eliminar" name="peticion">
+HTML;
+        echo '<input type="hidden" value='.$dato['id'].' name="idcategoria" />';
+        echo <<< HTML
+                <input type="hidden" value="eliminar-categoria" name="peticion">
                 <input class="btn-del-user" type="image" src="View/img/delete.png">
             </form>
             </div></td>
@@ -44,10 +46,9 @@ echo <<< HTML
             <input type="text" name="newCat" id="newCat">
 
             <form action="index.php" method="get">
-                <input type="hidden" value="nueva-categoria" name="acc">
+                <input type="hidden" value="nueva-categoria" name="peticion">
                 <input class="btn-nueva-cat" type="submit" value="Añadir">
             </form>
-
         </form>
 
     </section>

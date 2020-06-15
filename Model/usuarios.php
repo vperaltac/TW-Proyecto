@@ -40,11 +40,6 @@ function registrarUsuario($nombre,$apellidos,$email,$foto,$passwd){
         $sentencia = $mysqli->prepare("INSERT INTO usuarios (nombre,apellidos,email,foto,password,tipo) VALUES (?,?,?,?,?,?);");
         $sentencia->bind_param("ssssss",$nombre,$apellidos,$email,$foto,$passwd,$tipo);
         $sentencia->execute();
-
-        echo "Correcto";
-    }
-    else{
-        echo "Error: el usuario indicado ya existe";
     }
 }
 

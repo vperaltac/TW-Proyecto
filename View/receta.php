@@ -94,7 +94,10 @@ echo <<< HTML
                     <div class="comentario-fecha">$comentario[fecha].</div>
                     <div class="comentario-usuario">$comentario[nombre] $comentario[apellidos]</div>
                     <div class="comentario-texto">$comentario[comentario]</div>    
-                
+HTML;
+
+if(isset($_SESSION['id_usuario']) and ($_SESSION['id_usuario'] == $comentario['idusuario'] or $_SESSION['tipo'] == 'administrador')){
+echo <<< HTML
                     <div class="botones-gestion-comentarios">
 						<form action="index.php" method="get">
 HTML;
@@ -113,15 +116,17 @@ echo <<< HTML
 			        		<input class="btn-del-com" type="image" src="View/img/delete.png">
 			    		</form>
 					</div>
-                </div>
 HTML;
+}
+
+echo '</div>';
 }
 echo <<< HTML
             </section>
             <section class="paginas">
 HTML;
 
-if($receta_propia or $_SESSION['tipo'] == "administrador"){
+if($receta_propia or (isset($_SESSION['tipo']) and $_SESSION['tipo'] == "administrador")){
 echo <<< HTML
                 <form action="index.php" method="post">
                     <input type="hidden" value="receta-eliminar" name="peticion" />
@@ -144,6 +149,7 @@ echo <<< HTML
 HTML;
 }
 
+if(isset($_SESSION['id_usuario'])){
 echo <<< HTML
                 <form action="index.php" method="get">
 HTML;
@@ -153,6 +159,10 @@ echo <<< HTML
                     <input type="hidden" value="nuevo-comentario" name="acc" />
                     <input class="btn-comentar-receta" type="image" src="View/img/mail.png" />
                 </form>
+HTML;
+}
+
+echo <<< HTML
             </section>
         </section>
         <script type="text/javascript" src="View/js/evaluar_receta.js"></script>

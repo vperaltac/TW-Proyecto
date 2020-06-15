@@ -79,12 +79,10 @@ function getRecetasFiltradas($titulo,$texto,$ordenacion,$categorias){
         $order = "ORDER BY nombre";
     elseif($ordenacion == 'masComentadas')
         $order = "ORDER BY n_comentarios DESC";
-    elseif($ordenacion == 'masPuntuacion')
-        $order = "ORDER BY valoraciones";
     else
-        $order = "";
+        $order = "ORDER BY nombre";
 
-    $peticion = $mysqli->query("SELECT *,(SELECT COUNT(*) FROM valoraciones WHERE valoraciones.idreceta = TTT.id) AS valoraciones FROM (SELECT * FROM (SELECT recetas.*, (SELECT COUNT(*) FROM comentarios WHERE comentarios.idreceta = recetas.id) AS n_comentarios FROM recetas) as rec WHERE rec.nombre LIKE '%$titulo%' AND (rec.descripcion LIKE '%$texto%' OR rec.ingredientes LIKE '%$texto%' OR rec.preparacion LIKE '%$texto%')) AS TTT $order;");
+    $peticion = $mysqli->query("SELECT recetas.*, (SELECT COUNT(*) FROM comentarios WHERE comentarios.idreceta = recetas.id) AS n_comentarios FROM recetas WHERE recetas.nombre LIKE '%$titulo%' AND (recetas.descripcion LIKE '%$texto%' OR recetas.ingredientes LIKE '%$texto%' OR recetas.preparacion LIKE '%$texto%') $order;");
     $recetas = array();
     $i=0;
     while($fila = $peticion->fetch_assoc()){
@@ -118,6 +116,19 @@ function getRecetasFiltradas($titulo,$texto,$ordenacion,$categorias){
     }
     else
         $recetas_finales = $recetas;
+
+    $ranking = getRankingRecetas();
+    for ($i = 0; $i < sizeof($recetas_finales); $i++) {
+        foreach($ranking as $rank){
+            if($rank['nombre'] == $recetas_finales[$i]['nombre']){
+                $recetas_finales[$i]['valoracion'] = $rank['avg(valoracion)'];
+            }
+        }
+    }    
+
+    if($ordenacion == 'masPuntuacion'){
+        usort($recetas_finales, function ($a, $b) { return $b['valoracion'] - $a['valoracion']; });
+    }
 
     return $recetas_finales;
 }
@@ -310,4 +321,18 @@ function getRecetasMasComentadas(){
     }
 
     return $ranking;
+}
+
+function eliminarCategoria($idcategoria){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("DELETE FROM listacategorias WHERE id='$idcategoria';");
+}
+
+function nuevaCategoria($nombre){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("INSERT INTO listacategorias (nombre) VALUES ('$nombre');");
 }

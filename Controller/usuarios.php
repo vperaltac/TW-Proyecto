@@ -44,9 +44,20 @@ function pedirEditarUsuario(){
     if (session_status() == PHP_SESSION_NONE)
         session_start();
 
+    if($_POST['email'] == $_SESSION['email'])
+        $usuario_propio = 1;
+    else
+        $usuario_propio = 0;
+
     if(!$_FILES['img']['name'] == ""){
         $imagen = subirImagen("img");
-        $datos_usuario = getDatosUsuario($_SESSION['id_usuario']);
+
+        if(isset($_POST['idusuario']))
+            $id = $_POST['idusuario'];
+        else
+            $id = $_SESSION['id_usuario'];
+
+        $datos_usuario = getDatosUsuario($id);
         unlink($datos_usuario['foto']);
     }
     else
@@ -55,12 +66,14 @@ function pedirEditarUsuario(){
     $hash = password_hash($_POST['psw'],PASSWORD_DEFAULT);
     $datos = editarUsuario($_POST['nombre'],$_POST['apellidos'],$_POST['email'],$imagen,$hash);
 
-    $_SESSION["id_usuario"]    = $datos["id"];
-    $_SESSION["email"]         = $datos["email"];         
-    $_SESSION["nombre"]        = $datos["nombre"];
-    $_SESSION["apellidos"]     = $datos["apellidos"];
-    $_SESSION["tipo"]          = $datos["tipo"];
-    $_SESSION["imgUsuario"]    = $datos["foto"];
+    if($usuario_propio){
+        $_SESSION["id_usuario"]    = $datos["id"];
+        $_SESSION["email"]         = $datos["email"];         
+        $_SESSION["nombre"]        = $datos["nombre"];
+        $_SESSION["apellidos"]     = $datos["apellidos"];
+        $_SESSION["tipo"]          = $datos["tipo"];
+        $_SESSION["imgUsuario"]    = $datos["foto"];    
+    }
 
     registrarAccionUsuario('editar-usuario');
 }

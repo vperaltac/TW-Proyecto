@@ -14,6 +14,7 @@ function HTMLeditarUsuario($registro,$datos){
     }
     else{
         $input = '<input type="hidden" value="usuario-editar" name="peticion" />';
+        $input .= '<input type="hidden" value='.$datos['id'].' name="idusuario" />';
         $input .= '<input class="boton" type="submit" value="Editar" name="" id="boton-registro">';
         $titulo = '<h1>Editar usuario</h1>';
     }
