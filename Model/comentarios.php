@@ -76,8 +76,6 @@ function eliminarComentario($id_receta,$id_comentario){
     $id_receta = $mysqli->real_escape_string($id_receta);
     $id_comentario = $mysqli->real_escape_string($id_comentario);
 
-    $sentencia = $mysqli->prepare("DELETE FROM comentarios WHERE id_receta=? AND id_comentario=?");
-    $sentencia->bind_param("ss",$id_receta,$id_comentario);
-    $sentencia->execute();
+    $sentencia = $mysqli->query("DELETE FROM comentarios WHERE idreceta='$id_receta' AND id='$id_comentario'");
 }
 ?>

@@ -101,13 +101,15 @@ echo <<< HTML
 							<input type="hidden" value="edit-user" name="acc">
 			        		<input class="btn-edit-com" type="image" src="View/img/pencil.png">
 			    		</form>
-						<form action="index.php" method="get">
-							<input type="hidden" value="30" name="de-user">
-							<input type="hidden" value="del-user" name="acc">
+						<form action="index.php" method="post">
+HTML;
+echo '<input type="hidden" value='.$datos['id'].' name="idreceta">';
+echo '<input type="hidden" value='.$comentario['id'].' name="idcomentario">';
+echo <<< HTML
+                            <input type="hidden" value="eliminar-comentario" name="peticion">
 			        		<input class="btn-del-com" type="image" src="View/img/delete.png">
 			    		</form>
 					</div>
-
                 </div>
 HTML;
 }

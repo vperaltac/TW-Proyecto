@@ -20,3 +20,7 @@ function subirComentario(){
     nuevoComentario($_POST['idreceta'],$_SESSION['id_usuario'],$_POST['descripcion']);
     registrarAccionUsuario('nuevo-comentario');
 }
+
+function pedirEliminarComentario(){
+    eliminarComentario($_POST['idreceta'],$_POST['idcomentario']);
+}
