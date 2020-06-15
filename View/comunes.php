@@ -50,7 +50,7 @@ HTML;
 }
 
 
-function HTMLsidebar($conectado,$cantidad){
+function HTMLsidebar($conectado,$cantidad,$ranking,$masComentadas){
     $widget_login = <<< HTML
         <section class="campo-lateral">
         <form action="index.php" id="login" method="post">
@@ -118,7 +118,6 @@ HTML;
 
 echo <<< HTML
     <aside class="barra-lateral">
-
     $widget_login
 
     <section id="mas-valoradas" class="campo-lateral">
@@ -127,19 +126,43 @@ echo <<< HTML
         </div>
 
         <ol>
-            <li>Risotto de calabaza y champiñones</li>
-            <li>Pollo al salmorejo</li>
-            <li>Ensalada de espinacas y mango</li>
-        </ol>
-    </section>
+HTML;
 
-    <section id="n-recetas" class="campo-lateral">
+    foreach($ranking as $rank){
+        echo '<li>'.$rank['nombre'].'</li>';
+    }
+echo <<< HTML
+    </ol>
+    </section>
+HTML;
+
+echo <<< HTML
+    <section id="mas-valoradas" class="campo-lateral">
         <div class=cabecera-aside>
-            <h2>nº recetas</h2>
+            <h2>+ comentadas</h2>
         </div>
+        <ol>
+HTML;
 
-        <p>el sitio contiene $cantidad recetas diferentes</p>
-    </section>
+foreach($masComentadas as $masC){
+    echo '<li>'.$masC['nombre'].'</li>';
+}
+echo <<< HTML
+</ol>
+</section>
+
+HTML;
+
+
+echo <<< HTML
+<section id="n-recetas" class="campo-lateral">
+    <div class=cabecera-aside>
+        <h2>nº recetas</h2>
+    </div>
+
+    <p>el sitio contiene $cantidad recetas diferentes</p>
+</section>
+
     </aside>
     </main>
 HTML;

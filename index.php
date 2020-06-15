@@ -164,6 +164,11 @@ switch($_SERVER['REQUEST_METHOD']){
                 renderizarUltimaReceta();
             break;
 
+            case 'eliminar-comentario':
+                pedirEliminarComentario();
+                renderizarUltimaReceta();
+            break;
+
             case 'filtro':
                 renderizarListadoFiltrado();
             break;

@@ -217,3 +217,11 @@ function pedirValoracionReceta($idreceta){
 
     return round($valor);
 }
+
+function pedirRankingRecetas(){
+    return getRankingRecetas();
+}
+
+function pedirRecetasMasComentadas(){
+    return getRecetasMasComentadas();
+}
