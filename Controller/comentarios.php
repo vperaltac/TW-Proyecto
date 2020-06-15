@@ -23,4 +23,14 @@ function subirComentario(){
 
 function pedirEliminarComentario(){
     eliminarComentario($_POST['idreceta'],$_POST['idcomentario']);
+    registrarAccionUsuario('eliminar-comentario');
+}
+
+function pedirDatosComentario(){
+    return getDatosComentario($_GET['idcomentario']);
+}
+
+function pedirEditarComentario(){
+    editarComentario($_POST['idcomentario'],$_POST['descripcion']);
+    registrarAccionUsuario('editar-comentario');
 }

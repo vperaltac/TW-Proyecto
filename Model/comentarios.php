@@ -54,19 +54,21 @@ function nuevoComentario($idreceta,$idusuario,$comentario){
     $sentencia->execute();
 }
 
-function editarComentario($id_receta,$id_comentario,$nuevo_texto,$moderador){
+function getDatosComentario($idcomentario){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
 
-    $id_receta = $mysqli->real_escape_string($id_receta);
-    $id_comentario = $mysqli->real_escape_string($id_comentario);
-    $nuevo_texto = $mysqli->real_escape_string($nuevo_texto);
-    $moderador = $mysqli->real_escape_string($moderador);
+    $peticion = $mysqli->query("SELECT * FROM comentarios WHERE id='$idcomentario';");
+    $comentario = $peticion->fetch_assoc();
 
-    $sentencia = $mysqli->prepare("UPDATE comentarios SET texto=?,editado=? WHERE id_receta=? AND id_comentario=?");
-    $sentencia->bind_param("ssii",$nuevo_texto,$moderador,$id_receta,$id_comentario);
-    $sentencia->execute();
-    echo "Comentario cambiado";
+    return $comentario;
+}
+
+function editarComentario($idcomentario,$texto){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $sentencia = $mysqli->query("UPDATE comentarios SET comentario='$texto',fecha=NOW() WHERE id='$idcomentario'");
 }
 
 function eliminarComentario($id_receta,$id_comentario){

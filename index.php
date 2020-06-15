@@ -98,7 +98,11 @@ switch($_SERVER['REQUEST_METHOD']){
             break;
 
             case 'nuevo-comentario':
-                renderizarNuevoComentario();
+                renderizarNuevoComentario(1);
+            break;
+
+            case 'editar-comentario':
+                renderizarNuevoComentario(0);
             break;
         }
     break;
@@ -161,6 +165,11 @@ switch($_SERVER['REQUEST_METHOD']){
 
             case 'nuevo-comentario':
                 subirComentario();
+                renderizarUltimaReceta();
+            break;
+
+            case 'editar-comentario':
+                pedirEditarComentario();
                 renderizarUltimaReceta();
             break;
 

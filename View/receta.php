@@ -97,8 +97,11 @@ echo <<< HTML
                 
                     <div class="botones-gestion-comentarios">
 						<form action="index.php" method="get">
-							<input type="hidden" value="30" name="edi-user">
-							<input type="hidden" value="edit-user" name="acc">
+HTML;
+echo '<input type="hidden" value='.$datos['id'].' name="idreceta">';
+echo '<input type="hidden" value='.$comentario['id'].' name="idcomentario">';                            
+echo <<< HTML
+                            <input type="hidden" value="editar-comentario" name="acc">
 			        		<input class="btn-edit-com" type="image" src="View/img/pencil.png">
 			    		</form>
 						<form action="index.php" method="post">

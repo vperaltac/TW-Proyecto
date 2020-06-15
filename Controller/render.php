@@ -305,14 +305,19 @@ function renderizarGestionCategorias($categorias){
 }
 
 
-function renderizarNuevoComentario(){
+function renderizarNuevoComentario($nuevo){
     $admin = sesionIniciada();
     $cantidad = countRecetas();
+
+    if($nuevo)
+        $datos = null;
+    else
+        $datos = pedirDatosComentario();
 
     HTMLinicio();
     HTMLcabecera();
     HTMLnav($admin);
-    HTMLnuevoComentario($_GET['idreceta']);
+    HTMLnuevoComentario($_GET['idreceta'],$nuevo,$datos);
     $ranking = pedirRankingRecetas(); 
     $masComentadas = pedirRecetasMasComentadas();
     HTMLsidebar($admin,$cantidad['COUNT(*)'],$ranking,$masComentadas);
